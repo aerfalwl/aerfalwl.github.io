@@ -9,7 +9,7 @@ category: wenjian
 
 ## 组件
 
-![架构](https://github.com/aerfalwl.github.io/blob/image/2020/08/20200821-HDFS-Arc.png)
+![架构](https://github.com/aerfalwl/aerfalwl.github.io/blob/master/image/2020/08/20200821-HDFS-Arc.png)
 
 
 
