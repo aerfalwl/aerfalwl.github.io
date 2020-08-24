@@ -1,10 +1,9 @@
 ---
-layout: HDFS NameNode
+layout: hdfs namenode
 title: hdfs-namenode
 date: 2020-08-21 19:20:23 +0900
-category: wenjian
+category: high avalibility
 ---
-
 # HDFS NameNode 
 
 ## 组件
