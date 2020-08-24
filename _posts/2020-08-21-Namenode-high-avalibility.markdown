@@ -2,7 +2,7 @@
 layout: hdfs namenode
 title: hdfs-namenode
 date: 2020-08-21 19:20:23 +0900
-category: high-avalibility
+category: ha
 ---
 # HDFS NameNode 
 
