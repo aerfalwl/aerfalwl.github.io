@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,15 +19,18 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Suche...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+  <meta name="description" content="每天收获一点点">
+<meta property="og:type" content="website">
+<meta property="og:title" content="sunshine">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="og:site_name" content="sunshine">
+<meta property="og:description" content="每天收获一点点">
+<meta property="og:locale">
+<meta property="article:author" content="codefreestyle">
+<meta property="article:tag" content="happy">
 <meta name="twitter:card" content="summary">
 
 
@@ -40,11 +43,11 @@
     sidebar: "",
     isHome : true,
     isPost : false,
-    lang   : 'en'
+    lang   : 'zh-Hans'
   };
 </script>
 
-  <title>Hexo</title>
+  <title>sunshine</title>
   
 
 
@@ -87,6 +90,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="sunshine" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
@@ -96,7 +100,10 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
+    <div class="toggle" aria-label="Navigationsleiste an/ausschalten">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
@@ -104,22 +111,95 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Hexo</h1>
+      <h1 class="site-title">sunshine</h1>
       <i class="logo-line"></i>
     </a>
+      <p class="site-subtitle" itemprop="description">自律即自由</p>
   </div>
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
 
 
 
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Startseite</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>Über</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Schlagwörter</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Kategorien</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archiv</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>Zeitplan</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>Sitemap</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Suche
+        </a>
+      </li>
+  </ul>
+</nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Suche..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
         
@@ -135,10 +215,10 @@
     <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          Inhaltsverzeichnis
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          Übersicht
         </li>
       </ul>
 
@@ -149,15 +229,16 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">John Doe</p>
-  <div class="site-description" itemprop="description"></div>
+  <p class="site-author-name" itemprop="name">codefreestyle</p>
+  <div class="site-description" itemprop="description">每天收获一点点</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives">
-          <span class="site-state-item-count">9</span>
-          <span class="site-state-item-name">posts</span>
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">Artikel</span>
         </a>
       </div>
   </nav>
@@ -195,17 +276,146 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/14/Filesystem/ZFS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="codefreestyle">
+      <meta itemprop="description" content="每天收获一点点">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/14/Filesystem/ZFS/" class="post-title-link" itemprop="url">Unbenannt</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Veröffentlicht am</span>
+      
+
+      <time title="Erstellt: 2020-10-14 08:35:56 / Geändert am: 10:49:09" itemprop="dateCreated datePublished" datetime="2020-10-14T08:35:56+08:00">2020-10-14</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Introduction-to-the-Kernel"><a href="#Introduction-to-the-Kernel" class="headerlink" title="Introduction to the Kernel"></a>Introduction to the Kernel</h2><ol>
+<li>参考书籍The Design and Implementation of the FreeBSD Operating System, 2nd<br>Edition</li>
+</ol>
+<h1 id="Introduction-to-the-Zettabyte-Filesystem"><a href="#Introduction-to-the-Zettabyte-Filesystem" class="headerlink" title="Introduction to the Zettabyte Filesystem"></a>Introduction to the Zettabyte Filesystem</h1><ol>
+<li>开始于Solaries。</li>
+<li>Solaris是Sun Microsystem开发的一个Unix版本的操作系统；<ul>
+<li>它是以下两种操作系统的合并版：SunOs和System V4</li>
+</ul>
+</li>
+<li>Sun需要解决的问题是：传统的操作系统在处理大数据的时候，显现出了很大的缺点，因为大数据使得系统需要大量的磁盘。</li>
+<li>为解决以上问题，Sun写了ZFS:<ul>
+<li>Log Structured Filesystem，由Berkeley开发，展现出了它处理大问题大数据的一些优势</li>
+<li>文件系统不可重复写的特性，给了它很多比较好的特性。</li>
+</ul>
+</li>
+</ol>
+<h1 id="ZFS的演变过程"><a href="#ZFS的演变过程" class="headerlink" title="ZFS的演变过程"></a>ZFS的演变过程</h1><ol>
+<li>首先出现于OpenSolaris,  该操作系统是一款Solaris开源的操作系统，包括核心科技：ZFS和DTrace</li>
+<li>随后，ZFS出现在了FreeBSD（一款Unix操作系统）中；</li>
+<li>之后，Sun被Oracle收购，但是Larry Ellison不是一个开源爱好者，他不同意ZFS继续开源，但是已经开源的早期版本还在流传；</li>
+<li>于是一些公司继续开发并维护OpenSolaris，并且将他作为一个开源项目；</li>
+<li>一些组件变得很流行，像ZFS；</li>
+<li>最后ZFS变为单独的OpenZFS项目；</li>
+<li>当前开发OpenZFS的主要有四个组，它们每个月都有一次会议来协同工作：<ul>
+<li>致力于OpenSolaris开发的组；</li>
+<li>FressBSD开发者；</li>
+<li>致力于将ZFS嵌入到Linux内核的Lawrence Livermore National Laboratory</li>
+<li>致力于将ZFS嵌入到MacOs和Windows的Jorgen Lundman</li>
+</ul>
+</li>
+<li>Sun Community Development License与GNU Public License不兼容：<ul>
+<li>ZFS代码不能嵌入到Linux内核中；</li>
+<li>所有将ZFS带入嵌入到Linux内核的人不能使用GPL interfaces（GPL Interface是Linux的一个特性，该特性说明只有GPL的代码之间才能相互使用和修改）</li>
+<li>ZFS只能通过FUSE(用户态空间文件系统， Filesystem in Userspace)访问Linux Kernel。</li>
+</ul>
+</li>
+<li>在2016年，Ubuntu开源了一版在Kernel态的ZFS，它没有使用GPL interfaces，因此，自己额外开发了一些函数。当前，Canonical（开发Ubuntu的公司）还没被起诉，更多详情访问<a target="_blank" rel="noopener" href="https://wiki.ubuntu.com/ZFS">https://wiki.ubuntu.com/ZFS</a></li>
+<li>当前，OpenZFS代码已经能在大多数Linux系统中配置使用。</li>
+</ol>
+<p>ZFS相关资料：<a target="_blank" rel="noopener" href="https://openzfs.org/wiki/Main_Page">https://openzfs.org/wiki/Main_Page</a></p>
+<p>Github网址：<a target="_blank" rel="noopener" href="https://github.com/openzfs/zfs">https://github.com/openzfs/zfs</a></p>
+<h1 id="Kernel-I-O-Structure"><a href="#Kernel-I-O-Structure" class="headerlink" title="Kernel I/O Structure"></a>Kernel I/O Structure</h1><ol>
+<li>关于kernel的系统调用：<ul>
+<li>一切在硬件和系统调用之间的都是操作系统(everything between this and the hardware is the operating system)。</li>
+<li>当我们和subsystem进行交互时，其实是在和file descriptor、socket、kqueue交互</li>
+</ul>
+</li>
+</ol>
+<p><img src="C:\Users\CCDC\AppData\Roaming\Typora\typora-user-images\image-20201014101848952.png" alt="image-20201014101848952"></p>
+<h1 id="FileSystem-Consistency"><a href="#FileSystem-Consistency" class="headerlink" title="FileSystem Consistency"></a>FileSystem Consistency</h1><ol>
+<li>必须维护一些元数据信息：directories, inodes, bitmaps</li>
+<li>维护元数据的一些规则：<ul>
+<li>在一个结构被初始化之前不要指向它</li>
+<li>在将一个对象的所有指针置为空之前，不要使新指针指向它</li>
+<li>在新指针被设置之前，不要讲老指针设置为一个可用的资源(例如，rename foo to bar，则在将foo的旧指针指向bar之后，再删除老的foo)</li>
+</ul>
+</li>
+</ol>
+<h1 id="Keeping-Metadata-Consistent"><a href="#Keeping-Metadata-Consistent" class="headerlink" title="Keeping Metadata Consistent"></a>Keeping Metadata Consistent</h1><p>实现一致性的三种方法：</p>
+<ol>
+<li>同步写</li>
+<li>使用非易失性RAM</li>
+<li>原子更新(journaling and logging)</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/10/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="codefreestyle">
+      <meta itemprop="description" content="每天收获一点点">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="sunshine">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
@@ -219,9 +429,9 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">Veröffentlicht am</span>
 
-      <time title="Created: 2020-10-10 09:35:49" itemprop="dateCreated datePublished" datetime="2020-10-10T09:35:49+08:00">2020-10-10</time>
+      <time title="Erstellt: 2020-10-10 09:35:49" itemprop="dateCreated datePublished" datetime="2020-10-10T09:35:49+08:00">2020-10-10</time>
     </span>
 
   
@@ -272,22 +482,22 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/10/Leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="codefreestyle">
+      <meta itemprop="description" content="每天收获一点点">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="sunshine">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/10/10/Leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="post-title-link" itemprop="url">Untitled</a>
+            <a href="/2020/10/10/Leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" class="post-title-link" itemprop="url">Unbenannt</a>
         </h2>
 
         <div class="post-meta-container">
@@ -296,9 +506,9 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">Veröffentlicht am</span>
 
-      <time title="Created: 2020-10-10 09:08:41" itemprop="dateCreated datePublished" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
+      <time title="Erstellt: 2020-10-10 09:08:41" itemprop="dateCreated datePublished" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
     </span>
 
   
@@ -372,22 +582,22 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/10/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="codefreestyle">
+      <meta itemprop="description" content="每天收获一点点">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="sunshine">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/10/10/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/" class="post-title-link" itemprop="url">Untitled</a>
+            <a href="/2020/10/10/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/" class="post-title-link" itemprop="url">Unbenannt</a>
         </h2>
 
         <div class="post-meta-container">
@@ -396,9 +606,10 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">Veröffentlicht am</span>
+      
 
-      <time title="Created: 2020-10-10 09:08:41" itemprop="dateCreated datePublished" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
+      <time title="Erstellt: 2020-10-10 09:08:41 / Geändert am: 14:13:03" itemprop="dateCreated datePublished" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
     </span>
 
   
@@ -434,6 +645,8 @@
 <li><p>消费者请求数据的时候，可以设置broker返回数据的上限，也可以设置下限。这样可以在主题消息流量不是很大的情况下，减少CPU和网络开销。</p>
 </li>
 <li><p>日志压缩是Kafka的一个高级特性，因为有了这个特性，Kafka可以用来长时间保存数据。</p>
+</li>
+<li><p>Kafka支持加密传输数据，从数据源到Kafka，再从Kafka到数据池。它还支持认证和授权。</p>
 </li>
 </ol>
 <h2 id="问题处理"><a href="#问题处理" class="headerlink" title="问题处理"></a>问题处理</h2><ol>
@@ -472,22 +685,22 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/10/LinuxCmd/%E4%BD%BF%E7%94%A8GDB%E6%9F%A5%E7%9C%8Bcore%E6%96%87%E4%BB%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="codefreestyle">
+      <meta itemprop="description" content="每天收获一点点">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="sunshine">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/10/10/LinuxCmd/%E4%BD%BF%E7%94%A8GDB%E6%9F%A5%E7%9C%8Bcore%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">Untitled</a>
+            <a href="/2020/10/10/LinuxCmd/%E4%BD%BF%E7%94%A8GDB%E6%9F%A5%E7%9C%8Bcore%E6%96%87%E4%BB%B6/" class="post-title-link" itemprop="url">Unbenannt</a>
         </h2>
 
         <div class="post-meta-container">
@@ -496,9 +709,9 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">Veröffentlicht am</span>
 
-      <time title="Created: 2020-10-10 09:08:41" itemprop="dateCreated datePublished" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
+      <time title="Erstellt: 2020-10-10 09:08:41" itemprop="dateCreated datePublished" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
     </span>
 
   
@@ -549,22 +762,22 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/10/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="codefreestyle">
+      <meta itemprop="description" content="每天收获一点点">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="sunshine">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/10/10/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/" class="post-title-link" itemprop="url">Untitled</a>
+            <a href="/2020/10/10/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/" class="post-title-link" itemprop="url">Unbenannt</a>
         </h2>
 
         <div class="post-meta-container">
@@ -573,9 +786,9 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">Veröffentlicht am</span>
 
-      <time title="Created: 2020-10-10 09:08:41" itemprop="dateCreated datePublished" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
+      <time title="Erstellt: 2020-10-10 09:08:41" itemprop="dateCreated datePublished" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
     </span>
 
   
@@ -663,22 +876,22 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/10/Socket/20200914-socket_close_shutdown/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="codefreestyle">
+      <meta itemprop="description" content="每天收获一点点">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="sunshine">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/10/10/Socket/20200914-socket_close_shutdown/" class="post-title-link" itemprop="url">Untitled</a>
+            <a href="/2020/10/10/Socket/20200914-socket_close_shutdown/" class="post-title-link" itemprop="url">Unbenannt</a>
         </h2>
 
         <div class="post-meta-container">
@@ -687,9 +900,9 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">Veröffentlicht am</span>
 
-      <time title="Created: 2020-10-10 09:08:41" itemprop="dateCreated datePublished" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
+      <time title="Erstellt: 2020-10-10 09:08:41" itemprop="dateCreated datePublished" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
     </span>
 
   
@@ -733,22 +946,22 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/10/LinuxCmd/20200814netstat/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="codefreestyle">
+      <meta itemprop="description" content="每天收获一点点">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="sunshine">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/10/10/LinuxCmd/20200814netstat/" class="post-title-link" itemprop="url">Untitled</a>
+            <a href="/2020/10/10/LinuxCmd/20200814netstat/" class="post-title-link" itemprop="url">Unbenannt</a>
         </h2>
 
         <div class="post-meta-container">
@@ -757,9 +970,9 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">Veröffentlicht am</span>
 
-      <time title="Created: 2020-10-10 09:08:41" itemprop="dateCreated datePublished" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
+      <time title="Erstellt: 2020-10-10 09:08:41" itemprop="dateCreated datePublished" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
     </span>
 
   
@@ -801,22 +1014,22 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/10/LinuxCmd/20200814-%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="codefreestyle">
+      <meta itemprop="description" content="每天收获一点点">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="sunshine">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/10/10/LinuxCmd/20200814-%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE/" class="post-title-link" itemprop="url">Untitled</a>
+            <a href="/2020/10/10/LinuxCmd/20200814-%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE/" class="post-title-link" itemprop="url">Unbenannt</a>
         </h2>
 
         <div class="post-meta-container">
@@ -825,9 +1038,9 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">Veröffentlicht am</span>
 
-      <time title="Created: 2020-10-10 09:08:41" itemprop="dateCreated datePublished" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
+      <time title="Erstellt: 2020-10-10 09:08:41" itemprop="dateCreated datePublished" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
     </span>
 
   
@@ -877,22 +1090,22 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/10/Socket/2020-09-21-TCP%E6%9C%80%E5%A4%A7%E8%BF%9E%E6%8E%A5%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="codefreestyle">
+      <meta itemprop="description" content="每天收获一点点">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="sunshine">
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/10/10/Socket/2020-09-21-TCP%E6%9C%80%E5%A4%A7%E8%BF%9E%E6%8E%A5%E6%95%B0/" class="post-title-link" itemprop="url">Untitled</a>
+            <a href="/2020/10/10/Socket/2020-09-21-TCP%E6%9C%80%E5%A4%A7%E8%BF%9E%E6%8E%A5%E6%95%B0/" class="post-title-link" itemprop="url">Unbenannt</a>
         </h2>
 
         <div class="post-meta-container">
@@ -901,9 +1114,9 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">Posted on</span>
+      <span class="post-meta-item-text">Veröffentlicht am</span>
 
-      <time title="Created: 2020-10-10 09:08:41" itemprop="dateCreated datePublished" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
+      <time title="Erstellt: 2020-10-10 09:08:41" itemprop="dateCreated datePublished" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
     </span>
 
   
@@ -990,22 +1203,35 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">codefreestyle</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
+
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+</div>
 
     </div>
   </footer>
 
   
   <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
 
 
 
+
+  <script src="/js/local-search.js"></script>
 
 
 
