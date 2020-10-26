@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -19,7 +19,7 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"بحث...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
   <meta name="description" content="Kafka与Broker不同 消息定期清理。各个主题设置单独的保留规则，以便满足不同消费者的需求，各个主题可以保留不同数量的消息。 多个消费者可以重复消费同一条消息。 Kafka可以在如下情况下自动创建主题：当一个生产者开始往主题写入消息时，当一个消费者开始从主题读取消息时，当任意一个客户端向主题发送元数据请求时。 客户端为了优化网络和磁盘空间，会对消息进行压缩，服务器需要对消息进行批量解压，设置">
@@ -28,10 +28,10 @@
 <meta property="og:url" content="http://example.com/2020/10/10/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/index.html">
 <meta property="og:site_name" content="sunshine">
 <meta property="og:description" content="Kafka与Broker不同 消息定期清理。各个主题设置单独的保留规则，以便满足不同消费者的需求，各个主题可以保留不同数量的消息。 多个消费者可以重复消费同一条消息。 Kafka可以在如下情况下自动创建主题：当一个生产者开始往主题写入消息时，当一个消费者开始从主题读取消息时，当任意一个客户端向主题发送元数据请求时。 客户端为了优化网络和磁盘空间，会对消息进行压缩，服务器需要对消息进行批量解压，设置">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:locale">
 <meta property="og:image" content="c:/Users/lwl/AppData/Roaming/Typora/typora-user-images/image-20201005132432782.png">
 <meta property="article:published_time" content="2020-10-10T01:08:41.754Z">
-<meta property="article:modified_time" content="2020-10-10T06:13:03.607Z">
+<meta property="article:modified_time" content="2020-10-26T16:20:48.647Z">
 <meta property="article:author" content="codefreestyle">
 <meta property="article:tag" content="happy">
 <meta name="twitter:card" content="summary">
@@ -47,7 +47,7 @@
     sidebar: "",
     isHome : false,
     isPost : true,
-    lang   : 'zh-CN'
+    lang   : 'zh-Hans'
   };
 </script>
 
@@ -104,7 +104,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
         <span class="toggle-line"></span>
@@ -134,36 +134,36 @@
   <ul class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>معلومات</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>الوسوم</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>التصنيفات</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>الأرشيفات</a>
 
   </li>
         <li class="menu-item menu-item-commonweal">
 
-    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a>
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>بحث
         </a>
       </li>
   </ul>
@@ -179,7 +179,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off" maxlength="80"
-           placeholder="搜索..." spellcheck="false"
+           placeholder="بحث..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -209,10 +209,10 @@
     <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
-          文章目录
+          المحتويات
         </li>
         <li class="sidebar-nav-overview">
-          站点概览
+          عام
         </li>
       </ul>
 
@@ -235,7 +235,7 @@
           <a href="/archives/">
         
           <span class="site-state-item-count">10</span>
-          <span class="site-state-item-name">日志</span>
+          <span class="site-state-item-name">المقالات</span>
         </a>
       </div>
   </nav>
@@ -274,7 +274,7 @@
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/10/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -297,11 +297,17 @@
       <span class="post-meta-item-icon">
         <i class="far fa-calendar"></i>
       </span>
-      <span class="post-meta-item-text">发表于</span>
-      
+      <span class="post-meta-item-text">نُشر في</span>
 
-      <time title="创建时间：2020-10-10 09:08:41 / 修改时间：14:13:03" itemprop="dateCreated datePublished" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
+      <time title="أُنشأ: 2020-10-10 09:08:41" itemprop="dateCreated datePublished" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">عُدل في</span>
+        <time title="عُدل: 2020-10-27 00:20:48" itemprop="dateModified" datetime="2020-10-27T00:20:48+08:00">2020-10-27</time>
+      </span>
 
   
 </div>
@@ -337,8 +343,6 @@
 </li>
 <li><p>日志压缩是Kafka的一个高级特性，因为有了这个特性，Kafka可以用来长时间保存数据。</p>
 </li>
-<li><p>Kafka支持加密传输数据，从数据源到Kafka，再从Kafka到数据池。它还支持认证和授权。</p>
-</li>
 </ol>
 <h2 id="问题处理"><a href="#问题处理" class="headerlink" title="问题处理"></a>问题处理</h2><ol>
 <li>Kafka也需人为设置BrokerID,需要使用者自己保证该ID是唯一的，如果两个broker使用相同的BrokerID，则第二个broker就无法启动。在Broker启动时，它通过创建临时节点把自己的ID注册到Zookeeper。Kafka组件订阅Zookeeper的/brokers/ids路径（broker在Zookeeper上的注册路径），当有broker加入集群或者退出集群时，这些组件就能获得通知。</li>
@@ -362,7 +366,7 @@
           
 
   <div class="followme">
-    <span>欢迎关注我的其它发布渠道</span>
+    <span>مرحباً بك حيثُ أنشر أيضاً</span>
 
     <div class="social-list">
 
@@ -444,7 +448,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">codefreestyle</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
 
 <div>

@@ -141,8 +141,6 @@
 </li>
 <li><p>日志压缩是Kafka的一个高级特性，因为有了这个特性，Kafka可以用来长时间保存数据。</p>
 </li>
-<li><p>Kafka支持加密传输数据，从数据源到Kafka，再从Kafka到数据池。它还支持认证和授权。</p>
-</li>
 </ol>
 <h2 id="问题处理"><a href="#问题处理" class="headerlink" title="问题处理"></a>问题处理</h2><ol>
 <li>Kafka也需人为设置BrokerID,需要使用者自己保证该ID是唯一的，如果两个broker使用相同的BrokerID，则第二个broker就无法启动。在Broker启动时，它通过创建临时节点把自己的ID注册到Zookeeper。Kafka组件订阅Zookeeper的/brokers/ids路径（broker在Zookeeper上的注册路径），当有broker加入集群或者退出集群时，这些组件就能获得通知。</li>
