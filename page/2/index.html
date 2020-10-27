@@ -342,8 +342,8 @@
 <li>提交日志。</li>
 <li>流处理。</li>
 </ol>
-<h1 id="生产者"><a href="#生产者" class="headerlink" title="生产者"></a>生产者</h1><p><img src="/.com/2020//Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201004160030424.png" alt="Kafka生产者组件图"></p>
-<h1 id="消费者"><a href="#消费者" class="headerlink" title="消费者"></a>消费者</h1><p><img src="/.com/2020//Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005131625839.png" alt="消费者组群"></p>
+<h1 id="生产者"><a href="#生产者" class="headerlink" title="生产者"></a>生产者</h1><p><img src="/.com//Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201004160030424.png" alt="Kafka生产者组件图"></p>
+<h1 id="消费者"><a href="#消费者" class="headerlink" title="消费者"></a>消费者</h1><p><img src="/.com//Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005131625839.png" alt="消费者组群"></p>
 <p>如果消费者组群中消费者的数量多于主题分区的个数，则会有部分消费者被闲置，不会接收到任何消息。</p>
 <h1 id="深入Kafka"><a href="#深入Kafka" class="headerlink" title="深入Kafka"></a>深入Kafka</h1><h2 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h2><ol>
 <li>Controller本质上也是一个broker，除了一般的broker的功能之外，它还负责首领的选举。集群中第一启动的Broker会在Zookeeper里创建一个临时节点/controller让自己成为控制器。</li>
@@ -357,8 +357,8 @@
 </ol>
 </li>
 </ol>
-<h1 id="Broker处理请求的方式"><a href="#Broker处理请求的方式" class="headerlink" title="Broker处理请求的方式"></a>Broker处理请求的方式</h1><p><img src="/.com/2020//Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005164403640.png" alt="image-20201005164403640"></p>
-<p><img src="/.com/2020//Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005164434878.png" alt="image-20201005164434878"></p>
+<h1 id="Broker处理请求的方式"><a href="#Broker处理请求的方式" class="headerlink" title="Broker处理请求的方式"></a>Broker处理请求的方式</h1><p><img src="/.com//Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005164403640.png" alt="image-20201005164403640"></p>
+<p><img src="/.com//Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005164434878.png" alt="image-20201005164434878"></p>
 <p>Kafka有用其它语言实现的客户端，如C, Python， Go语言等。Kafka网站上有它们的完整清单，这些客户端就是使用二进制协议与broker通信的。</p>
 <h2 id="分区分配"><a href="#分区分配" class="headerlink" title="分区分配"></a>分区分配</h2><h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><ol>
 <li>Kafka将分区分为若干个片段。默认情况下，每个片段包含1GB或者一周的数据，以较小的那个为准。</li>
@@ -495,7 +495,7 @@
 </ul>
 </li>
 </ol>
-<p><img src="/.com/2020//Users\CCDC\AppData\Roaming\Typora\typora-user-images\image-20201014101848952.png" alt="image-20201014101848952"></p>
+<p><img src="/.com//Users\CCDC\AppData\Roaming\Typora\typora-user-images\image-20201014101848952.png" alt="image-20201014101848952"></p>
 <h1 id="FileSystem-Consistency"><a href="#FileSystem-Consistency" class="headerlink" title="FileSystem Consistency"></a>FileSystem Consistency</h1><ol>
 <li>必须维护一些元数据信息：directories, inodes, bitmaps</li>
 <li>维护元数据的一些规则：<ul>
