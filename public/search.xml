@@ -1,68 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2020/10/27/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>hexo+github搭建个人博客</title>
-    <url>/2020/10/27/Config/hexo_config/</url>
-    <content><![CDATA[<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
-<li><p>在电脑上搭建博客</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init xxx.github.io</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<ol start="2">
-<li><p>修改配置文件_config.yml，添加如下内容：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:xxx/youname.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<ol start="3">
-<li><p>提交代码至仓库</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean # 清空缓存</span><br><span class="line">hexo generate # 生成静态文件</span><br><span class="line">hexo deploy # 部署至远程仓库</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建分支用于保存原配置文件和原博客，因为hexo只会将它生成的静态文件上传，而不会上传相关配置文件和原markdown文件。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line">git checkout -b meta</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>之后若有修改，则依次执行如下命令，<strong>注意顺序，且在meta分支执行</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo c &amp;&amp; hexo g &amp;&amp; hexo d</span><br><span class="line">git add . &amp;&amp; git commit -m &quot;change&quot; &amp;&amp; git push origin meta</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h2 id="不同设备同步"><a href="#不同设备同步" class="headerlink" title="不同设备同步"></a>不同设备同步</h2><p>执行如下命令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone -b meta https://github.com/XXX/xxx.git</span><br><span class="line">cd xxx.github.io</span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 之后若有修改，则执行</span></span><br><span class="line">hexo c &amp;&amp; hexo g &amp;&amp; hexo d</span><br><span class="line">git add . &amp;&amp; git commit -m &quot;change&quot; &amp;&amp; git push origin meta</span><br></pre></td></tr></table></figure>
-
-
-
-<p>如果在别的设备上提交了，别忘了在提交之后先pull meta哈。</p>
-]]></content>
-      <categories>
-        <category>配置</category>
-      </categories>
-      <tags>
-        <tag>安装部署</tag>
-        <tag>配置</tag>
-      </tags>
-  </entry>
-  <entry>
     <title></title>
     <url>/2020/10/27/Filesystem/ZFS/</url>
     <content><![CDATA[<h2 id="Introduction-to-the-Kernel"><a href="#Introduction-to-the-Kernel" class="headerlink" title="Introduction to the Kernel"></a>Introduction to the Kernel</h2><ol>
@@ -132,44 +70,130 @@
 ]]></content>
   </entry>
   <entry>
+    <title>hexo+github搭建个人博客</title>
+    <url>/2020/10/27/Config/hexo_config/</url>
+    <content><![CDATA[<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li><p>在电脑上搭建博客</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init xxx.github.io</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>修改配置文件_config.yml，添加如下内容：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:xxx/youname.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p>提交代码至仓库</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean # 清空缓存</span><br><span class="line">hexo generate # 生成静态文件</span><br><span class="line">hexo deploy # 部署至远程仓库</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建分支用于保存原配置文件和原博客，因为hexo只会将它生成的静态文件上传，而不会上传相关配置文件和原markdown文件。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line">git checkout -b meta</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>之后若有修改，则依次执行如下命令，<strong>注意顺序，且在meta分支执行</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo c &amp;&amp; hexo g &amp;&amp; hexo d</span><br><span class="line">git add . &amp;&amp; git commit -m &quot;change&quot; &amp;&amp; git push origin meta</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="不同设备同步"><a href="#不同设备同步" class="headerlink" title="不同设备同步"></a>不同设备同步</h2><p>执行如下命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone -b meta https://github.com/XXX/xxx.git</span><br><span class="line">cd xxx.github.io</span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 之后若有修改，则执行</span></span><br><span class="line">hexo c &amp;&amp; hexo g &amp;&amp; hexo d</span><br><span class="line">git add . &amp;&amp; git commit -m &quot;change&quot; &amp;&amp; git push origin meta</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果在别的设备上提交了，别忘了在提交之后先pull meta哈。</p>
+]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>安装部署</tag>
+        <tag>配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>763. Partition Labels</title>
+    <url>/2020/10/27/Leetcode/763/</url>
+    <content><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://leetcode.com/problems/partition-labels/">英文题目</a></p>
+<p><a href="https://leetcode-cn.com/problems/partition-labels/">中文题目</a></p>
+<p>难度：中等</p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>说明：题目来自leetcode中文官网</p>
+<p>字符串 <code>S</code> 由小写字母组成。我们要把这个字符串划分为尽可能多的片段，同一字母最多出现在一个片段中。返回一个表示每个字符串片段的长度的列表。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：S = &quot;ababcbacadefegdehijhklij&quot;</span><br><span class="line">输出：[9,7,8]</span><br><span class="line">解释：</span><br><span class="line">划分结果为 &quot;ababcbaca&quot;, &quot;defegde&quot;, &quot;hijhklij&quot;。</span><br><span class="line">每个字母最多出现在一个片段中。</span><br><span class="line">像 &quot;ababcbacadefegde&quot;, &quot;hijhklij&quot; 的划分是错误的，因为划分的片段数较少。</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>该题目分类属于中等题，且用two pointer进行解决。</p>
+<p>即首先找到每个字母最后出现的位置，之后划分段的时候，确保该段内每个字母出现的最右值的位置在该段内。不太好描述，直接看代码。</p>
+<p><strong>代码如下：</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">partitionLabels</span><span class="params">(String S)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(S.length() &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        List&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">char</span>[] s = S.toCharArray();</span><br><span class="line">        <span class="keyword">int</span> len = s.length;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span>[] max = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> curr = s[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">            <span class="keyword">if</span> (max[curr] &lt; i) max[curr] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (right &lt; len) &#123;</span><br><span class="line">            <span class="keyword">int</span> maxRight = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (right &lt; len) &#123;</span><br><span class="line">                <span class="keyword">int</span> curr = max[s[right] - <span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">                <span class="keyword">if</span> (maxRight &lt; curr) maxRight = curr;</span><br><span class="line">                <span class="keyword">if</span> (right == maxRight) &#123;</span><br><span class="line">                    ans.add(right - left + <span class="number">1</span>);</span><br><span class="line">                    left = right + <span class="number">1</span>;</span><br><span class="line">                    right++;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                right++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (left != right) &#123;</span><br><span class="line">            ans.add(right - left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<h3 id="Two-pointer解决套路"><a href="#Two-pointer解决套路" class="headerlink" title="Two pointer解决套路"></a>Two pointer解决套路</h3><p>Two pointer和滑动窗口差不多，其套路一般为：</p>
+<ol>
+<li>一个左指针，一个右指针。其中左指针用于缩小范围，右指针用于扩大搜索范围。一般求滑动窗口的最小值都是在缩小左指针的时候取得的。</li>
+<li>右指针扩展的条件时：只要当前还没有满足条件，就暴力增长，直到第一次满足条件为止。</li>
+<li>左指针收缩的条件：只要当前指针的缩小还没影响窗口的可满足性，就一直暴力向左增长。一但当前指针向前移动的时候影响了窗口的可满足性，就记录下当前的窗口大小，并更新目前为止满足条件的最小窗口记录。之后，再次扩展右指针，使得窗口满足题目的条件。</li>
+<li>以此类推即可。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>two pointer</tag>
+        <tag>algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title></title>
-    <url>/2020/10/27/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/</url>
-    <content><![CDATA[<h2 id="Kafka与Broker不同"><a href="#Kafka与Broker不同" class="headerlink" title="Kafka与Broker不同"></a>Kafka与Broker不同</h2><ol>
-<li>消息定期清理。各个主题设置单独的保留规则，以便满足不同消费者的需求，各个主题可以保留不同数量的消息。</li>
-<li>多个消费者可以重复消费同一条消息。</li>
-<li>Kafka可以在如下情况下自动创建主题：当一个生产者开始往主题写入消息时，当一个消费者开始从主题读取消息时，当任意一个客户端向主题发送元数据请求时。</li>
-<li>客户端为了优化网络和磁盘空间，会对消息进行压缩，服务器需要对消息进行批量解压，设置偏移量，然后重新进行批量压缩，再保存在磁盘上。</li>
-<li>kafka允许主题的名字为null, Refactor不允许。</li>
-<li>Kafka的Consumer属于消费者组群。</li>
-<li>消费者组群之间允许重复消费消息。<img src="C:\Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005132432782.png" alt="image-20201005132432782"></li>
-<li>Kafka中所有broker都缓存了元数据，因此，客户端可以向任何一个broker发送<strong>元数据请求</strong>，并得到客户端所感兴趣的主题所在分区，每个分区都包含哪些副本，以及哪个副本是首领。因此，consumer需要时不时的向broker发送元数据请求来刷新本地缓存的信息。</li>
-<li></li>
+    <url>/2020/10/27/Leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</url>
+    <content><![CDATA[<h1 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h1><p><a href="https://leetcode.com/problems/replace-the-substring-for-balanced-string/discuss/408978/javacpython-sliding-window/367697">https://leetcode.com/problems/replace-the-substring-for-balanced-string/discuss/408978/javacpython-sliding-window/367697</a></p>
+<ul>
+<li><ol>
+<li><a href="https://leetcode.com/problems/count-number-of-nice-subarrays/discuss/419378/JavaC%2B%2BPython-Sliding-Window-atMost(K)-atMost(K-1)">Count Number of Nice Subarrays</a></li>
 </ol>
-<h1 id="Kafka的一些Feture"><a href="#Kafka的一些Feture" class="headerlink" title="Kafka的一些Feture"></a>Kafka的一些Feture</h1><ol>
-<li><p>Kafka的所有消息保存在磁盘上，存放这些日志片段的目录是通过log.dirs指定的，它是一组用逗号分割的本地文件系统路径。如果指定了多个路径，那么Broker会根据最少使用原则，把统一分区的日志片段保存在同一路径下。要注意：Broker会往拥有最少数据分区的路径新增分区，而不是往拥有最少磁盘空间的路径新增分区。</p>
 </li>
-<li><p>提供二进制连接协议，即用户直接向Kafka网络端口发送适当的字节序列，就可以实现从Kafka读取消息或往Kafka写消息</p>
-</li>
-<li><p>用户可以从指定偏移量开始读数据，例如seekToBeginning和seekToEnd</p>
-</li>
-<li><p>消费者既可以依赖于组群存在，也可以独立存在。</p>
-</li>
-<li><p>消费者请求数据的时候，可以设置broker返回数据的上限，也可以设置下限。这样可以在主题消息流量不是很大的情况下，减少CPU和网络开销。</p>
-</li>
-<li><p>日志压缩是Kafka的一个高级特性，因为有了这个特性，Kafka可以用来长时间保存数据。</p>
-</li>
+<li><ol>
+<li><a href="https://leetcode.com/problems/replace-the-substring-for-balanced-string/discuss/408978/javacpython-sliding-window/367697">Replace the Substring for Balanced String</a></li>
 </ol>
-<h2 id="问题处理"><a href="#问题处理" class="headerlink" title="问题处理"></a>问题处理</h2><ol>
-<li>Kafka也需人为设置BrokerID,需要使用者自己保证该ID是唯一的，如果两个broker使用相同的BrokerID，则第二个broker就无法启动。在Broker启动时，它通过创建临时节点把自己的ID注册到Zookeeper。Kafka组件订阅Zookeeper的/brokers/ids路径（broker在Zookeeper上的注册路径），当有broker加入集群或者退出集群时，这些组件就能获得通知。</li>
+</li>
+<li><ol>
+<li><a href="https://leetcode.com/problems/max-consecutive-ones-iii/discuss/247564/javacpython-sliding-window/379427?page=3">Max Consecutive Ones III</a></li>
 </ol>
-<h1 id="Refactor一些可以改进的地方"><a href="#Refactor一些可以改进的地方" class="headerlink" title="Refactor一些可以改进的地方"></a>Refactor一些可以改进的地方</h1><ol>
-<li>发送消息长度超过MESSAGE_LENGTH时，返回错误码；</li>
-<li>Consumer请求的topic不在此broker上，返回相关错误码；</li>
+</li>
+<li><ol>
+<li><a href="https://leetcode.com/problems/binary-subarrays-with-sum/discuss/186683/">Binary Subarrays With Sum</a></li>
 </ol>
-<h1 id="日志维护"><a href="#日志维护" class="headerlink" title="日志维护"></a>日志维护</h1><h2 id="小收获"><a href="#小收获" class="headerlink" title="小收获"></a>小收获</h2><ol>
-<li>除了设置socket 外，还需要设置TCP soc ke t 的读写缓冲区，它们的参数分别是net.i.pv4.tcp_wmem和net . i.pv4 . tc p_ wmem 。这些参数的值由3 个整数组成，它们使用空格分隔，分别表示最小值、默认值和最大值。最大值不能大于net.core.wmem_max可以和net.core.rmem_max指定的大小。例如，“4096 65536 204800。”表示最小值是4KB、默认值是64KB、最大值是2MB 。根据Kafka 服务器接收流量的实际情况，可能需要设置更高的最大值，为网络连接提供更大的缓冲空间。还有其他一些有用的网络参数。例如， 把net.ipv4.tcp_window_scaling 设为l ，启用TCP时间窗扩展，可以提升客户端传输数据的效率，传输的数据可以在服务器端进行缓冲。把net.1.pv4.tcp_max_syn_backlog 设为比默认值1024 更大的值，可以接受更多的井发连接, 把net.core.netdev_max_backlog 设为比默认值1000 更大的值，有助于应对网络流量的爆发，特别是在使用千兆网络的情况下，允许更多的数据包排队等待内核处理。</li>
-<li></li>
+</li>
+<li><ol>
+<li><a href="https://leetcode.com/problems/subarrays-with-k-different-integers/discuss/234482/JavaC%2B%2BPython-Sliding-Window-atMost(K)-atMost(K-1)">Subarrays with K Different Integers</a></li>
 </ol>
+</li>
+<li><ol>
+<li><a href="https://leetcode.com/problems/fruit-into-baskets/discuss/170740/Sliding-Window-for-K-Elements">Fruit Into Baskets</a></li>
+</ol>
+</li>
+<li><ol>
+<li><a href="https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/discuss/143726/C%2B%2BJavaPython-O(N)-Using-Deque">Shortest Subarray with Sum at Least K</a></li>
+</ol>
+</li>
+<li><ol>
+<li><a href="https://leetcode.com/problems/minimum-size-subarray-sum/discuss/433123">Minimum Size Subarray Sum</a></li>
+</ol>
+</li>
+</ul>
+<p><a href="https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/discuss/204290/Monotonic-Queue-Summary">https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/discuss/204290/Monotonic-Queue-Summary</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -229,87 +253,43 @@
   </entry>
   <entry>
     <title></title>
-    <url>/2020/10/27/LinuxCmd/20200814netstat/</url>
-    <content><![CDATA[<h1 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h1><p>查看所有在监听的端口</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -ntlp</span><br></pre></td></tr></table></figure>
-
-<p>待整理</p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2020/10/27/Leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</url>
-    <content><![CDATA[<h1 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h1><p><a href="https://leetcode.com/problems/replace-the-substring-for-balanced-string/discuss/408978/javacpython-sliding-window/367697">https://leetcode.com/problems/replace-the-substring-for-balanced-string/discuss/408978/javacpython-sliding-window/367697</a></p>
-<ul>
-<li><ol>
-<li><a href="https://leetcode.com/problems/count-number-of-nice-subarrays/discuss/419378/JavaC%2B%2BPython-Sliding-Window-atMost(K)-atMost(K-1)">Count Number of Nice Subarrays</a></li>
+    <url>/2020/10/27/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/</url>
+    <content><![CDATA[<h2 id="Kafka与Broker不同"><a href="#Kafka与Broker不同" class="headerlink" title="Kafka与Broker不同"></a>Kafka与Broker不同</h2><ol>
+<li>消息定期清理。各个主题设置单独的保留规则，以便满足不同消费者的需求，各个主题可以保留不同数量的消息。</li>
+<li>多个消费者可以重复消费同一条消息。</li>
+<li>Kafka可以在如下情况下自动创建主题：当一个生产者开始往主题写入消息时，当一个消费者开始从主题读取消息时，当任意一个客户端向主题发送元数据请求时。</li>
+<li>客户端为了优化网络和磁盘空间，会对消息进行压缩，服务器需要对消息进行批量解压，设置偏移量，然后重新进行批量压缩，再保存在磁盘上。</li>
+<li>kafka允许主题的名字为null, Refactor不允许。</li>
+<li>Kafka的Consumer属于消费者组群。</li>
+<li>消费者组群之间允许重复消费消息。<img src="C:\Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005132432782.png" alt="image-20201005132432782"></li>
+<li>Kafka中所有broker都缓存了元数据，因此，客户端可以向任何一个broker发送<strong>元数据请求</strong>，并得到客户端所感兴趣的主题所在分区，每个分区都包含哪些副本，以及哪个副本是首领。因此，consumer需要时不时的向broker发送元数据请求来刷新本地缓存的信息。</li>
+<li></li>
 </ol>
+<h1 id="Kafka的一些Feture"><a href="#Kafka的一些Feture" class="headerlink" title="Kafka的一些Feture"></a>Kafka的一些Feture</h1><ol>
+<li><p>Kafka的所有消息保存在磁盘上，存放这些日志片段的目录是通过log.dirs指定的，它是一组用逗号分割的本地文件系统路径。如果指定了多个路径，那么Broker会根据最少使用原则，把统一分区的日志片段保存在同一路径下。要注意：Broker会往拥有最少数据分区的路径新增分区，而不是往拥有最少磁盘空间的路径新增分区。</p>
 </li>
-<li><ol>
-<li><a href="https://leetcode.com/problems/replace-the-substring-for-balanced-string/discuss/408978/javacpython-sliding-window/367697">Replace the Substring for Balanced String</a></li>
+<li><p>提供二进制连接协议，即用户直接向Kafka网络端口发送适当的字节序列，就可以实现从Kafka读取消息或往Kafka写消息</p>
+</li>
+<li><p>用户可以从指定偏移量开始读数据，例如seekToBeginning和seekToEnd</p>
+</li>
+<li><p>消费者既可以依赖于组群存在，也可以独立存在。</p>
+</li>
+<li><p>消费者请求数据的时候，可以设置broker返回数据的上限，也可以设置下限。这样可以在主题消息流量不是很大的情况下，减少CPU和网络开销。</p>
+</li>
+<li><p>日志压缩是Kafka的一个高级特性，因为有了这个特性，Kafka可以用来长时间保存数据。</p>
+</li>
 </ol>
-</li>
-<li><ol>
-<li><a href="https://leetcode.com/problems/max-consecutive-ones-iii/discuss/247564/javacpython-sliding-window/379427?page=3">Max Consecutive Ones III</a></li>
+<h2 id="问题处理"><a href="#问题处理" class="headerlink" title="问题处理"></a>问题处理</h2><ol>
+<li>Kafka也需人为设置BrokerID,需要使用者自己保证该ID是唯一的，如果两个broker使用相同的BrokerID，则第二个broker就无法启动。在Broker启动时，它通过创建临时节点把自己的ID注册到Zookeeper。Kafka组件订阅Zookeeper的/brokers/ids路径（broker在Zookeeper上的注册路径），当有broker加入集群或者退出集群时，这些组件就能获得通知。</li>
 </ol>
-</li>
-<li><ol>
-<li><a href="https://leetcode.com/problems/binary-subarrays-with-sum/discuss/186683/">Binary Subarrays With Sum</a></li>
+<h1 id="Refactor一些可以改进的地方"><a href="#Refactor一些可以改进的地方" class="headerlink" title="Refactor一些可以改进的地方"></a>Refactor一些可以改进的地方</h1><ol>
+<li>发送消息长度超过MESSAGE_LENGTH时，返回错误码；</li>
+<li>Consumer请求的topic不在此broker上，返回相关错误码；</li>
 </ol>
-</li>
-<li><ol>
-<li><a href="https://leetcode.com/problems/subarrays-with-k-different-integers/discuss/234482/JavaC%2B%2BPython-Sliding-Window-atMost(K)-atMost(K-1)">Subarrays with K Different Integers</a></li>
+<h1 id="日志维护"><a href="#日志维护" class="headerlink" title="日志维护"></a>日志维护</h1><h2 id="小收获"><a href="#小收获" class="headerlink" title="小收获"></a>小收获</h2><ol>
+<li>除了设置socket 外，还需要设置TCP soc ke t 的读写缓冲区，它们的参数分别是net.i.pv4.tcp_wmem和net . i.pv4 . tc p_ wmem 。这些参数的值由3 个整数组成，它们使用空格分隔，分别表示最小值、默认值和最大值。最大值不能大于net.core.wmem_max可以和net.core.rmem_max指定的大小。例如，“4096 65536 204800。”表示最小值是4KB、默认值是64KB、最大值是2MB 。根据Kafka 服务器接收流量的实际情况，可能需要设置更高的最大值，为网络连接提供更大的缓冲空间。还有其他一些有用的网络参数。例如， 把net.ipv4.tcp_window_scaling 设为l ，启用TCP时间窗扩展，可以提升客户端传输数据的效率，传输的数据可以在服务器端进行缓冲。把net.1.pv4.tcp_max_syn_backlog 设为比默认值1024 更大的值，可以接受更多的井发连接, 把net.core.netdev_max_backlog 设为比默认值1000 更大的值，有助于应对网络流量的爆发，特别是在使用千兆网络的情况下，允许更多的数据包排队等待内核处理。</li>
+<li></li>
 </ol>
-</li>
-<li><ol>
-<li><a href="https://leetcode.com/problems/fruit-into-baskets/discuss/170740/Sliding-Window-for-K-Elements">Fruit Into Baskets</a></li>
-</ol>
-</li>
-<li><ol>
-<li><a href="https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/discuss/143726/C%2B%2BJavaPython-O(N)-Using-Deque">Shortest Subarray with Sum at Least K</a></li>
-</ol>
-</li>
-<li><ol>
-<li><a href="https://leetcode.com/problems/minimum-size-subarray-sum/discuss/433123">Minimum Size Subarray Sum</a></li>
-</ol>
-</li>
-</ul>
-<p><a href="https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/discuss/204290/Monotonic-Queue-Summary">https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/discuss/204290/Monotonic-Queue-Summary</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2020/10/27/LinuxCmd/20200814-%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE/</url>
-    <content><![CDATA[<h1 id="查看远程服务器的端口是否开放"><a href="#查看远程服务器的端口是否开放" class="headerlink" title="查看远程服务器的端口是否开放"></a>查看远程服务器的端口是否开放</h1><h2 id="1-nc（netcat）"><a href="#1-nc（netcat）" class="headerlink" title="1. nc（netcat）"></a>1. nc（netcat）</h2><p>nc是一个简单的Unix工具，使用TCP或者UDP协议读写网络连接上的数据。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc [OPTIONS...] [hostname] [port]</span><br></pre></td></tr></table></figure>
-
-<p>如果未开放，则会显示请求被拒绝。例如：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc node1 9100</span><br><span class="line"><span class="comment"># Ncat: Connection refused.</span></span><br></pre></td></tr></table></figure>
-
-<p>如果指定端口开放，则会显示连接成功。例如：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc node1 9100</span><br><span class="line"><span class="comment"># Ncat: Connection succeeded</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-telnet"><a href="#2-telnet" class="headerlink" title="2. telnet"></a>2. telnet</h2><p>命令格式</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">telnet [HostName or IP] [PortNumber]</span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2020/10/27/LinuxCmd/%E4%BD%BF%E7%94%A8GDB%E6%9F%A5%E7%9C%8Bcore%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<h1 id="2-使用GDB查看core文件"><a href="#2-使用GDB查看core文件" class="headerlink" title="2 使用GDB查看core文件"></a>2 使用GDB查看core文件</h1><p>默认编译出来的程序在出现Segmentation fault 时并没有生成core崩溃文件，可以在gcc/g++编译时增加-g选项。</p>
-<p>如果仍然没有生成core文件，则可能是因为系统设置了core文件大小为0，可以通过：<code>ulimit -a</code> 查询得知。</p>
-<p>执行 <code>ulimit -c unlimited</code> 命令后可以使core文件大小不受限制。此时再次运行程序应该就能在同级目录看到<code>core.XXX</code>文件了</p>
-<p>使用 <code>gdb ./a.out core.XXX</code> 可以查看出错所在行信息，这样就进入了 gdb core 调试模式。</p>
-<p>追踪产生segmenttation fault的位置及代码函数调用情况：</p>
-<p><code>gdb&gt;bt</code></p>
-<p>这样，一般就可以看到出错的代码是哪一句了，还可以打印出相应变量的数值，进行进一步分析。</p>
-<p><a href="https://www.cnblogs.com/kuliuheng/p/11698378.html#_labelTop">返回目录</a></p>
-<h1 id="3-使用GDB调试程序"><a href="#3-使用GDB调试程序" class="headerlink" title="3 使用GDB调试程序"></a><strong>3 使用GDB调试程序</strong></h1><p>如上述流程不能解决问题，下面可使用gdb单步调试程序。重新编译程序，编译命令中加入-g。如：</p>
-<p>gcc -lm -O3 -g file.c -o file<br>之后使用gdb命令</p>
-<p><code>gdb file</code><br>开始调试。</p>
-<p>输入<code>start</code>使程序运行到<code>main</code>中第一行运行代码。<code>next</code>或者n为执行下一行程序，<code>until xx</code>执行到xx行，print或p可输出变量值，<code>b xx</code>用于在xx行设置断点，<code>run</code>或<code>r</code>用于执行程序至下一断点，<code>d xx</code>删除xx行断点。</p>
-<p>我们可以先run一遍程序，这时它会提示出错行信息。然后<code>until</code>到出错行前5行，交替执行<code>next</code>和<code>print</code>，输出与出错行变量相关变量或指针的值。最终定位出错的根本操作在哪一行。修改之即可。</p>
 ]]></content>
   </entry>
   <entry>
@@ -337,6 +317,50 @@
 </ol>
 <h2 id="Strace"><a href="#Strace" class="headerlink" title="Strace"></a>Strace</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">strace ./exec</span><br></pre></td></tr></table></figure>
 
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2020/10/27/LinuxCmd/20200814-%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE/</url>
+    <content><![CDATA[<h1 id="查看远程服务器的端口是否开放"><a href="#查看远程服务器的端口是否开放" class="headerlink" title="查看远程服务器的端口是否开放"></a>查看远程服务器的端口是否开放</h1><h2 id="1-nc（netcat）"><a href="#1-nc（netcat）" class="headerlink" title="1. nc（netcat）"></a>1. nc（netcat）</h2><p>nc是一个简单的Unix工具，使用TCP或者UDP协议读写网络连接上的数据。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc [OPTIONS...] [hostname] [port]</span><br></pre></td></tr></table></figure>
+
+<p>如果未开放，则会显示请求被拒绝。例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc node1 9100</span><br><span class="line"><span class="comment"># Ncat: Connection refused.</span></span><br></pre></td></tr></table></figure>
+
+<p>如果指定端口开放，则会显示连接成功。例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc node1 9100</span><br><span class="line"><span class="comment"># Ncat: Connection succeeded</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-telnet"><a href="#2-telnet" class="headerlink" title="2. telnet"></a>2. telnet</h2><p>命令格式</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">telnet [HostName or IP] [PortNumber]</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2020/10/27/LinuxCmd/20200814netstat/</url>
+    <content><![CDATA[<h1 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h1><p>查看所有在监听的端口</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -ntlp</span><br></pre></td></tr></table></figure>
+
+<p>待整理</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2020/10/27/LinuxCmd/%E4%BD%BF%E7%94%A8GDB%E6%9F%A5%E7%9C%8Bcore%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="2-使用GDB查看core文件"><a href="#2-使用GDB查看core文件" class="headerlink" title="2 使用GDB查看core文件"></a>2 使用GDB查看core文件</h1><p>默认编译出来的程序在出现Segmentation fault 时并没有生成core崩溃文件，可以在gcc/g++编译时增加-g选项。</p>
+<p>如果仍然没有生成core文件，则可能是因为系统设置了core文件大小为0，可以通过：<code>ulimit -a</code> 查询得知。</p>
+<p>执行 <code>ulimit -c unlimited</code> 命令后可以使core文件大小不受限制。此时再次运行程序应该就能在同级目录看到<code>core.XXX</code>文件了</p>
+<p>使用 <code>gdb ./a.out core.XXX</code> 可以查看出错所在行信息，这样就进入了 gdb core 调试模式。</p>
+<p>追踪产生segmenttation fault的位置及代码函数调用情况：</p>
+<p><code>gdb&gt;bt</code></p>
+<p>这样，一般就可以看到出错的代码是哪一句了，还可以打印出相应变量的数值，进行进一步分析。</p>
+<p><a href="https://www.cnblogs.com/kuliuheng/p/11698378.html#_labelTop">返回目录</a></p>
+<h1 id="3-使用GDB调试程序"><a href="#3-使用GDB调试程序" class="headerlink" title="3 使用GDB调试程序"></a><strong>3 使用GDB调试程序</strong></h1><p>如上述流程不能解决问题，下面可使用gdb单步调试程序。重新编译程序，编译命令中加入-g。如：</p>
+<p>gcc -lm -O3 -g file.c -o file<br>之后使用gdb命令</p>
+<p><code>gdb file</code><br>开始调试。</p>
+<p>输入<code>start</code>使程序运行到<code>main</code>中第一行运行代码。<code>next</code>或者n为执行下一行程序，<code>until xx</code>执行到xx行，print或p可输出变量值，<code>b xx</code>用于在xx行设置断点，<code>run</code>或<code>r</code>用于执行程序至下一断点，<code>d xx</code>删除xx行断点。</p>
+<p>我们可以先run一遍程序，这时它会提示出错行信息。然后<code>until</code>到出错行前5行，交替执行<code>next</code>和<code>print</code>，输出与出错行变量相关变量或指针的值。最终定位出错的根本操作在哪一行。修改之即可。</p>
 ]]></content>
   </entry>
 </search>
