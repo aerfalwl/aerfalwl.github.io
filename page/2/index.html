@@ -236,13 +236,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -281,7 +281,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/27/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/27/Filesystem/ZFS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
@@ -295,7 +295,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/10/27/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+            <a href="/2020/10/27/Filesystem/ZFS/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta-container">
@@ -313,7 +313,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-10-10 09:35:49" itemprop="dateModified" datetime="2020-10-10T09:35:49+08:00">2020-10-10</time>
+        <time title="修改时间：2020-10-14 10:49:09" itemprop="dateModified" datetime="2020-10-14T10:49:09+08:00">2020-10-14</time>
       </span>
 
   
@@ -326,19 +326,70 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+          <h2 id="Introduction-to-the-Kernel"><a href="#Introduction-to-the-Kernel" class="headerlink" title="Introduction to the Kernel"></a>Introduction to the Kernel</h2><ol>
+<li>参考书籍The Design and Implementation of the FreeBSD Operating System, 2nd<br>Edition</li>
+</ol>
+<h1 id="Introduction-to-the-Zettabyte-Filesystem"><a href="#Introduction-to-the-Zettabyte-Filesystem" class="headerlink" title="Introduction to the Zettabyte Filesystem"></a>Introduction to the Zettabyte Filesystem</h1><ol>
+<li>开始于Solaries。</li>
+<li>Solaris是Sun Microsystem开发的一个Unix版本的操作系统；<ul>
+<li>它是以下两种操作系统的合并版：SunOs和System V4</li>
+</ul>
+</li>
+<li>Sun需要解决的问题是：传统的操作系统在处理大数据的时候，显现出了很大的缺点，因为大数据使得系统需要大量的磁盘。</li>
+<li>为解决以上问题，Sun写了ZFS:<ul>
+<li>Log Structured Filesystem，由Berkeley开发，展现出了它处理大问题大数据的一些优势</li>
+<li>文件系统不可重复写的特性，给了它很多比较好的特性。</li>
+</ul>
+</li>
+</ol>
+<h1 id="ZFS的演变过程"><a href="#ZFS的演变过程" class="headerlink" title="ZFS的演变过程"></a>ZFS的演变过程</h1><ol>
+<li>首先出现于OpenSolaris,  该操作系统是一款Solaris开源的操作系统，包括核心科技：ZFS和DTrace</li>
+<li>随后，ZFS出现在了FreeBSD（一款Unix操作系统）中；</li>
+<li>之后，Sun被Oracle收购，但是Larry Ellison不是一个开源爱好者，他不同意ZFS继续开源，但是已经开源的早期版本还在流传；</li>
+<li>于是一些公司继续开发并维护OpenSolaris，并且将他作为一个开源项目；</li>
+<li>一些组件变得很流行，像ZFS；</li>
+<li>最后ZFS变为单独的OpenZFS项目；</li>
+<li>当前开发OpenZFS的主要有四个组，它们每个月都有一次会议来协同工作：<ul>
+<li>致力于OpenSolaris开发的组；</li>
+<li>FressBSD开发者；</li>
+<li>致力于将ZFS嵌入到Linux内核的Lawrence Livermore National Laboratory</li>
+<li>致力于将ZFS嵌入到MacOs和Windows的Jorgen Lundman</li>
+</ul>
+</li>
+<li>Sun Community Development License与GNU Public License不兼容：<ul>
+<li>ZFS代码不能嵌入到Linux内核中；</li>
+<li>所有将ZFS带入嵌入到Linux内核的人不能使用GPL interfaces（GPL Interface是Linux的一个特性，该特性说明只有GPL的代码之间才能相互使用和修改）</li>
+<li>ZFS只能通过FUSE(用户态空间文件系统， Filesystem in Userspace)访问Linux Kernel。</li>
+</ul>
+</li>
+<li>在2016年，Ubuntu开源了一版在Kernel态的ZFS，它没有使用GPL interfaces，因此，自己额外开发了一些函数。当前，Canonical（开发Ubuntu的公司）还没被起诉，更多详情访问<a target="_blank" rel="noopener" href="https://wiki.ubuntu.com/ZFS">https://wiki.ubuntu.com/ZFS</a></li>
+<li>当前，OpenZFS代码已经能在大多数Linux系统中配置使用。</li>
+</ol>
+<p>ZFS相关资料：<a target="_blank" rel="noopener" href="https://openzfs.org/wiki/Main_Page">https://openzfs.org/wiki/Main_Page</a></p>
+<p>Github网址：<a target="_blank" rel="noopener" href="https://github.com/openzfs/zfs">https://github.com/openzfs/zfs</a></p>
+<h1 id="Kernel-I-O-Structure"><a href="#Kernel-I-O-Structure" class="headerlink" title="Kernel I/O Structure"></a>Kernel I/O Structure</h1><ol>
+<li>关于kernel的系统调用：<ul>
+<li>一切在硬件和系统调用之间的都是操作系统(everything between this and the hardware is the operating system)。</li>
+<li>当我们和subsystem进行交互时，其实是在和file descriptor、socket、kqueue交互</li>
+</ul>
+</li>
+</ol>
+<p><img src="C:\Users\CCDC\AppData\Roaming\Typora\typora-user-images\image-20201014101848952.png" alt="image-20201014101848952"></p>
+<h1 id="FileSystem-Consistency"><a href="#FileSystem-Consistency" class="headerlink" title="FileSystem Consistency"></a>FileSystem Consistency</h1><ol>
+<li>必须维护一些元数据信息：directories, inodes, bitmaps</li>
+<li>维护元数据的一些规则：<ul>
+<li>在一个结构被初始化之前不要指向它</li>
+<li>在将一个对象的所有指针置为空之前，不要使新指针指向它</li>
+<li>在新指针被设置之前，不要讲老指针设置为一个可用的资源(例如，rename foo to bar，则在将foo的旧指针指向bar之后，再删除老的foo)</li>
+</ul>
+</li>
+</ol>
+<h1 id="Keeping-Metadata-Consistent"><a href="#Keeping-Metadata-Consistent" class="headerlink" title="Keeping Metadata Consistent"></a>Keeping Metadata Consistent</h1><p>实现一致性的三种方法：</p>
+<ol>
+<li>同步写</li>
+<li>使用非易失性RAM</li>
+<li>原子更新(journaling and logging)</li>
+</ol>
 
       
     </div>
