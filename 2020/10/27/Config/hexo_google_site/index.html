@@ -22,19 +22,25 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="每天收获一点点">
-<meta property="og:type" content="website">
-<meta property="og:title" content="sunshine">
-<meta property="og:url" content="http://example.com/tags/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/index.html">
+  <meta name="description" content="步骤 生成站点地图 1npm install hexo-generator-sitemap --save  修改配置文件_config.yml，添加如下内容： 12sitemap:  path: sitemap.xml  添加站点，登录Google 网站站长，进入Search Console，进入如下页面   选择网址前缀，输入https:&#x2F;&#x2F;xxx.github.io  之后，下载Google验">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo 博客被google收录">
+<meta property="og:url" content="http://example.com/2020/10/27/Config/hexo_google_site/index.html">
 <meta property="og:site_name" content="sunshine">
-<meta property="og:description" content="每天收获一点点">
+<meta property="og:description" content="步骤 生成站点地图 1npm install hexo-generator-sitemap --save  修改配置文件_config.yml，添加如下内容： 12sitemap:  path: sitemap.xml  添加站点，登录Google 网站站长，进入Search Console，进入如下页面   选择网址前缀，输入https:&#x2F;&#x2F;xxx.github.io  之后，下载Google验">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/.com/2020//first.png">
+<meta property="og:image" content="http://example.com/.com/2020//add_sitemap.png">
+<meta property="article:published_time" content="2020-10-27T14:57:12.000Z">
+<meta property="article:modified_time" content="2020-10-27T15:12:18.601Z">
 <meta property="article:author" content="codefreestyle">
-<meta property="article:tag" content="happy">
+<meta property="article:tag" content="安装部署">
+<meta property="article:tag" content="配置">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/.com/2020//first.png">
 
 
-<link rel="canonical" href="http://example.com/tags/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/">
+<link rel="canonical" href="http://example.com/2020/10/27/Config/hexo_google_site/">
 
 
 <script class="page-configurations">
@@ -42,12 +48,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: 安装部署 | sunshine</title>
+  <title>hexo 博客被google收录 | sunshine</title>
   
 
 
@@ -202,7 +208,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -214,6 +220,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.</span> <span class="nav-text">步骤</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -269,74 +276,147 @@
 </noscript>
 
 
-    <div class="main-inner tag posts-collapse">
+    <div class="main-inner post posts-expand">
       
 
       
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h2 class="collection-header">安装部署
-          <small>标签</small>
-        </h2>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/27/Config/hexo_google_site/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="codefreestyle">
+      <meta itemprop="description" content="每天收获一点点">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          hexo 博客被google收录
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+
+      <time title="创建时间：2020-10-27 22:57:12 / 修改时间：23:12:18" itemprop="dateCreated datePublished" datetime="2020-10-27T22:57:12+08:00">2020-10-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%85%8D%E7%BD%AE/" itemprop="url" rel="index"><span itemprop="name">配置</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li><p>生成站点地图</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改配置文件_config.yml，添加如下内容：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sitemap:</span><br><span class="line">  path: sitemap.xml</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加站点，登录<a target="_blank" rel="noopener" href="https://www.google.com/webmasters/">Google 网站站长</a>，进入<code>Search Console</code>，进入如下页面</p>
+<p><img src="/.com/2020//first.png" alt="首页"></p>
+</li>
+<li><p>选择网址前缀，输入<a target="_blank" rel="noopener" href="https://xxx.github.io/">https://xxx.github.io</a></p>
+</li>
+<li><p>之后，下载Google验证文件，放在<code>theme/next/source</code>目录中。</p>
+</li>
+<li><p>重新生成和部署</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部署完成之后，进行验证即可，若操作无误，便会验证成功。</p>
+</li>
+<li><p>添加站点地图：</p>
+<p><img src="/.com/2020//add_sitemap.png" alt="添加站点地图"></p>
+</li>
+<li><p>大功告成，几个小时后，便能在google search中搜到自己的博客！</p>
+</li>
+</ol>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-10-27T22:57:12+08:00"
-              content="2020-10-27">
-          10-27
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/10/27/Config/hexo_google_site/" itemprop="url">
-            <span itemprop="name">hexo 博客被google收录</span>
+    <footer class="post-footer">
+          
+
+  <div class="followme">
+    <span>欢迎关注我的其它发布渠道</span>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
           </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-10-27T11:00:00+08:00"
-              content="2020-10-27">
-          10-27
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/10/27/Config/hexo_config/" itemprop="url">
-            <span itemprop="name">hexo+github搭建个人博客</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
+        </div>
     </div>
   </div>
-  
-  
-  
 
-  
+          <div class="post-tags">
+              <a href="/tags/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/" rel="tag"># 安装部署</a>
+              <a href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag"># 配置</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/10/27/Leetcode/763/" rel="prev" title="763. Partition Labels">
+                  <i class="fa fa-chevron-left"></i> 763. Partition Labels
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
 
 
 
