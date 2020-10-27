@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-10-27T15:56:46.255Z</updated>
+  <updated>2020-10-27T16:16:49.568Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,11 +17,41 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>hexo 插入图片</title>
+    <link href="http://example.com/2020/10/28/Config/hexo_with_image/"/>
+    <id>http://example.com/2020/10/28/Config/hexo_with_image/</id>
+    <published>2020-10-27T16:09:12.000Z</published>
+    <updated>2020-10-27T16:16:49.568Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本文主要介绍按照相对路径在hexo中插入图片的方法。&lt;/p&gt;
+&lt;h2 id=&quot;主要步骤&quot;&gt;&lt;a href=&quot;#主要步骤&quot; class=&quot;headerlink&quot; title=&quot;主要步骤&quot;&gt;&lt;/a&gt;主要步骤&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;安装插件&lt;/p&gt;
+&lt;figure</summary>
+        
+      
+    
+    
+    
+    <category term="配置" scheme="http://example.com/categories/%E9%85%8D%E7%BD%AE/"/>
+    
+    
+    <category term="安装部署" scheme="http://example.com/tags/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/"/>
+    
+    <category term="配置" scheme="http://example.com/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>hexo 博客被google收录</title>
     <link href="http://example.com/2020/10/27/Config/hexo_google_site/"/>
     <id>http://example.com/2020/10/27/Config/hexo_google_site/</id>
     <published>2020-10-27T14:57:12.000Z</published>
-    <updated>2020-10-27T15:56:46.255Z</updated>
+    <updated>2020-10-27T16:07:02.880Z</updated>
     
     
       
