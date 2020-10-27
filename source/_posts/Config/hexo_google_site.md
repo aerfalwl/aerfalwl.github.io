@@ -21,15 +21,23 @@ categories: 配置
      path: sitemap.xml
    ```
 
-3. 添加站点，登录[Google 网站站长](https://www.google.com/webmasters/)，进入```Search Console```，进入如下页面
+3. 修改_config.xml，设置url为你的github.io
+
+   ```xml
+   url: https://xxx.github.io
+   ```
+
+   
+
+4. 添加站点，登录[Google 网站站长](https://www.google.com/webmasters/)，进入```Search Console```，进入如下页面
 
    ![首页](hexo_google_site/first.png)
 
-4. 选择网址前缀，输入https://xxx.github.io
+5. 选择网址前缀，输入https://xxx.github.io
 
-5. 之后，下载Google验证文件，放在```theme/next/source```目录中。
+6. 之后，下载Google验证文件，放在```theme/next/source```目录中。
 
-6. 重新生成和部署
+7. 重新生成和部署
 
    ```shell
    hexo clean && hexo generate && hexo deploy
