@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-10-27T03:04:28.507Z</updated>
+  <updated>2020-10-27T03:20:20.112Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,16 +21,16 @@
     <link href="http://example.com/2020/10/27/Config/hexo_config/"/>
     <id>http://example.com/2020/10/27/Config/hexo_config/</id>
     <published>2020-10-27T03:00:00.000Z</published>
-    <updated>2020-10-27T03:04:28.507Z</updated>
+    <updated>2020-10-27T03:20:20.112Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;搭建hexo + github创建个人博客&lt;/p&gt;
-&lt;h2 id=&quot;重要&quot;&gt;&lt;a href=&quot;#重要&quot; class=&quot;headerlink&quot; title=&quot;重要&quot;&gt;&lt;/a&gt;重要&lt;/h2&gt;&lt;p&gt;创建hexo分支，每次修改之后，执行如下命令：&lt;/p&gt;
-&lt;figure</summary>
+    <summary type="html">&lt;h2 id=&quot;步骤&quot;&gt;&lt;a href=&quot;#步骤&quot; class=&quot;headerlink&quot; title=&quot;步骤&quot;&gt;&lt;/a&gt;步骤&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;在电脑上搭建博客&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
         
       
     
