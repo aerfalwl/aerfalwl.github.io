@@ -121,3 +121,8 @@ feed:
   content:
   content_limit: 140
   content_limit_delim: ' '
+# 自动生成sitemap
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
