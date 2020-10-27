@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"بحث...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+  </script>
+
+  <meta name="description" content="Kafka与Broker不同 消息定期清理。各个主题设置单独的保留规则，以便满足不同消费者的需求，各个主题可以保留不同数量的消息。 多个消费者可以重复消费同一条消息。 Kafka可以在如下情况下自动创建主题：当一个生产者开始往主题写入消息时，当一个消费者开始从主题读取消息时，当任意一个客户端向主题发送元数据请求时。 客户端为了优化网络和磁盘空间，会对消息进行压缩，服务器需要对消息进行批量解压，设置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sunshine">
+<meta property="og:url" content="http://example.com/2020/10/10/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/index.html">
+<meta property="og:site_name" content="sunshine">
+<meta property="og:description" content="Kafka与Broker不同 消息定期清理。各个主题设置单独的保留规则，以便满足不同消费者的需求，各个主题可以保留不同数量的消息。 多个消费者可以重复消费同一条消息。 Kafka可以在如下情况下自动创建主题：当一个生产者开始往主题写入消息时，当一个消费者开始从主题读取消息时，当任意一个客户端向主题发送元数据请求时。 客户端为了优化网络和磁盘空间，会对消息进行压缩，服务器需要对消息进行批量解压，设置">
+<meta property="og:locale">
+<meta property="og:image" content="c:/Users/lwl/AppData/Roaming/Typora/typora-user-images/image-20201005132432782.png">
+<meta property="article:published_time" content="2020-10-10T01:08:41.754Z">
+<meta property="article:modified_time" content="2020-10-26T16:20:48.647Z">
+<meta property="article:author" content="codefreestyle">
+<meta property="article:tag" content="happy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/lwl/AppData/Roaming/Typora/typora-user-images/image-20201005132432782.png">
+
+
+<link rel="canonical" href="http://example.com/2020/10/10/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title> | sunshine</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="sunshine" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">sunshine</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">自律即自由</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>معلومات</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>الوسوم</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>التصنيفات</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>الأرشيفات</a>
+
+  </li>
+        <li class="menu-item menu-item-commonweal">
+
+    <a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>Commonweal 404</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>بحث
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="بحث..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Kafka%E4%B8%8EBroker%E4%B8%8D%E5%90%8C"><span class="nav-number">1.</span> <span class="nav-text">Kafka与Broker不同</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Kafka%E7%9A%84%E4%B8%80%E4%BA%9BFeture"><span class="nav-number"></span> <span class="nav-text">Kafka的一些Feture</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%A4%84%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">问题处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Refactor%E4%B8%80%E4%BA%9B%E5%8F%AF%E4%BB%A5%E6%94%B9%E8%BF%9B%E7%9A%84%E5%9C%B0%E6%96%B9"><span class="nav-number"></span> <span class="nav-text">Refactor一些可以改进的地方</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E7%BB%B4%E6%8A%A4"><span class="nav-number"></span> <span class="nav-text">日志维护</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E6%94%B6%E8%8E%B7"><span class="nav-number">1.</span> <span class="nav-text">小收获</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="codefreestyle"
+      src="/images/header.jpg">
+  <p class="site-author-name" itemprop="name">codefreestyle</p>
+  <div class="site-description" itemprop="description">每天收获一点点</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </section>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+      
+
+      
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/10/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="codefreestyle">
+      <meta itemprop="description" content="每天收获一点点">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+
+      <time title="أُنشأ: 2020-10-10 09:08:41" itemprop="dateCreated datePublished" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">عُدل في</span>
+        <time title="عُدل: 2020-10-27 00:20:48" itemprop="dateModified" datetime="2020-10-27T00:20:48+08:00">2020-10-27</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Kafka与Broker不同"><a href="#Kafka与Broker不同" class="headerlink" title="Kafka与Broker不同"></a>Kafka与Broker不同</h2><ol>
+<li>消息定期清理。各个主题设置单独的保留规则，以便满足不同消费者的需求，各个主题可以保留不同数量的消息。</li>
+<li>多个消费者可以重复消费同一条消息。</li>
+<li>Kafka可以在如下情况下自动创建主题：当一个生产者开始往主题写入消息时，当一个消费者开始从主题读取消息时，当任意一个客户端向主题发送元数据请求时。</li>
+<li>客户端为了优化网络和磁盘空间，会对消息进行压缩，服务器需要对消息进行批量解压，设置偏移量，然后重新进行批量压缩，再保存在磁盘上。</li>
+<li>kafka允许主题的名字为null, Refactor不允许。</li>
+<li>Kafka的Consumer属于消费者组群。</li>
+<li>消费者组群之间允许重复消费消息。<img src="C:\Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005132432782.png" alt="image-20201005132432782"></li>
+<li>Kafka中所有broker都缓存了元数据，因此，客户端可以向任何一个broker发送<strong>元数据请求</strong>，并得到客户端所感兴趣的主题所在分区，每个分区都包含哪些副本，以及哪个副本是首领。因此，consumer需要时不时的向broker发送元数据请求来刷新本地缓存的信息。</li>
+<li></li>
+</ol>
+<h1 id="Kafka的一些Feture"><a href="#Kafka的一些Feture" class="headerlink" title="Kafka的一些Feture"></a>Kafka的一些Feture</h1><ol>
+<li><p>Kafka的所有消息保存在磁盘上，存放这些日志片段的目录是通过log.dirs指定的，它是一组用逗号分割的本地文件系统路径。如果指定了多个路径，那么Broker会根据最少使用原则，把统一分区的日志片段保存在同一路径下。要注意：Broker会往拥有最少数据分区的路径新增分区，而不是往拥有最少磁盘空间的路径新增分区。</p>
+</li>
+<li><p>提供二进制连接协议，即用户直接向Kafka网络端口发送适当的字节序列，就可以实现从Kafka读取消息或往Kafka写消息</p>
+</li>
+<li><p>用户可以从指定偏移量开始读数据，例如seekToBeginning和seekToEnd</p>
+</li>
+<li><p>消费者既可以依赖于组群存在，也可以独立存在。</p>
+</li>
+<li><p>消费者请求数据的时候，可以设置broker返回数据的上限，也可以设置下限。这样可以在主题消息流量不是很大的情况下，减少CPU和网络开销。</p>
+</li>
+<li><p>日志压缩是Kafka的一个高级特性，因为有了这个特性，Kafka可以用来长时间保存数据。</p>
+</li>
+</ol>
+<h2 id="问题处理"><a href="#问题处理" class="headerlink" title="问题处理"></a>问题处理</h2><ol>
+<li>Kafka也需人为设置BrokerID,需要使用者自己保证该ID是唯一的，如果两个broker使用相同的BrokerID，则第二个broker就无法启动。在Broker启动时，它通过创建临时节点把自己的ID注册到Zookeeper。Kafka组件订阅Zookeeper的/brokers/ids路径（broker在Zookeeper上的注册路径），当有broker加入集群或者退出集群时，这些组件就能获得通知。</li>
+</ol>
+<h1 id="Refactor一些可以改进的地方"><a href="#Refactor一些可以改进的地方" class="headerlink" title="Refactor一些可以改进的地方"></a>Refactor一些可以改进的地方</h1><ol>
+<li>发送消息长度超过MESSAGE_LENGTH时，返回错误码；</li>
+<li>Consumer请求的topic不在此broker上，返回相关错误码；</li>
+</ol>
+<h1 id="日志维护"><a href="#日志维护" class="headerlink" title="日志维护"></a>日志维护</h1><h2 id="小收获"><a href="#小收获" class="headerlink" title="小收获"></a>小收获</h2><ol>
+<li>除了设置socket 外，还需要设置TCP soc ke t 的读写缓冲区，它们的参数分别是net.i.pv4.tcp_wmem和net . i.pv4 . tc p_ wmem 。这些参数的值由3 个整数组成，它们使用空格分隔，分别表示最小值、默认值和最大值。最大值不能大于net.core.wmem_max可以和net.core.rmem_max指定的大小。例如，“4096 65536 204800。”表示最小值是4KB、默认值是64KB、最大值是2MB 。根据Kafka 服务器接收流量的实际情况，可能需要设置更高的最大值，为网络连接提供更大的缓冲空间。还有其他一些有用的网络参数。例如， 把net.ipv4.tcp_window_scaling 设为l ，启用TCP时间窗扩展，可以提升客户端传输数据的效率，传输的数据可以在服务器端进行缓冲。把net.1.pv4.tcp_max_syn_backlog 设为比默认值1024 更大的值，可以接受更多的井发连接, 把net.core.netdev_max_backlog 设为比默认值1000 更大的值，有助于应对网络流量的爆发，特别是在使用千兆网络的情况下，允许更多的数据包排队等待内核处理。</li>
+<li></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+  <div class="followme">
+    <span>مرحباً بك حيثُ أنشر أيضاً</span>
+
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+
+            <span class="label">RSS</span>
+          </a>
+        </div>
+    </div>
+  </div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/10/10/LinuxCmd/%E4%BD%BF%E7%94%A8GDB%E6%9F%A5%E7%9C%8Bcore%E6%96%87%E4%BB%B6/" rel="prev" title="">
+                  <i class="fa fa-chevron-left"></i> 
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/10/10/Leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/" rel="next" title="">
+                   <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+      
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      
+
+      
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">codefreestyle</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
