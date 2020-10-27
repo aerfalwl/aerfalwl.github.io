@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://example.com/2020/10/28/Config/hexo_with_image/</loc>
+    <lastmod>2020-10-27</lastmod>
+  </url>
+  <url>
     <loc>http://example.com/2020/10/27/Config/hexo_google_site/</loc>
     <lastmod>2020-10-27</lastmod>
   </url>
