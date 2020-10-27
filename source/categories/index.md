@@ -1,4 +1,5 @@
 ---
 title: 分类
 date: 2020-10-26 23:43:20
+type: "categories"
 ---

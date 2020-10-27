@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello World</title>
+    <url>/2020/10/27/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title></title>
     <url>/2020/10/27/Filesystem/ZFS/</url>
     <content><![CDATA[<h2 id="Introduction-to-the-Kernel"><a href="#Introduction-to-the-Kernel" class="headerlink" title="Introduction to the Kernel"></a>Introduction to the Kernel</h2><ol>
@@ -70,68 +88,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>hexo+github搭建个人博客</title>
-    <url>/2020/10/27/Config/hexo_config/</url>
-    <content><![CDATA[<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
-<li><p>在电脑上搭建博客</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init xxx.github.io</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<ol start="2">
-<li><p>修改配置文件_config.yml，添加如下内容：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:xxx/youname.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<ol start="3">
-<li><p>提交代码至仓库</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean # 清空缓存</span><br><span class="line">hexo generate # 生成静态文件</span><br><span class="line">hexo deploy # 部署至远程仓库</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建分支用于保存原配置文件和原博客，因为hexo只会将它生成的静态文件上传，而不会上传相关配置文件和原markdown文件。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line">git checkout -b meta</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>之后若有修改，则依次执行如下命令，<strong>注意顺序，且在meta分支执行</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo c &amp;&amp; hexo g &amp;&amp; hexo d</span><br><span class="line">git add . &amp;&amp; git commit -m &quot;change&quot; &amp;&amp; git push origin meta</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h2 id="不同设备同步"><a href="#不同设备同步" class="headerlink" title="不同设备同步"></a>不同设备同步</h2><p>执行如下命令</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone -b meta https://github.com/XXX/xxx.git</span><br><span class="line">cd xxx.github.io</span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 之后若有修改，则执行</span></span><br><span class="line">hexo c &amp;&amp; hexo g &amp;&amp; hexo d</span><br><span class="line">git add . &amp;&amp; git commit -m &quot;change&quot; &amp;&amp; git push origin meta</span><br></pre></td></tr></table></figure>
-
-
-
-<p>如果在别的设备上提交了，别忘了在提交之后先pull meta哈。</p>
-]]></content>
-      <categories>
-        <category>配置</category>
-      </categories>
-      <tags>
-        <tag>安装部署</tag>
-        <tag>配置</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2020/10/27/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title></title>
     <url>/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/</url>
     <content><![CDATA[<h1 id="初识Kafka"><a href="#初识Kafka" class="headerlink" title="初识Kafka"></a>初识Kafka</h1><h2 id="Feture"><a href="#Feture" class="headerlink" title="Feture"></a>Feture</h2><ol>
@@ -187,6 +143,50 @@
 ]]></content>
   </entry>
   <entry>
+    <title>hexo+github搭建个人博客</title>
+    <url>/2020/10/27/Config/hexo_config/</url>
+    <content><![CDATA[<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li><p>在电脑上搭建博客</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init xxx.github.io</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>修改配置文件_config.yml，添加如下内容：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:xxx/youname.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p>提交代码至仓库</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean # 清空缓存</span><br><span class="line">hexo generate # 生成静态文件</span><br><span class="line">hexo deploy # 部署至远程仓库</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建分支用于保存原配置文件和原博客，因为hexo只会将它生成的静态文件上传，而不会上传相关配置文件和原markdown文件。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line">git checkout -b meta</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>之后若有修改，则依次执行如下命令，<strong>注意顺序，且在meta分支执行</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo c &amp;&amp; hexo g &amp;&amp; hexo d</span><br><span class="line">git add . &amp;&amp; git commit -m &quot;change&quot; &amp;&amp; git push origin meta</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="不同设备同步"><a href="#不同设备同步" class="headerlink" title="不同设备同步"></a>不同设备同步</h2><p>执行如下命令</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone -b meta https://github.com/XXX/xxx.git</span><br><span class="line">cd xxx.github.io</span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 之后若有修改，则执行</span></span><br><span class="line">hexo c &amp;&amp; hexo g &amp;&amp; hexo d</span><br><span class="line">git add . &amp;&amp; git commit -m &quot;change&quot; &amp;&amp; git push origin meta</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果在别的设备上提交了，别忘了在提交之后先pull meta哈。</p>
+]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>安装部署</tag>
+        <tag>配置</tag>
+      </tags>
+  </entry>
+  <entry>
     <title></title>
     <url>/2020/10/27/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/</url>
     <content><![CDATA[<h2 id="Kafka与Broker不同"><a href="#Kafka与Broker不同" class="headerlink" title="Kafka与Broker不同"></a>Kafka与Broker不同</h2><ol>
@@ -225,22 +225,6 @@
 <li>除了设置socket 外，还需要设置TCP soc ke t 的读写缓冲区，它们的参数分别是net.i.pv4.tcp_wmem和net . i.pv4 . tc p_ wmem 。这些参数的值由3 个整数组成，它们使用空格分隔，分别表示最小值、默认值和最大值。最大值不能大于net.core.wmem_max可以和net.core.rmem_max指定的大小。例如，“4096 65536 204800。”表示最小值是4KB、默认值是64KB、最大值是2MB 。根据Kafka 服务器接收流量的实际情况，可能需要设置更高的最大值，为网络连接提供更大的缓冲空间。还有其他一些有用的网络参数。例如， 把net.ipv4.tcp_window_scaling 设为l ，启用TCP时间窗扩展，可以提升客户端传输数据的效率，传输的数据可以在服务器端进行缓冲。把net.1.pv4.tcp_max_syn_backlog 设为比默认值1024 更大的值，可以接受更多的井发连接, 把net.core.netdev_max_backlog 设为比默认值1000 更大的值，有助于应对网络流量的爆发，特别是在使用千兆网络的情况下，允许更多的数据包排队等待内核处理。</li>
 <li></li>
 </ol>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2020/10/27/Socket/2020-09-21-TCP%E6%9C%80%E5%A4%A7%E8%BF%9E%E6%8E%A5%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="TCP-最大连接数为28232"><a href="#TCP-最大连接数为28232" class="headerlink" title="TCP 最大连接数为28232"></a>TCP 最大连接数为28232</h1><p>Linux对外的端口分配是有一定限制的，默认不超过28232个。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /proc/sys/net/ipv4/ip_local_range</span><br><span class="line"><span class="meta">#</span><span class="bash"> 输出为</span></span><br><span class="line">32768 60999</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p>两个数字相减刚好为28232。如果要对其范围进行修改，可将两个数字更改为10000 65535，注意用户可用端口方位为1024~65535.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo &quot;10000 65535&quot; &gt; /proc/sys/net/ipv4/ip_local_port_range</span><br><span class="line">sysctl -p	</span><br></pre></td></tr></table></figure>
-
-<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>快速回收端口</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/sysctl.conf</span><br><span class="line"><span class="meta">#</span><span class="bash"> 末尾添加上</span></span><br><span class="line">net.ipv4.tcp_tw_recycle=1</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
-
-<h2 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h2><p>系统在高并发短连接的情况下，会出现大量处于TIME_WAIT的SOCKET。</p>
-<p>这里短连接是指：<strong>业务处理+传输数据的时间 远远小于 TIMEWAIT超时的时间”的连接</strong></p>
 ]]></content>
   </entry>
   <entry>
@@ -286,13 +270,18 @@
   </entry>
   <entry>
     <title></title>
-    <url>/2020/10/27/Socket/20200914-socket_close_shutdown/</url>
-    <content><![CDATA[<h1 id="Socket-之Close与Shutdown"><a href="#Socket-之Close与Shutdown" class="headerlink" title="Socket 之Close与Shutdown"></a>Socket 之Close与Shutdown</h1><h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ol>
-<li>close会释放文件句柄，而shutdown不会。</li>
-<li>close把描述符的引用计数减1，仅在该计数变为0时关闭套接字。shutdown可以不管引用计数就激发TCP的正常连接终止序列，因此在多进程环境中：close()是关闭本进程的socket id，但链接还是开着的，用这个socket id的其它进程还能用这个链接，能读或写这个socket id，而shutdown执行的操作对所有进程有效。</li>
-</ol>
-<h2 id="Strace"><a href="#Strace" class="headerlink" title="Strace"></a>Strace</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">strace ./exec</span><br></pre></td></tr></table></figure>
+    <url>/2020/10/27/Socket/2020-09-21-TCP%E6%9C%80%E5%A4%A7%E8%BF%9E%E6%8E%A5%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="TCP-最大连接数为28232"><a href="#TCP-最大连接数为28232" class="headerlink" title="TCP 最大连接数为28232"></a>TCP 最大连接数为28232</h1><p>Linux对外的端口分配是有一定限制的，默认不超过28232个。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /proc/sys/net/ipv4/ip_local_range</span><br><span class="line"><span class="meta">#</span><span class="bash"> 输出为</span></span><br><span class="line">32768 60999</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p>两个数字相减刚好为28232。如果要对其范围进行修改，可将两个数字更改为10000 65535，注意用户可用端口方位为1024~65535.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo &quot;10000 65535&quot; &gt; /proc/sys/net/ipv4/ip_local_port_range</span><br><span class="line">sysctl -p	</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>快速回收端口</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/sysctl.conf</span><br><span class="line"><span class="meta">#</span><span class="bash"> 末尾添加上</span></span><br><span class="line">net.ipv4.tcp_tw_recycle=1</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+
+<h2 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h2><p>系统在高并发短连接的情况下，会出现大量处于TIME_WAIT的SOCKET。</p>
+<p>这里短连接是指：<strong>业务处理+传输数据的时间 远远小于 TIMEWAIT超时的时间”的连接</strong></p>
 ]]></content>
   </entry>
   <entry>
@@ -314,15 +303,6 @@
   </entry>
   <entry>
     <title></title>
-    <url>/2020/10/27/LinuxCmd/20200814netstat/</url>
-    <content><![CDATA[<h1 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h1><p>查看所有在监听的端口</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -ntlp</span><br></pre></td></tr></table></figure>
-
-<p>待整理</p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
     <url>/2020/10/27/LinuxCmd/%E4%BD%BF%E7%94%A8GDB%E6%9F%A5%E7%9C%8Bcore%E6%96%87%E4%BB%B6/</url>
     <content><![CDATA[<h1 id="2-使用GDB查看core文件"><a href="#2-使用GDB查看core文件" class="headerlink" title="2 使用GDB查看core文件"></a>2 使用GDB查看core文件</h1><p>默认编译出来的程序在出现Segmentation fault 时并没有生成core崩溃文件，可以在gcc/g++编译时增加-g选项。</p>
 <p>如果仍然没有生成core文件，则可能是因为系统设置了core文件大小为0，可以通过：<code>ulimit -a</code> 查询得知。</p>
@@ -337,6 +317,26 @@
 <p><code>gdb file</code><br>开始调试。</p>
 <p>输入<code>start</code>使程序运行到<code>main</code>中第一行运行代码。<code>next</code>或者n为执行下一行程序，<code>until xx</code>执行到xx行，print或p可输出变量值，<code>b xx</code>用于在xx行设置断点，<code>run</code>或<code>r</code>用于执行程序至下一断点，<code>d xx</code>删除xx行断点。</p>
 <p>我们可以先run一遍程序，这时它会提示出错行信息。然后<code>until</code>到出错行前5行，交替执行<code>next</code>和<code>print</code>，输出与出错行变量相关变量或指针的值。最终定位出错的根本操作在哪一行。修改之即可。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2020/10/27/LinuxCmd/20200814netstat/</url>
+    <content><![CDATA[<h1 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h1><p>查看所有在监听的端口</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -ntlp</span><br></pre></td></tr></table></figure>
+
+<p>待整理</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2020/10/27/Socket/20200914-socket_close_shutdown/</url>
+    <content><![CDATA[<h1 id="Socket-之Close与Shutdown"><a href="#Socket-之Close与Shutdown" class="headerlink" title="Socket 之Close与Shutdown"></a>Socket 之Close与Shutdown</h1><h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ol>
+<li>close会释放文件句柄，而shutdown不会。</li>
+<li>close把描述符的引用计数减1，仅在该计数变为0时关闭套接字。shutdown可以不管引用计数就激发TCP的正常连接终止序列，因此在多进程环境中：close()是关闭本进程的socket id，但链接还是开着的，用这个socket id的其它进程还能用这个链接，能读或写这个socket id，而shutdown执行的操作对所有进程有效。</li>
+</ol>
+<h2 id="Strace"><a href="#Strace" class="headerlink" title="Strace"></a>Strace</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">strace ./exec</span><br></pre></td></tr></table></figure>
+
 ]]></content>
   </entry>
 </search>
