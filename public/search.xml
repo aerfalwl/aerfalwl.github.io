@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>hexo 博客被google收录</title>
+    <url>/2020/10/27/Config/hexo_google_site/</url>
+    <content><![CDATA[<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li><p>生成站点地图</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改配置文件_config.yml，添加如下内容：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sitemap:</span><br><span class="line">  path: sitemap.xml</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加站点，登录<a href="https://www.google.com/webmasters/">Google 网站站长</a>，进入<code>Search Console</code>，进入如下页面</p>
+<p><img src="/2020/10/27/Config/hexo_google_site/first.png" alt="首页"></p>
+</li>
+<li><p>选择网址前缀，输入<a href="https://xxx.github.io/">https://xxx.github.io</a></p>
+</li>
+<li><p>之后，下载Google验证文件，放在<code>theme/next/source</code>目录中。</p>
+</li>
+<li><p>重新生成和部署</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部署完成之后，进行验证即可，若操作无误，便会验证成功。</p>
+</li>
+<li><p>添加站点地图：</p>
+<p><img src="/2020/10/27/Config/hexo_google_site/add_sitemap.png" alt="添加站点地图"></p>
+</li>
+<li><p>大功告成，几个小时后，便能在google search中搜到自己的博客！</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>安装部署</tag>
+        <tag>配置</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo+github搭建个人博客</title>
     <url>/2020/10/27/Config/hexo_config/</url>
     <content><![CDATA[<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
@@ -35,43 +72,6 @@
 
 
 <p>如果在别的设备上提交了，别忘了在提交之后先pull meta哈。</p>
-]]></content>
-      <categories>
-        <category>配置</category>
-      </categories>
-      <tags>
-        <tag>安装部署</tag>
-        <tag>配置</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo 博客被google收录</title>
-    <url>/2020/10/27/Config/hexo_google_site/</url>
-    <content><![CDATA[<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
-<li><p>生成站点地图</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改配置文件_config.yml，添加如下内容：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sitemap:</span><br><span class="line">  path: sitemap.xml</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>添加站点，登录<a href="https://www.google.com/webmasters/">Google 网站站长</a>，进入<code>Search Console</code>，进入如下页面</p>
-<p><img src="/2020/10/27/Config/hexo_google_site/first.png" alt="首页"></p>
-</li>
-<li><p>选择网址前缀，输入<a href="https://xxx.github.io/">https://xxx.github.io</a></p>
-</li>
-<li><p>之后，下载Google验证文件，放在<code>theme/next/source</code>目录中。</p>
-</li>
-<li><p>重新生成和部署</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>部署完成之后，进行验证即可，若操作无误，便会验证成功。</p>
-</li>
-<li><p>添加站点地图：</p>
-<p><img src="/2020/10/27/Config/hexo_google_site/add_sitemap.png" alt="添加站点地图"></p>
-</li>
-<li><p>大功告成，几个小时后，便能在google search中搜到自己的博客！</p>
-</li>
-</ol>
 ]]></content>
       <categories>
         <category>配置</category>
@@ -239,47 +239,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2020/10/27/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/</url>
-    <content><![CDATA[<h2 id="Kafka与Broker不同"><a href="#Kafka与Broker不同" class="headerlink" title="Kafka与Broker不同"></a>Kafka与Broker不同</h2><ol>
-<li>消息定期清理。各个主题设置单独的保留规则，以便满足不同消费者的需求，各个主题可以保留不同数量的消息。</li>
-<li>多个消费者可以重复消费同一条消息。</li>
-<li>Kafka可以在如下情况下自动创建主题：当一个生产者开始往主题写入消息时，当一个消费者开始从主题读取消息时，当任意一个客户端向主题发送元数据请求时。</li>
-<li>客户端为了优化网络和磁盘空间，会对消息进行压缩，服务器需要对消息进行批量解压，设置偏移量，然后重新进行批量压缩，再保存在磁盘上。</li>
-<li>kafka允许主题的名字为null, Refactor不允许。</li>
-<li>Kafka的Consumer属于消费者组群。</li>
-<li>消费者组群之间允许重复消费消息。<img src="/2020/10/27/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005132432782.png" alt="image-20201005132432782"></li>
-<li>Kafka中所有broker都缓存了元数据，因此，客户端可以向任何一个broker发送<strong>元数据请求</strong>，并得到客户端所感兴趣的主题所在分区，每个分区都包含哪些副本，以及哪个副本是首领。因此，consumer需要时不时的向broker发送元数据请求来刷新本地缓存的信息。</li>
-<li></li>
-</ol>
-<h1 id="Kafka的一些Feture"><a href="#Kafka的一些Feture" class="headerlink" title="Kafka的一些Feture"></a>Kafka的一些Feture</h1><ol>
-<li><p>Kafka的所有消息保存在磁盘上，存放这些日志片段的目录是通过log.dirs指定的，它是一组用逗号分割的本地文件系统路径。如果指定了多个路径，那么Broker会根据最少使用原则，把统一分区的日志片段保存在同一路径下。要注意：Broker会往拥有最少数据分区的路径新增分区，而不是往拥有最少磁盘空间的路径新增分区。</p>
-</li>
-<li><p>提供二进制连接协议，即用户直接向Kafka网络端口发送适当的字节序列，就可以实现从Kafka读取消息或往Kafka写消息</p>
-</li>
-<li><p>用户可以从指定偏移量开始读数据，例如seekToBeginning和seekToEnd</p>
-</li>
-<li><p>消费者既可以依赖于组群存在，也可以独立存在。</p>
-</li>
-<li><p>消费者请求数据的时候，可以设置broker返回数据的上限，也可以设置下限。这样可以在主题消息流量不是很大的情况下，减少CPU和网络开销。</p>
-</li>
-<li><p>日志压缩是Kafka的一个高级特性，因为有了这个特性，Kafka可以用来长时间保存数据。</p>
-</li>
-</ol>
-<h2 id="问题处理"><a href="#问题处理" class="headerlink" title="问题处理"></a>问题处理</h2><ol>
-<li>Kafka也需人为设置BrokerID,需要使用者自己保证该ID是唯一的，如果两个broker使用相同的BrokerID，则第二个broker就无法启动。在Broker启动时，它通过创建临时节点把自己的ID注册到Zookeeper。Kafka组件订阅Zookeeper的/brokers/ids路径（broker在Zookeeper上的注册路径），当有broker加入集群或者退出集群时，这些组件就能获得通知。</li>
-</ol>
-<h1 id="Refactor一些可以改进的地方"><a href="#Refactor一些可以改进的地方" class="headerlink" title="Refactor一些可以改进的地方"></a>Refactor一些可以改进的地方</h1><ol>
-<li>发送消息长度超过MESSAGE_LENGTH时，返回错误码；</li>
-<li>Consumer请求的topic不在此broker上，返回相关错误码；</li>
-</ol>
-<h1 id="日志维护"><a href="#日志维护" class="headerlink" title="日志维护"></a>日志维护</h1><h2 id="小收获"><a href="#小收获" class="headerlink" title="小收获"></a>小收获</h2><ol>
-<li>除了设置socket 外，还需要设置TCP soc ke t 的读写缓冲区，它们的参数分别是net.i.pv4.tcp_wmem和net . i.pv4 . tc p_ wmem 。这些参数的值由3 个整数组成，它们使用空格分隔，分别表示最小值、默认值和最大值。最大值不能大于net.core.wmem_max可以和net.core.rmem_max指定的大小。例如，“4096 65536 204800。”表示最小值是4KB、默认值是64KB、最大值是2MB 。根据Kafka 服务器接收流量的实际情况，可能需要设置更高的最大值，为网络连接提供更大的缓冲空间。还有其他一些有用的网络参数。例如， 把net.ipv4.tcp_window_scaling 设为l ，启用TCP时间窗扩展，可以提升客户端传输数据的效率，传输的数据可以在服务器端进行缓冲。把net.1.pv4.tcp_max_syn_backlog 设为比默认值1024 更大的值，可以接受更多的井发连接, 把net.core.netdev_max_backlog 设为比默认值1000 更大的值，有助于应对网络流量的爆发，特别是在使用千兆网络的情况下，允许更多的数据包排队等待内核处理。</li>
-<li></li>
-</ol>
-]]></content>
-  </entry>
-  <entry>
     <title>763. Partition Labels</title>
     <url>/2020/10/27/Leetcode/763/</url>
     <content><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://leetcode.com/problems/partition-labels/">英文题目</a></p>
@@ -320,6 +279,47 @@
         <tag>two pointer</tag>
         <tag>algorithm</tag>
       </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2020/10/27/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/</url>
+    <content><![CDATA[<h2 id="Kafka与Broker不同"><a href="#Kafka与Broker不同" class="headerlink" title="Kafka与Broker不同"></a>Kafka与Broker不同</h2><ol>
+<li>消息定期清理。各个主题设置单独的保留规则，以便满足不同消费者的需求，各个主题可以保留不同数量的消息。</li>
+<li>多个消费者可以重复消费同一条消息。</li>
+<li>Kafka可以在如下情况下自动创建主题：当一个生产者开始往主题写入消息时，当一个消费者开始从主题读取消息时，当任意一个客户端向主题发送元数据请求时。</li>
+<li>客户端为了优化网络和磁盘空间，会对消息进行压缩，服务器需要对消息进行批量解压，设置偏移量，然后重新进行批量压缩，再保存在磁盘上。</li>
+<li>kafka允许主题的名字为null, Refactor不允许。</li>
+<li>Kafka的Consumer属于消费者组群。</li>
+<li>消费者组群之间允许重复消费消息。<img src="/2020/10/27/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005132432782.png" alt="image-20201005132432782"></li>
+<li>Kafka中所有broker都缓存了元数据，因此，客户端可以向任何一个broker发送<strong>元数据请求</strong>，并得到客户端所感兴趣的主题所在分区，每个分区都包含哪些副本，以及哪个副本是首领。因此，consumer需要时不时的向broker发送元数据请求来刷新本地缓存的信息。</li>
+<li></li>
+</ol>
+<h1 id="Kafka的一些Feture"><a href="#Kafka的一些Feture" class="headerlink" title="Kafka的一些Feture"></a>Kafka的一些Feture</h1><ol>
+<li><p>Kafka的所有消息保存在磁盘上，存放这些日志片段的目录是通过log.dirs指定的，它是一组用逗号分割的本地文件系统路径。如果指定了多个路径，那么Broker会根据最少使用原则，把统一分区的日志片段保存在同一路径下。要注意：Broker会往拥有最少数据分区的路径新增分区，而不是往拥有最少磁盘空间的路径新增分区。</p>
+</li>
+<li><p>提供二进制连接协议，即用户直接向Kafka网络端口发送适当的字节序列，就可以实现从Kafka读取消息或往Kafka写消息</p>
+</li>
+<li><p>用户可以从指定偏移量开始读数据，例如seekToBeginning和seekToEnd</p>
+</li>
+<li><p>消费者既可以依赖于组群存在，也可以独立存在。</p>
+</li>
+<li><p>消费者请求数据的时候，可以设置broker返回数据的上限，也可以设置下限。这样可以在主题消息流量不是很大的情况下，减少CPU和网络开销。</p>
+</li>
+<li><p>日志压缩是Kafka的一个高级特性，因为有了这个特性，Kafka可以用来长时间保存数据。</p>
+</li>
+</ol>
+<h2 id="问题处理"><a href="#问题处理" class="headerlink" title="问题处理"></a>问题处理</h2><ol>
+<li>Kafka也需人为设置BrokerID,需要使用者自己保证该ID是唯一的，如果两个broker使用相同的BrokerID，则第二个broker就无法启动。在Broker启动时，它通过创建临时节点把自己的ID注册到Zookeeper。Kafka组件订阅Zookeeper的/brokers/ids路径（broker在Zookeeper上的注册路径），当有broker加入集群或者退出集群时，这些组件就能获得通知。</li>
+</ol>
+<h1 id="Refactor一些可以改进的地方"><a href="#Refactor一些可以改进的地方" class="headerlink" title="Refactor一些可以改进的地方"></a>Refactor一些可以改进的地方</h1><ol>
+<li>发送消息长度超过MESSAGE_LENGTH时，返回错误码；</li>
+<li>Consumer请求的topic不在此broker上，返回相关错误码；</li>
+</ol>
+<h1 id="日志维护"><a href="#日志维护" class="headerlink" title="日志维护"></a>日志维护</h1><h2 id="小收获"><a href="#小收获" class="headerlink" title="小收获"></a>小收获</h2><ol>
+<li>除了设置socket 外，还需要设置TCP soc ke t 的读写缓冲区，它们的参数分别是net.i.pv4.tcp_wmem和net . i.pv4 . tc p_ wmem 。这些参数的值由3 个整数组成，它们使用空格分隔，分别表示最小值、默认值和最大值。最大值不能大于net.core.wmem_max可以和net.core.rmem_max指定的大小。例如，“4096 65536 204800。”表示最小值是4KB、默认值是64KB、最大值是2MB 。根据Kafka 服务器接收流量的实际情况，可能需要设置更高的最大值，为网络连接提供更大的缓冲空间。还有其他一些有用的网络参数。例如， 把net.ipv4.tcp_window_scaling 设为l ，启用TCP时间窗扩展，可以提升客户端传输数据的效率，传输的数据可以在服务器端进行缓冲。把net.1.pv4.tcp_max_syn_backlog 设为比默认值1024 更大的值，可以接受更多的井发连接, 把net.core.netdev_max_backlog 设为比默认值1000 更大的值，有助于应对网络流量的爆发，特别是在使用千兆网络的情况下，允许更多的数据包排队等待内核处理。</li>
+<li></li>
+</ol>
+]]></content>
   </entry>
   <entry>
     <title></title>

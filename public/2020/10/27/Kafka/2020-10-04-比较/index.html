@@ -19,26 +19,26 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
+    var CONFIG = {"hostname":"aerfalwl.github.io","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
   <meta name="description" content="Kafka与Broker不同 消息定期清理。各个主题设置单独的保留规则，以便满足不同消费者的需求，各个主题可以保留不同数量的消息。 多个消费者可以重复消费同一条消息。 Kafka可以在如下情况下自动创建主题：当一个生产者开始往主题写入消息时，当一个消费者开始从主题读取消息时，当任意一个客户端向主题发送元数据请求时。 客户端为了优化网络和磁盘空间，会对消息进行压缩，服务器需要对消息进行批量解压，设置">
 <meta property="og:type" content="article">
 <meta property="og:title" content="sunshine">
-<meta property="og:url" content="http://example.com/2020/10/27/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/index.html">
+<meta property="og:url" content="https://aerfalwl.github.io/2020/10/27/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/index.html">
 <meta property="og:site_name" content="sunshine">
 <meta property="og:description" content="Kafka与Broker不同 消息定期清理。各个主题设置单独的保留规则，以便满足不同消费者的需求，各个主题可以保留不同数量的消息。 多个消费者可以重复消费同一条消息。 Kafka可以在如下情况下自动创建主题：当一个生产者开始往主题写入消息时，当一个消费者开始从主题读取消息时，当任意一个客户端向主题发送元数据请求时。 客户端为了优化网络和磁盘空间，会对消息进行压缩，服务器需要对消息进行批量解压，设置">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2020/10/27/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/Users/lwl/AppData/Roaming/Typora/typora-user-images/image-20201005132432782.png">
+<meta property="og:image" content="https://aerfalwl.github.io/2020/10/27/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/Users/lwl/AppData/Roaming/Typora/typora-user-images/image-20201005132432782.png">
 <meta property="article:published_time" content="2020-10-27T02:11:32.043Z">
 <meta property="article:modified_time" content="2020-10-26T16:20:48.647Z">
 <meta property="article:author" content="codefreestyle">
 <meta property="article:tag" content="happy">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2020/10/27/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/Users/lwl/AppData/Roaming/Typora/typora-user-images/image-20201005132432782.png">
+<meta name="twitter:image" content="https://aerfalwl.github.io/2020/10/27/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/Users/lwl/AppData/Roaming/Typora/typora-user-images/image-20201005132432782.png">
 
 
-<link rel="canonical" href="http://example.com/2020/10/27/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/">
+<link rel="canonical" href="https://aerfalwl.github.io/2020/10/27/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/">
 
 
 <script class="page-configurations">
@@ -287,7 +287,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/27/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/">
+    <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2020/10/27/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
