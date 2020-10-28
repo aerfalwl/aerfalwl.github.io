@@ -1,3 +1,11 @@
-># allow google
 User-agent: *
 Allow: /
+Allow: /home/
+Allow: /archives/
+Allow: /tags/
+
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+
+Sitemap: https://aerfalwl.github.io/sitemap.xml
