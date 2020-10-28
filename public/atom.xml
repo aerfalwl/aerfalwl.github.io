@@ -6,7 +6,7 @@
   <link href="https://aerfalwl.github.io/atom.xml" rel="self"/>
   
   <link href="https://aerfalwl.github.io/"/>
-  <updated>2020-10-27T16:16:49.568Z</updated>
+  <updated>2020-10-28T14:03:42.920Z</updated>
   <id>https://aerfalwl.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 826. Most Profit Assigning Work</title>
+    <link href="https://aerfalwl.github.io/2020/10/28/Leetcode/826/"/>
+    <id>https://aerfalwl.github.io/2020/10/28/Leetcode/826/</id>
+    <published>2020-10-28T13:11:12.000Z</published>
+    <updated>2020-10-28T14:03:42.920Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://aerfalwl.github.io/categories/leetcode/"/>
+    
+    
+    <category term="two pointer" scheme="https://aerfalwl.github.io/tags/two-pointer/"/>
+    
+    <category term="algorithm" scheme="https://aerfalwl.github.io/tags/algorithm/"/>
+    
+    <category term="dp" scheme="https://aerfalwl.github.io/tags/dp/"/>
+    
+  </entry>
   
   <entry>
     <title>hexo 插入图片</title>
