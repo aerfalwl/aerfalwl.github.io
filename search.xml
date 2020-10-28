@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>hexo 插入图片</title>
+    <url>/2020/10/28/Config/hexo_with_image/</url>
+    <content><![CDATA[<p>本文主要介绍按照相对路径在hexo中插入图片的方法。</p>
+<h2 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h2><ol>
+<li><p>安装插件</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改配置文件_config.yml，将如下选项该为true：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">post_asset_foler: true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更改文件内容：node_modules/hexo-asset-image/index.js为</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> cheerio = <span class="built_in">require</span>(<span class="string">&#x27;cheerio&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// http://stackoverflow.com/questions/14480345/how-to-get-the-nth-occurrence-in-a-string</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPosition</span>(<span class="params">str, m, i</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> str.split(m, i).join(m).length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> version = <span class="built_in">String</span>(hexo.version).split(<span class="string">&#x27;.&#x27;</span>);</span><br><span class="line">hexo.extend.filter.register(<span class="string">&#x27;after_post_render&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> config = hexo.config;</span><br><span class="line">  <span class="keyword">if</span>(config.post_asset_folder)&#123;</span><br><span class="line">        <span class="keyword">var</span> link = data.permalink;</span><br><span class="line">    <span class="keyword">if</span>(version.length &gt; <span class="number">0</span> &amp;&amp; <span class="built_in">Number</span>(version[<span class="number">0</span>]) == <span class="number">3</span>)</span><br><span class="line">       <span class="keyword">var</span> beginPos = getPosition(link, <span class="string">&#x27;/&#x27;</span>, <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">       <span class="keyword">var</span> beginPos = getPosition(link, <span class="string">&#x27;/&#x27;</span>, <span class="number">3</span>) + <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// In hexo 3.1.1, the permalink of &quot;about&quot; page is like &quot;.../about/index.html&quot;.</span></span><br><span class="line">    <span class="keyword">var</span> endPos = link.lastIndexOf(<span class="string">&#x27;/&#x27;</span>) + <span class="number">1</span>;</span><br><span class="line">    link = link.substring(beginPos, endPos);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> toprocess = [<span class="string">&#x27;excerpt&#x27;</span>, <span class="string">&#x27;more&#x27;</span>, <span class="string">&#x27;content&#x27;</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; toprocess.length; i++)&#123;</span><br><span class="line">      <span class="keyword">var</span> key = toprocess[i];</span><br><span class="line"> </span><br><span class="line">      <span class="keyword">var</span> $ = cheerio.load(data[key], &#123;</span><br><span class="line">        ignoreWhitespace: <span class="literal">false</span>,</span><br><span class="line">        xmlMode: <span class="literal">false</span>,</span><br><span class="line">        lowerCaseTags: <span class="literal">false</span>,</span><br><span class="line">        decodeEntities: <span class="literal">false</span></span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      $(<span class="string">&#x27;img&#x27;</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ($(<span class="built_in">this</span>).attr(<span class="string">&#x27;src&#x27;</span>))&#123;</span><br><span class="line">            <span class="comment">// For windows style path, we replace &#x27;\&#x27; to &#x27;/&#x27;.</span></span><br><span class="line">            <span class="keyword">var</span> src = $(<span class="built_in">this</span>).attr(<span class="string">&#x27;src&#x27;</span>).replace(<span class="string">&#x27;\\&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">            <span class="keyword">if</span>(!<span class="regexp">/http[s]*.*|\/\/.*/</span>.test(src) &amp;&amp;</span><br><span class="line">               !<span class="regexp">/^\s*\//</span>.test(src)) &#123;</span><br><span class="line">              <span class="comment">// For &quot;about&quot; page, the first part of &quot;src&quot; can&#x27;t be removed.</span></span><br><span class="line">              <span class="comment">// In addition, to support multi-level local directory.</span></span><br><span class="line">              <span class="keyword">var</span> linkArray = link.split(<span class="string">&#x27;/&#x27;</span>).filter(<span class="function"><span class="keyword">function</span>(<span class="params">elem</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> elem != <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">              &#125;);</span><br><span class="line">              <span class="keyword">var</span> srcArray = src.split(<span class="string">&#x27;/&#x27;</span>).filter(<span class="function"><span class="keyword">function</span>(<span class="params">elem</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> elem != <span class="string">&#x27;&#x27;</span> &amp;&amp; elem != <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">              &#125;);</span><br><span class="line">              <span class="keyword">if</span>(srcArray.length &gt; <span class="number">1</span>)</span><br><span class="line">                srcArray.shift();</span><br><span class="line">              src = srcArray.join(<span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">              $(<span class="built_in">this</span>).attr(<span class="string">&#x27;src&#x27;</span>, config.root + link + src);</span><br><span class="line">              <span class="built_in">console</span>.info&amp;&amp;<span class="built_in">console</span>.info(<span class="string">&quot;update link as:--&gt;&quot;</span>+config.root + link + src);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.info&amp;&amp;<span class="built_in">console</span>.info(<span class="string">&quot;no src attr, skipped...&quot;</span>);</span><br><span class="line">            <span class="built_in">console</span>.info&amp;&amp;<span class="built_in">console</span>.info($(<span class="built_in">this</span>));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      data[key] = $.html();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="4">
+<li><p>至此配置完成，之后若hexo new post photo，则会在source/_posts文件夹下生成photo.md和photo文件夹，用户也可以在手动创建md文件的时候，创建对应名字的文件夹。</p>
+</li>
+<li><p>插入图片，假设photo文件夹下有如下文件图片：test.png，则用户可以在md文件中按照如下两种方式引用该图片。</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">![描述](test.png) # </span><br><span class="line">![描述](photo/test.png) # 该种方式在Typora中可以直接显示图片，推荐该种方式。</span><br></pre></td></tr></table></figure></li>
+</ol>
+]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>安装部署</tag>
+        <tag>配置</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo+github搭建个人博客</title>
     <url>/2020/10/27/Config/hexo_config/</url>
     <content><![CDATA[<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
@@ -90,119 +123,72 @@
       </tags>
   </entry>
   <entry>
-    <title>763. Partition Labels</title>
-    <url>/2020/10/27/Leetcode/763/</url>
-    <content><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://leetcode.com/problems/partition-labels/">英文题目</a></p>
-<p><a href="https://leetcode-cn.com/problems/partition-labels/">中文题目</a></p>
-<p>难度：中等</p>
-<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>说明：题目来自leetcode中文官网</p>
-<p>字符串 <code>S</code> 由小写字母组成。我们要把这个字符串划分为尽可能多的片段，同一字母最多出现在一个片段中。返回一个表示每个字符串片段的长度的列表。</p>
-<p><strong>示例：</strong></p>
-<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：S = &quot;ababcbacadefegdehijhklij&quot;</span><br><span class="line">输出：[9,7,8]</span><br><span class="line">解释：</span><br><span class="line">划分结果为 &quot;ababcbaca&quot;, &quot;defegde&quot;, &quot;hijhklij&quot;。</span><br><span class="line">每个字母最多出现在一个片段中。</span><br><span class="line">像 &quot;ababcbacadefegde&quot;, &quot;hijhklij&quot; 的划分是错误的，因为划分的片段数较少。</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>该题目分类属于中等题，且用two pointer进行解决。</p>
-<p>即首先找到每个字母最后出现的位置，之后划分段的时候，确保该段内每个字母出现的最右值的位置在该段内。不太好描述，直接看代码。</p>
-<p><strong>代码如下：</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">partitionLabels</span><span class="params">(String S)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(S.length() &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        List&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">char</span>[] s = S.toCharArray();</span><br><span class="line">        <span class="keyword">int</span> len = s.length;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span>[] max = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> curr = s[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">            <span class="keyword">if</span> (max[curr] &lt; i) max[curr] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (right &lt; len) &#123;</span><br><span class="line">            <span class="keyword">int</span> maxRight = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (right &lt; len) &#123;</span><br><span class="line">                <span class="keyword">int</span> curr = max[s[right] - <span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">                <span class="keyword">if</span> (maxRight &lt; curr) maxRight = curr;</span><br><span class="line">                <span class="keyword">if</span> (right == maxRight) &#123;</span><br><span class="line">                    ans.add(right - left + <span class="number">1</span>);</span><br><span class="line">                    left = right + <span class="number">1</span>;</span><br><span class="line">                    right++;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                right++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (left != right) &#123;</span><br><span class="line">            ans.add(right - left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-<h3 id="Two-pointer解决套路"><a href="#Two-pointer解决套路" class="headerlink" title="Two pointer解决套路"></a>Two pointer解决套路</h3><p>Two pointer和滑动窗口差不多，其套路一般为：</p>
-<ol>
-<li>一个左指针，一个右指针。其中左指针用于缩小范围，右指针用于扩大搜索范围。一般求滑动窗口的最小值都是在缩小左指针的时候取得的。</li>
-<li>右指针扩展的条件时：只要当前还没有满足条件，就暴力增长，直到第一次满足条件为止。</li>
-<li>左指针收缩的条件：只要当前指针的缩小还没影响窗口的可满足性，就一直暴力向左增长。一但当前指针向前移动的时候影响了窗口的可满足性，就记录下当前的窗口大小，并更新目前为止满足条件的最小窗口记录。之后，再次扩展右指针，使得窗口满足题目的条件。</li>
-<li>以此类推即可。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>two pointer</tag>
-        <tag>algorithm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo 插入图片</title>
-    <url>/2020/10/28/Config/hexo_with_image/</url>
-    <content><![CDATA[<p>本文主要介绍按照相对路径在hexo中插入图片的方法。</p>
-<h2 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h2><ol>
-<li><p>安装插件</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改配置文件_config.yml，将如下选项该为true：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">post_asset_foler: true</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更改文件内容：node_modules/hexo-asset-image/index.js为</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span>;</span><br><span class="line"><span class="keyword">var</span> cheerio = <span class="built_in">require</span>(<span class="string">&#x27;cheerio&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// http://stackoverflow.com/questions/14480345/how-to-get-the-nth-occurrence-in-a-string</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPosition</span>(<span class="params">str, m, i</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> str.split(m, i).join(m).length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> version = <span class="built_in">String</span>(hexo.version).split(<span class="string">&#x27;.&#x27;</span>);</span><br><span class="line">hexo.extend.filter.register(<span class="string">&#x27;after_post_render&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> config = hexo.config;</span><br><span class="line">  <span class="keyword">if</span>(config.post_asset_folder)&#123;</span><br><span class="line">        <span class="keyword">var</span> link = data.permalink;</span><br><span class="line">    <span class="keyword">if</span>(version.length &gt; <span class="number">0</span> &amp;&amp; <span class="built_in">Number</span>(version[<span class="number">0</span>]) == <span class="number">3</span>)</span><br><span class="line">       <span class="keyword">var</span> beginPos = getPosition(link, <span class="string">&#x27;/&#x27;</span>, <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">       <span class="keyword">var</span> beginPos = getPosition(link, <span class="string">&#x27;/&#x27;</span>, <span class="number">3</span>) + <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// In hexo 3.1.1, the permalink of &quot;about&quot; page is like &quot;.../about/index.html&quot;.</span></span><br><span class="line">    <span class="keyword">var</span> endPos = link.lastIndexOf(<span class="string">&#x27;/&#x27;</span>) + <span class="number">1</span>;</span><br><span class="line">    link = link.substring(beginPos, endPos);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> toprocess = [<span class="string">&#x27;excerpt&#x27;</span>, <span class="string">&#x27;more&#x27;</span>, <span class="string">&#x27;content&#x27;</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; toprocess.length; i++)&#123;</span><br><span class="line">      <span class="keyword">var</span> key = toprocess[i];</span><br><span class="line"> </span><br><span class="line">      <span class="keyword">var</span> $ = cheerio.load(data[key], &#123;</span><br><span class="line">        ignoreWhitespace: <span class="literal">false</span>,</span><br><span class="line">        xmlMode: <span class="literal">false</span>,</span><br><span class="line">        lowerCaseTags: <span class="literal">false</span>,</span><br><span class="line">        decodeEntities: <span class="literal">false</span></span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      $(<span class="string">&#x27;img&#x27;</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> ($(<span class="built_in">this</span>).attr(<span class="string">&#x27;src&#x27;</span>))&#123;</span><br><span class="line">            <span class="comment">// For windows style path, we replace &#x27;\&#x27; to &#x27;/&#x27;.</span></span><br><span class="line">            <span class="keyword">var</span> src = $(<span class="built_in">this</span>).attr(<span class="string">&#x27;src&#x27;</span>).replace(<span class="string">&#x27;\\&#x27;</span>, <span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">            <span class="keyword">if</span>(!<span class="regexp">/http[s]*.*|\/\/.*/</span>.test(src) &amp;&amp;</span><br><span class="line">               !<span class="regexp">/^\s*\//</span>.test(src)) &#123;</span><br><span class="line">              <span class="comment">// For &quot;about&quot; page, the first part of &quot;src&quot; can&#x27;t be removed.</span></span><br><span class="line">              <span class="comment">// In addition, to support multi-level local directory.</span></span><br><span class="line">              <span class="keyword">var</span> linkArray = link.split(<span class="string">&#x27;/&#x27;</span>).filter(<span class="function"><span class="keyword">function</span>(<span class="params">elem</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> elem != <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">              &#125;);</span><br><span class="line">              <span class="keyword">var</span> srcArray = src.split(<span class="string">&#x27;/&#x27;</span>).filter(<span class="function"><span class="keyword">function</span>(<span class="params">elem</span>)</span>&#123;</span><br><span class="line">                <span class="keyword">return</span> elem != <span class="string">&#x27;&#x27;</span> &amp;&amp; elem != <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">              &#125;);</span><br><span class="line">              <span class="keyword">if</span>(srcArray.length &gt; <span class="number">1</span>)</span><br><span class="line">                srcArray.shift();</span><br><span class="line">              src = srcArray.join(<span class="string">&#x27;/&#x27;</span>);</span><br><span class="line">              $(<span class="built_in">this</span>).attr(<span class="string">&#x27;src&#x27;</span>, config.root + link + src);</span><br><span class="line">              <span class="built_in">console</span>.info&amp;&amp;<span class="built_in">console</span>.info(<span class="string">&quot;update link as:--&gt;&quot;</span>+config.root + link + src);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.info&amp;&amp;<span class="built_in">console</span>.info(<span class="string">&quot;no src attr, skipped...&quot;</span>);</span><br><span class="line">            <span class="built_in">console</span>.info&amp;&amp;<span class="built_in">console</span>.info($(<span class="built_in">this</span>));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">      data[key] = $.html();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="4">
-<li><p>至此配置完成，之后若hexo new post photo，则会在source/_posts文件夹下生成photo.md和photo文件夹，用户也可以在手动创建md文件的时候，创建对应名字的文件夹。</p>
-</li>
-<li><p>插入图片，假设photo文件夹下有如下文件图片：test.png，则用户可以在md文件中按照如下两种方式引用该图片。</p>
-<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">![描述](test.png) # </span><br><span class="line">![描述](photo/test.png) # 该种方式在Typora中可以直接显示图片，推荐该种方式。</span><br></pre></td></tr></table></figure></li>
-</ol>
-]]></content>
-      <categories>
-        <category>配置</category>
-      </categories>
-      <tags>
-        <tag>安装部署</tag>
-        <tag>配置</tag>
-      </tags>
-  </entry>
-  <entry>
     <title></title>
-    <url>/2020/10/27/Leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</url>
-    <content><![CDATA[<h1 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h1><p><a href="https://leetcode.com/problems/replace-the-substring-for-balanced-string/discuss/408978/javacpython-sliding-window/367697">https://leetcode.com/problems/replace-the-substring-for-balanced-string/discuss/408978/javacpython-sliding-window/367697</a></p>
-<ul>
-<li><ol>
-<li><a href="https://leetcode.com/problems/count-number-of-nice-subarrays/discuss/419378/JavaC%2B%2BPython-Sliding-Window-atMost(K)-atMost(K-1)">Count Number of Nice Subarrays</a></li>
+    <url>/2020/10/27/Filesystem/ZFS/</url>
+    <content><![CDATA[<h2 id="Introduction-to-the-Kernel"><a href="#Introduction-to-the-Kernel" class="headerlink" title="Introduction to the Kernel"></a>Introduction to the Kernel</h2><ol>
+<li>参考书籍The Design and Implementation of the FreeBSD Operating System, 2nd<br>Edition</li>
 </ol>
-</li>
-<li><ol>
-<li><a href="https://leetcode.com/problems/replace-the-substring-for-balanced-string/discuss/408978/javacpython-sliding-window/367697">Replace the Substring for Balanced String</a></li>
-</ol>
-</li>
-<li><ol>
-<li><a href="https://leetcode.com/problems/max-consecutive-ones-iii/discuss/247564/javacpython-sliding-window/379427?page=3">Max Consecutive Ones III</a></li>
-</ol>
-</li>
-<li><ol>
-<li><a href="https://leetcode.com/problems/binary-subarrays-with-sum/discuss/186683/">Binary Subarrays With Sum</a></li>
-</ol>
-</li>
-<li><ol>
-<li><a href="https://leetcode.com/problems/subarrays-with-k-different-integers/discuss/234482/JavaC%2B%2BPython-Sliding-Window-atMost(K)-atMost(K-1)">Subarrays with K Different Integers</a></li>
-</ol>
-</li>
-<li><ol>
-<li><a href="https://leetcode.com/problems/fruit-into-baskets/discuss/170740/Sliding-Window-for-K-Elements">Fruit Into Baskets</a></li>
-</ol>
-</li>
-<li><ol>
-<li><a href="https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/discuss/143726/C%2B%2BJavaPython-O(N)-Using-Deque">Shortest Subarray with Sum at Least K</a></li>
-</ol>
-</li>
-<li><ol>
-<li><a href="https://leetcode.com/problems/minimum-size-subarray-sum/discuss/433123">Minimum Size Subarray Sum</a></li>
-</ol>
-</li>
+<h1 id="Introduction-to-the-Zettabyte-Filesystem"><a href="#Introduction-to-the-Zettabyte-Filesystem" class="headerlink" title="Introduction to the Zettabyte Filesystem"></a>Introduction to the Zettabyte Filesystem</h1><ol>
+<li>开始于Solaries。</li>
+<li>Solaris是Sun Microsystem开发的一个Unix版本的操作系统；<ul>
+<li>它是以下两种操作系统的合并版：SunOs和System V4</li>
 </ul>
-<p><a href="https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/discuss/204290/Monotonic-Queue-Summary">https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/discuss/204290/Monotonic-Queue-Summary</a></p>
+</li>
+<li>Sun需要解决的问题是：传统的操作系统在处理大数据的时候，显现出了很大的缺点，因为大数据使得系统需要大量的磁盘。</li>
+<li>为解决以上问题，Sun写了ZFS:<ul>
+<li>Log Structured Filesystem，由Berkeley开发，展现出了它处理大问题大数据的一些优势</li>
+<li>文件系统不可重复写的特性，给了它很多比较好的特性。</li>
+</ul>
+</li>
+</ol>
+<h1 id="ZFS的演变过程"><a href="#ZFS的演变过程" class="headerlink" title="ZFS的演变过程"></a>ZFS的演变过程</h1><ol>
+<li>首先出现于OpenSolaris,  该操作系统是一款Solaris开源的操作系统，包括核心科技：ZFS和DTrace</li>
+<li>随后，ZFS出现在了FreeBSD（一款Unix操作系统）中；</li>
+<li>之后，Sun被Oracle收购，但是Larry Ellison不是一个开源爱好者，他不同意ZFS继续开源，但是已经开源的早期版本还在流传；</li>
+<li>于是一些公司继续开发并维护OpenSolaris，并且将他作为一个开源项目；</li>
+<li>一些组件变得很流行，像ZFS；</li>
+<li>最后ZFS变为单独的OpenZFS项目；</li>
+<li>当前开发OpenZFS的主要有四个组，它们每个月都有一次会议来协同工作：<ul>
+<li>致力于OpenSolaris开发的组；</li>
+<li>FressBSD开发者；</li>
+<li>致力于将ZFS嵌入到Linux内核的Lawrence Livermore National Laboratory</li>
+<li>致力于将ZFS嵌入到MacOs和Windows的Jorgen Lundman</li>
+</ul>
+</li>
+<li>Sun Community Development License与GNU Public License不兼容：<ul>
+<li>ZFS代码不能嵌入到Linux内核中；</li>
+<li>所有将ZFS带入嵌入到Linux内核的人不能使用GPL interfaces（GPL Interface是Linux的一个特性，该特性说明只有GPL的代码之间才能相互使用和修改）</li>
+<li>ZFS只能通过FUSE(用户态空间文件系统， Filesystem in Userspace)访问Linux Kernel。</li>
+</ul>
+</li>
+<li>在2016年，Ubuntu开源了一版在Kernel态的ZFS，它没有使用GPL interfaces，因此，自己额外开发了一些函数。当前，Canonical（开发Ubuntu的公司）还没被起诉，更多详情访问<a href="https://wiki.ubuntu.com/ZFS">https://wiki.ubuntu.com/ZFS</a></li>
+<li>当前，OpenZFS代码已经能在大多数Linux系统中配置使用。</li>
+</ol>
+<p>ZFS相关资料：<a href="https://openzfs.org/wiki/Main_Page">https://openzfs.org/wiki/Main_Page</a></p>
+<p>Github网址：<a href="https://github.com/openzfs/zfs">https://github.com/openzfs/zfs</a></p>
+<h1 id="Kernel-I-O-Structure"><a href="#Kernel-I-O-Structure" class="headerlink" title="Kernel I/O Structure"></a>Kernel I/O Structure</h1><ol>
+<li>关于kernel的系统调用：<ul>
+<li>一切在硬件和系统调用之间的都是操作系统(everything between this and the hardware is the operating system)。</li>
+<li>当我们和subsystem进行交互时，其实是在和file descriptor、socket、kqueue交互</li>
+</ul>
+</li>
+</ol>
+<p><img src="/2020/10/27/Filesystem/ZFS/Users\CCDC\AppData\Roaming\Typora\typora-user-images\image-20201014101848952.png" alt="image-20201014101848952"></p>
+<h1 id="FileSystem-Consistency"><a href="#FileSystem-Consistency" class="headerlink" title="FileSystem Consistency"></a>FileSystem Consistency</h1><ol>
+<li>必须维护一些元数据信息：directories, inodes, bitmaps</li>
+<li>维护元数据的一些规则：<ul>
+<li>在一个结构被初始化之前不要指向它</li>
+<li>在将一个对象的所有指针置为空之前，不要使新指针指向它</li>
+<li>在新指针被设置之前，不要讲老指针设置为一个可用的资源(例如，rename foo to bar，则在将foo的旧指针指向bar之后，再删除老的foo)</li>
+</ul>
+</li>
+</ol>
+<h1 id="Keeping-Metadata-Consistent"><a href="#Keeping-Metadata-Consistent" class="headerlink" title="Keeping Metadata Consistent"></a>Keeping Metadata Consistent</h1><p>实现一致性的三种方法：</p>
+<ol>
+<li>同步写</li>
+<li>使用非易失性RAM</li>
+<li>原子更新(journaling and logging)</li>
+</ol>
 ]]></content>
   </entry>
   <entry>
@@ -302,72 +288,86 @@
 ]]></content>
   </entry>
   <entry>
-    <title></title>
-    <url>/2020/10/27/Filesystem/ZFS/</url>
-    <content><![CDATA[<h2 id="Introduction-to-the-Kernel"><a href="#Introduction-to-the-Kernel" class="headerlink" title="Introduction to the Kernel"></a>Introduction to the Kernel</h2><ol>
-<li>参考书籍The Design and Implementation of the FreeBSD Operating System, 2nd<br>Edition</li>
-</ol>
-<h1 id="Introduction-to-the-Zettabyte-Filesystem"><a href="#Introduction-to-the-Zettabyte-Filesystem" class="headerlink" title="Introduction to the Zettabyte Filesystem"></a>Introduction to the Zettabyte Filesystem</h1><ol>
-<li>开始于Solaries。</li>
-<li>Solaris是Sun Microsystem开发的一个Unix版本的操作系统；<ul>
-<li>它是以下两种操作系统的合并版：SunOs和System V4</li>
-</ul>
-</li>
-<li>Sun需要解决的问题是：传统的操作系统在处理大数据的时候，显现出了很大的缺点，因为大数据使得系统需要大量的磁盘。</li>
-<li>为解决以上问题，Sun写了ZFS:<ul>
-<li>Log Structured Filesystem，由Berkeley开发，展现出了它处理大问题大数据的一些优势</li>
-<li>文件系统不可重复写的特性，给了它很多比较好的特性。</li>
-</ul>
-</li>
-</ol>
-<h1 id="ZFS的演变过程"><a href="#ZFS的演变过程" class="headerlink" title="ZFS的演变过程"></a>ZFS的演变过程</h1><ol>
-<li>首先出现于OpenSolaris,  该操作系统是一款Solaris开源的操作系统，包括核心科技：ZFS和DTrace</li>
-<li>随后，ZFS出现在了FreeBSD（一款Unix操作系统）中；</li>
-<li>之后，Sun被Oracle收购，但是Larry Ellison不是一个开源爱好者，他不同意ZFS继续开源，但是已经开源的早期版本还在流传；</li>
-<li>于是一些公司继续开发并维护OpenSolaris，并且将他作为一个开源项目；</li>
-<li>一些组件变得很流行，像ZFS；</li>
-<li>最后ZFS变为单独的OpenZFS项目；</li>
-<li>当前开发OpenZFS的主要有四个组，它们每个月都有一次会议来协同工作：<ul>
-<li>致力于OpenSolaris开发的组；</li>
-<li>FressBSD开发者；</li>
-<li>致力于将ZFS嵌入到Linux内核的Lawrence Livermore National Laboratory</li>
-<li>致力于将ZFS嵌入到MacOs和Windows的Jorgen Lundman</li>
-</ul>
-</li>
-<li>Sun Community Development License与GNU Public License不兼容：<ul>
-<li>ZFS代码不能嵌入到Linux内核中；</li>
-<li>所有将ZFS带入嵌入到Linux内核的人不能使用GPL interfaces（GPL Interface是Linux的一个特性，该特性说明只有GPL的代码之间才能相互使用和修改）</li>
-<li>ZFS只能通过FUSE(用户态空间文件系统， Filesystem in Userspace)访问Linux Kernel。</li>
-</ul>
-</li>
-<li>在2016年，Ubuntu开源了一版在Kernel态的ZFS，它没有使用GPL interfaces，因此，自己额外开发了一些函数。当前，Canonical（开发Ubuntu的公司）还没被起诉，更多详情访问<a href="https://wiki.ubuntu.com/ZFS">https://wiki.ubuntu.com/ZFS</a></li>
-<li>当前，OpenZFS代码已经能在大多数Linux系统中配置使用。</li>
-</ol>
-<p>ZFS相关资料：<a href="https://openzfs.org/wiki/Main_Page">https://openzfs.org/wiki/Main_Page</a></p>
-<p>Github网址：<a href="https://github.com/openzfs/zfs">https://github.com/openzfs/zfs</a></p>
-<h1 id="Kernel-I-O-Structure"><a href="#Kernel-I-O-Structure" class="headerlink" title="Kernel I/O Structure"></a>Kernel I/O Structure</h1><ol>
-<li>关于kernel的系统调用：<ul>
-<li>一切在硬件和系统调用之间的都是操作系统(everything between this and the hardware is the operating system)。</li>
-<li>当我们和subsystem进行交互时，其实是在和file descriptor、socket、kqueue交互</li>
-</ul>
-</li>
-</ol>
-<p><img src="/2020/10/27/Filesystem/ZFS/Users\CCDC\AppData\Roaming\Typora\typora-user-images\image-20201014101848952.png" alt="image-20201014101848952"></p>
-<h1 id="FileSystem-Consistency"><a href="#FileSystem-Consistency" class="headerlink" title="FileSystem Consistency"></a>FileSystem Consistency</h1><ol>
-<li>必须维护一些元数据信息：directories, inodes, bitmaps</li>
-<li>维护元数据的一些规则：<ul>
-<li>在一个结构被初始化之前不要指向它</li>
-<li>在将一个对象的所有指针置为空之前，不要使新指针指向它</li>
-<li>在新指针被设置之前，不要讲老指针设置为一个可用的资源(例如，rename foo to bar，则在将foo的旧指针指向bar之后，再删除老的foo)</li>
-</ul>
-</li>
-</ol>
-<h1 id="Keeping-Metadata-Consistent"><a href="#Keeping-Metadata-Consistent" class="headerlink" title="Keeping Metadata Consistent"></a>Keeping Metadata Consistent</h1><p>实现一致性的三种方法：</p>
+    <title>763. Partition Labels</title>
+    <url>/2020/10/27/Leetcode/763/</url>
+    <content><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://leetcode.com/problems/partition-labels/">英文题目</a></p>
+<p><a href="https://leetcode-cn.com/problems/partition-labels/">中文题目</a></p>
+<p>难度：中等</p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>说明：题目来自leetcode中文官网</p>
+<p>字符串 <code>S</code> 由小写字母组成。我们要把这个字符串划分为尽可能多的片段，同一字母最多出现在一个片段中。返回一个表示每个字符串片段的长度的列表。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：S = &quot;ababcbacadefegdehijhklij&quot;</span><br><span class="line">输出：[9,7,8]</span><br><span class="line">解释：</span><br><span class="line">划分结果为 &quot;ababcbaca&quot;, &quot;defegde&quot;, &quot;hijhklij&quot;。</span><br><span class="line">每个字母最多出现在一个片段中。</span><br><span class="line">像 &quot;ababcbacadefegde&quot;, &quot;hijhklij&quot; 的划分是错误的，因为划分的片段数较少。</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>该题目分类属于中等题，且用two pointer进行解决。</p>
+<p>即首先找到每个字母最后出现的位置，之后划分段的时候，确保该段内每个字母出现的最右值的位置在该段内。不太好描述，直接看代码。</p>
+<p><strong>代码如下：</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">partitionLabels</span><span class="params">(String S)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(S.length() &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        List&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">char</span>[] s = S.toCharArray();</span><br><span class="line">        <span class="keyword">int</span> len = s.length;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span>[] max = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> curr = s[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">            <span class="keyword">if</span> (max[curr] &lt; i) max[curr] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (right &lt; len) &#123;</span><br><span class="line">            <span class="keyword">int</span> maxRight = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (right &lt; len) &#123;</span><br><span class="line">                <span class="keyword">int</span> curr = max[s[right] - <span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">                <span class="keyword">if</span> (maxRight &lt; curr) maxRight = curr;</span><br><span class="line">                <span class="keyword">if</span> (right == maxRight) &#123;</span><br><span class="line">                    ans.add(right - left + <span class="number">1</span>);</span><br><span class="line">                    left = right + <span class="number">1</span>;</span><br><span class="line">                    right++;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                right++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (left != right) &#123;</span><br><span class="line">            ans.add(right - left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+<h3 id="Two-pointer解决套路"><a href="#Two-pointer解决套路" class="headerlink" title="Two pointer解决套路"></a>Two pointer解决套路</h3><p>Two pointer和滑动窗口差不多，其套路一般为：</p>
 <ol>
-<li>同步写</li>
-<li>使用非易失性RAM</li>
-<li>原子更新(journaling and logging)</li>
+<li>一个左指针，一个右指针。其中左指针用于缩小范围，右指针用于扩大搜索范围。一般求滑动窗口的最小值都是在缩小左指针的时候取得的。</li>
+<li>右指针扩展的条件时：只要当前还没有满足条件，就暴力增长，直到第一次满足条件为止。</li>
+<li>左指针收缩的条件：只要当前指针的缩小还没影响窗口的可满足性，就一直暴力向左增长。一但当前指针向前移动的时候影响了窗口的可满足性，就记录下当前的窗口大小，并更新目前为止满足条件的最小窗口记录。之后，再次扩展右指针，使得窗口满足题目的条件。</li>
+<li>以此类推即可。</li>
 </ol>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>two pointer</tag>
+        <tag>algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2020/10/27/Leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</url>
+    <content><![CDATA[<h1 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h1><p><a href="https://leetcode.com/problems/replace-the-substring-for-balanced-string/discuss/408978/javacpython-sliding-window/367697">https://leetcode.com/problems/replace-the-substring-for-balanced-string/discuss/408978/javacpython-sliding-window/367697</a></p>
+<ul>
+<li><ol>
+<li><a href="https://leetcode.com/problems/count-number-of-nice-subarrays/discuss/419378/JavaC%2B%2BPython-Sliding-Window-atMost(K)-atMost(K-1)">Count Number of Nice Subarrays</a></li>
+</ol>
+</li>
+<li><ol>
+<li><a href="https://leetcode.com/problems/replace-the-substring-for-balanced-string/discuss/408978/javacpython-sliding-window/367697">Replace the Substring for Balanced String</a></li>
+</ol>
+</li>
+<li><ol>
+<li><a href="https://leetcode.com/problems/max-consecutive-ones-iii/discuss/247564/javacpython-sliding-window/379427?page=3">Max Consecutive Ones III</a></li>
+</ol>
+</li>
+<li><ol>
+<li><a href="https://leetcode.com/problems/binary-subarrays-with-sum/discuss/186683/">Binary Subarrays With Sum</a></li>
+</ol>
+</li>
+<li><ol>
+<li><a href="https://leetcode.com/problems/subarrays-with-k-different-integers/discuss/234482/JavaC%2B%2BPython-Sliding-Window-atMost(K)-atMost(K-1)">Subarrays with K Different Integers</a></li>
+</ol>
+</li>
+<li><ol>
+<li><a href="https://leetcode.com/problems/fruit-into-baskets/discuss/170740/Sliding-Window-for-K-Elements">Fruit Into Baskets</a></li>
+</ol>
+</li>
+<li><ol>
+<li><a href="https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/discuss/143726/C%2B%2BJavaPython-O(N)-Using-Deque">Shortest Subarray with Sum at Least K</a></li>
+</ol>
+</li>
+<li><ol>
+<li><a href="https://leetcode.com/problems/minimum-size-subarray-sum/discuss/433123">Minimum Size Subarray Sum</a></li>
+</ol>
+</li>
+</ul>
+<p><a href="https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/discuss/204290/Monotonic-Queue-Summary">https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/discuss/204290/Monotonic-Queue-Summary</a></p>
 ]]></content>
   </entry>
   <entry>
