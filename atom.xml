@@ -6,7 +6,7 @@
   <link href="https://aerfalwl.github.io/atom.xml" rel="self"/>
   
   <link href="https://aerfalwl.github.io/"/>
-  <updated>2020-10-28T14:03:02.184Z</updated>
+  <updated>2020-10-28T14:03:42.920Z</updated>
   <id>https://aerfalwl.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://aerfalwl.github.io/2020/10/28/Leetcode/826/"/>
     <id>https://aerfalwl.github.io/2020/10/28/Leetcode/826/</id>
     <published>2020-10-28T13:11:12.000Z</published>
-    <updated>2020-10-28T14:03:02.184Z</updated>
+    <updated>2020-10-28T14:03:42.920Z</updated>
     
     
       
@@ -40,6 +40,8 @@
     <category term="two pointer" scheme="https://aerfalwl.github.io/tags/two-pointer/"/>
     
     <category term="algorithm" scheme="https://aerfalwl.github.io/tags/algorithm/"/>
+    
+    <category term="dp" scheme="https://aerfalwl.github.io/tags/dp/"/>
     
   </entry>
   
