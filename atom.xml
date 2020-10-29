@@ -6,7 +6,7 @@
   <link href="https://aerfalwl.github.io/atom.xml" rel="self"/>
   
   <link href="https://aerfalwl.github.io/"/>
-  <updated>2020-10-28T14:03:42.920Z</updated>
+  <updated>2020-10-29T12:49:48.357Z</updated>
   <id>https://aerfalwl.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Leetcode 1234. Replace the Substring for Balanced String</title>
+    <link href="https://aerfalwl.github.io/2020/10/29/Leetcode/1234/"/>
+    <id>https://aerfalwl.github.io/2020/10/29/Leetcode/1234/</id>
+    <published>2020-10-29T12:46:24.000Z</published>
+    <updated>2020-10-29T12:49:48.357Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://aerfalwl.github.io/categories/leetcode/"/>
+    
+    
+    <category term="two pointer" scheme="https://aerfalwl.github.io/tags/two-pointer/"/>
+    
+    <category term="algorithm" scheme="https://aerfalwl.github.io/tags/algorithm/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode 826. Most Profit Assigning Work</title>
