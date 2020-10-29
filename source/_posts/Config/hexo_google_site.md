@@ -17,6 +17,7 @@ categories: 配置
 2. 修改配置文件_config.yml，添加如下内容：
 
    ```shell
+   urlgoogle: https://xxx.github.io/ 
    sitemap:
      path: sitemap.xml
    ```
@@ -37,18 +38,40 @@ categories: 配置
 
 6. 之后，下载Google验证文件，放在```theme/next/source```目录中。
 
-7. 重新生成和部署
+7. 生成robots.xt文件，在hexo的source目录下，放入如下内容：
+
+   ```txt
+   User-agent: *
+   Allow: /
+   Allow: /home/
+   Allow: /archives/
+   Allow: /categories/
+   Allow: /tags/
+   
+   Disallow: /js/
+   Disallow: /css/
+   Disallow: /fonts/
+   
+   Sitemap: https://aerfalwl.github.io/sitemap.xml
+   ```
+
+   
+
+8. 重新生成和部署
 
    ```shell
    hexo clean && hexo generate && hexo deploy
    ```
 
-7. 部署完成之后，进行验证即可，若操作无误，便会验证成功。
+9. 部署完成之后，进行验证即可，若操作无误，便会验证成功。
 
-8. 添加站点地图：
+10. 添加站点地图：
 
    ![添加站点地图](hexo_google_site/add_sitemap.png)
 
-9. 大功告成，几个小时后，便能在google search中搜到自己的博客！
+11. 为了加快Google扫描网站的速度，可以通过以下方式建立索引：
 
-   
+    - 在浏览器中输入https://www.google.com/ping?sitemap=https://aerfalwl.github.io/sitemap.xml要求Google给网站建立索引；
+
+12. 等待几分钟，在Google中搜索site:aerfalwl.github.io检验是否能看到网站内容。
+

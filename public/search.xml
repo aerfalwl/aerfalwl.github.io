@@ -154,7 +154,7 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>修改配置文件_config.yml，添加如下内容：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sitemap:</span><br><span class="line">  path: sitemap.xml</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">urlgoogle: https://xxx.github.io/ </span><br><span class="line">sitemap:</span><br><span class="line">  path: sitemap.xml</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>修改_config.xml，设置url为你的github.io</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">url: https://xxx.github.io</span><br></pre></td></tr></table></figure>
@@ -171,6 +171,14 @@
 </li>
 <li><p>之后，下载Google验证文件，放在<code>theme/next/source</code>目录中。</p>
 </li>
+<li><p>生成robots.xt文件，在hexo的source目录下，放入如下内容：</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Allow: /</span><br><span class="line">Allow: /home/</span><br><span class="line">Allow: /archives/</span><br><span class="line">Allow: /categories/</span><br><span class="line">Allow: /tags/</span><br><span class="line"></span><br><span class="line">Disallow: /js/</span><br><span class="line">Disallow: /css/</span><br><span class="line">Disallow: /fonts/</span><br><span class="line"></span><br><span class="line">Sitemap: https://aerfalwl.github.io/sitemap.xml</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="8">
 <li><p>重新生成和部署</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure>
 </li>
@@ -179,7 +187,12 @@
 <li><p>添加站点地图：</p>
 <p><img src="/2020/10/27/Config/hexo_google_site/add_sitemap.png" alt="添加站点地图"></p>
 </li>
-<li><p>大功告成，几个小时后，便能在google search中搜到自己的博客！</p>
+<li><p>为了加快Google扫描网站的速度，可以通过以下方式建立索引：</p>
+<ul>
+<li>在浏览器中输入<a href="https://www.google.com/ping?sitemap=https://aerfalwl.github.io/sitemap.xml%E8%A6%81%E6%B1%82Google%E7%BB%99%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E7%B4%A2%E5%BC%95%EF%BC%9B">https://www.google.com/ping?sitemap=https://aerfalwl.github.io/sitemap.xml要求Google给网站建立索引；</a></li>
+</ul>
+</li>
+<li><p>等待几分钟，在Google中搜索site:aerfalwl.github.io检验是否能看到网站内容。</p>
 </li>
 </ol>
 ]]></content>

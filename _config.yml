@@ -122,6 +122,7 @@ feed:
   content_limit: 140
   content_limit_delim: ' '
 # 自动生成sitemap
+urlforgoogle: https://aerfalwl.github.io/
 sitemap:
   path: sitemap.xml
 baidusitemap:
