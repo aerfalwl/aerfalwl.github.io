@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://aerfalwl.github.io/2020/10/30/Leetcode/1616/</loc>
+    <lastmod>2020-10-30</lastmod>
+  </url>
+  <url>
     <loc>https://aerfalwl.github.io/2020/10/29/Leetcode/1234/</loc>
     <lastmod>2020-10-29</lastmod>
   </url>
@@ -10,6 +14,10 @@
   </url>
   <url>
     <loc>https://aerfalwl.github.io/2020/10/28/Leetcode/826/</loc>
+    <lastmod>2020-10-28</lastmod>
+  </url>
+  <url>
+    <loc>https://aerfalwl.github.io/2020/10/28/Memory/Dynamic_memory_in_CPP/</loc>
     <lastmod>2020-10-28</lastmod>
   </url>
   <url>
