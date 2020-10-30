@@ -236,13 +236,13 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -381,6 +381,100 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2020/10/30/Memory/Dynamic_memory_in_CPP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="codefreestyle">
+      <meta itemprop="description" content="每天收获一点点">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/30/Memory/Dynamic_memory_in_CPP/" class="post-title-link" itemprop="url">C++六种内存模型</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2020-10-30 11:29:45 / 修改时间：22:58:21" itemprop="dateCreated datePublished" datetime="2020-10-30T11:29:45+08:00">2020-10-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Memory/" itemprop="url" rel="index"><span itemprop="name">Memory</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="C-内存模型"><a href="#C-内存模型" class="headerlink" title="C++内存模型"></a>C++内存模型</h2><p>C++规定了6种访存顺序</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> memory_order &#123;</span><br><span class="line">    memory_order_relaxed,</span><br><span class="line">    memory_order_consume,</span><br><span class="line">    memory_order_acquire,</span><br><span class="line">    memory_order_release,</span><br><span class="line">    memory_order_acq_rel,</span><br><span class="line">    memory_order_seq_cst</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这6种内存模型可以分为3类</p>
+<ol>
+<li>顺序一致性模型, memory_order_seq_cst</li>
+<li>Acquire-release模型，也称为获取释放内存模型。<ul>
+<li>memory_order_consume</li>
+<li>memory_order_acquire</li>
+<li>memory_order_release</li>
+<li>memory_order_acq_rel</li>
+</ul>
+</li>
+<li>Relax模型，即memory_order_relaxed，宽松的内存序列化模型</li>
+</ol>
+<h3 id="memory-order-relaxed"><a href="#memory-order-relaxed" class="headerlink" title="memory_order_relaxed"></a>memory_order_relaxed</h3><p>只保证当前操作的原子性，不考虑线程之间的同步，其它线程可以读到新值，也可以读到旧值。</p>
+<h3 id="memory-order-consume"><a href="#memory-order-consume" class="headerlink" title="memory_order_consume"></a>memory_order_consume</h3><h3 id="memory-order-acquire"><a href="#memory-order-acquire" class="headerlink" title="memory_order_acquire"></a>memory_order_acquire</h3><p>可以理解为mutex的lock操作。</p>
+<h3 id="memory-order-release"><a href="#memory-order-release" class="headerlink" title="memory_order_release"></a>memory_order_release</h3><p>可以理解为mutex的unlock操作。</p>
+<h3 id="memory-order-acq-rel"><a href="#memory-order-acq-rel" class="headerlink" title="memory_order_acq_rel"></a>memory_order_acq_rel</h3><p>对读取和写入施加acquire-release语句，无法被重排。</p>
+<p>可以看见其他线程施加release语义的所有写入，同时自己的release结束后所有写入对其施加acquire语义的线程可见。</p>
+<h3 id="memory-order-seq-cst"><a href="#memory-order-seq-cst" class="headerlink" title="memory_order_seq_cst"></a>memory_order_seq_cst</h3>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2020/10/29/Leetcode/1234/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -491,109 +585,6 @@
         <h2 class="post-title" itemprop="name headline">
           
             <a href="/2020/10/28/Leetcode/826/" class="post-title-link" itemprop="url">LeetCode 826. Most Profit Assigning Work</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2020-10-28 21:11:12 / 修改时间：22:03:42" itemprop="dateCreated datePublished" datetime="2020-10-28T21:11:12+08:00">2020-10-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/most-profit-assigning-work/">英文题目</a></p>
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/most-profit-assigning-work/">中文题目</a></p>
-<p>难度：中等</p>
-<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>说明：题目来自leetcode中文官网</p>
-<p>有一些工作：<code>difficulty[i]</code> 表示第 <code>i</code> 个工作的难度，<code>profit[i]</code> 表示第 <code>i</code> 个工作的收益。</p>
-<p>现在我们有一些工人。<code>worker[i]</code> 是第 <code>i</code> 个工人的能力，即该工人只能完成难度小于等于 <code>worker[i]</code> 的工作。</p>
-<p>每一个工人都最多只能安排一个工作，但是一个工作可以完成多次。</p>
-<p>举个例子，如果 3 个工人都尝试完成一份报酬为 1 的同样工作，那么总收益为 $3。如果一个工人不能完成任何工作，他的收益为 $0 。</p>
-<p>我们能得到的最大收益是多少？</p>
-<p><strong>示例：</strong></p>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: difficulty = [2,4,6,8,10], profit = [10,20,30,40,50], worker = [4,5,6,7]</span><br><span class="line">Output: 100 </span><br><span class="line">Explanation: Workers are assigned jobs of difficulty [4,4,6,6] and they get profit of [20,20,30,30] seperately.。</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>该题目分类属于中等题，且用two pointer进行解决。</p>
-<h4 id="思路一"><a href="#思路一" class="headerlink" title="思路一"></a>思路一</h4><p><strong>核心</strong>：找出每个工人能承受范围内工作的最大利润，求和即可。</p>
-<ol>
-<li>将所有job按照困难度从小到大排序，困难度相同时，按照利润从大到小排序。</li>
-<li>得到所有Job困难度下，能获得的最大利润。</li>
-<li>遍历worker，找到其能承受困难度下的最大利润，相加即可。</li>
-</ol>
-<p><strong>代码如下：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfitAssignment</span><span class="params">(<span class="keyword">int</span>[] d, <span class="keyword">int</span>[] p, <span class="keyword">int</span>[] w)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = d.length;</span><br><span class="line">        <span class="keyword">if</span> (len == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span>[][] a = <span class="keyword">new</span> <span class="keyword">int</span>[len][<span class="number">2</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            a[i][<span class="number">0</span>] = d[i];</span><br><span class="line">            a[i][<span class="number">1</span>] = p[i];</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 按照困难度从小到大排序</span></span><br><span class="line">        Arrays.sort(a, (m, n) -&gt; m[<span class="number">0</span>] == n[<span class="number">0</span>] ? n[<span class="number">1</span>] - m[<span class="number">1</span>] : m[<span class="number">0</span>] - n[<span class="number">0</span>]);</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 该困难度下的最高利润</span></span><br><span class="line">        <span class="keyword">int</span>[] maxP = <span class="keyword">new</span> <span class="keyword">int</span>[len];</span><br><span class="line">        </span><br><span class="line">        maxP[<span class="number">0</span>] = a[<span class="number">0</span>][<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> max = a[<span class="number">0</span>][<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;</span><br><span class="line">            max = Math.max(a[i][<span class="number">1</span>], max);</span><br><span class="line">            maxP[i] = max;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> job = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// worker按照其能承受困难强度从小到大排序</span></span><br><span class="line">        Arrays.sort(w);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 找到所有worker能承受困难下的最大利润</span></span><br><span class="line">        max = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; w.length; i++) &#123;</span><br><span class="line">            <span class="keyword">while</span> (job &lt; len) &#123;</span><br><span class="line">                <span class="keyword">if</span> (w[i] &gt;= a[job][<span class="number">0</span>]) &#123;</span><br><span class="line">                    max = maxP[job];</span><br><span class="line">                    job++;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            sum += max;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="思路二"><a href="#思路二" class="headerlink" title="思路二"></a>思路二</h4><p>利用DP的思想，dp[i]表示在worker能承受难度最大值为i时，其能获得的最大的利润。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxProfitAssignment</span><span class="params">(<span class="keyword">int</span>[] d, <span class="keyword">int</span>[] p, <span class="keyword">int</span>[] w)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = d.length;</span><br><span class="line">        <span class="keyword">if</span> (len == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> maxD = <span class="number">0</span>; <span class="comment">// 最大难度值</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : d) &#123;</span><br><span class="line">            maxD = Math.max(maxD, num);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// dp[i] 表示在难度为i时，能获得的最大利润</span></span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[maxD + <span class="number">1</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 首先将题目给的数填充进来</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            dp[d[i]] = Math.max(dp[d[i]], p[i]); </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> maxP = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">// 可能出现难度高，但是利润小的工作，因此需要遍历再次找出特定难度下能获得的最大利润</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= maxD; i++) &#123;</span><br><span class="line">            maxP = Math.max(maxP, dp[i]);</span><br><span class="line">            dp[i] = maxP;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> n : w) &#123;</span><br><span class="line">            <span class="keyword">if</span> (n &gt; maxD) &#123;</span><br><span class="line">                sum += maxP;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                sum += dp[n]; <span class="comment">//将所有的利润求和</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2020/10/28/Memory/Dynamic_memory_in_CPP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/header.jpg">
-      <meta itemprop="name" content="codefreestyle">
-      <meta itemprop="description" content="每天收获一点点">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sunshine">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/28/Memory/Dynamic_memory_in_CPP/" class="post-title-link" itemprop="url">LeetCode 826. Most Profit Assigning Work</a>
         </h2>
 
         <div class="post-meta-container">

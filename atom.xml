@@ -46,6 +46,34 @@
   </entry>
   
   <entry>
+    <title>C++六种内存模型</title>
+    <link href="https://aerfalwl.github.io/2020/10/30/Memory/Dynamic_memory_in_CPP/"/>
+    <id>https://aerfalwl.github.io/2020/10/30/Memory/Dynamic_memory_in_CPP/</id>
+    <published>2020-10-30T03:29:45.000Z</published>
+    <updated>2020-10-30T14:58:21.418Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;C-内存模型&quot;&gt;&lt;a href=&quot;#C-内存模型&quot; class=&quot;headerlink&quot; title=&quot;C++内存模型&quot;&gt;&lt;/a&gt;C++内存模型&lt;/h2&gt;&lt;p&gt;C++规定了6种访存顺序&lt;/p&gt;
+&lt;figure class=&quot;highlight</summary>
+        
+      
+    
+    
+    
+    <category term="Memory" scheme="https://aerfalwl.github.io/categories/Memory/"/>
+    
+    
+    <category term="C++" scheme="https://aerfalwl.github.io/tags/C/"/>
+    
+    <category term="Memory" scheme="https://aerfalwl.github.io/tags/Memory/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Leetcode 1234. Replace the Substring for Balanced String</title>
     <link href="https://aerfalwl.github.io/2020/10/29/Leetcode/1234/"/>
     <id>https://aerfalwl.github.io/2020/10/29/Leetcode/1234/</id>
@@ -76,35 +104,6 @@
     <title>LeetCode 826. Most Profit Assigning Work</title>
     <link href="https://aerfalwl.github.io/2020/10/28/Leetcode/826/"/>
     <id>https://aerfalwl.github.io/2020/10/28/Leetcode/826/</id>
-    <published>2020-10-28T13:11:12.000Z</published>
-    <updated>2020-10-28T14:03:42.920Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://aerfalwl.github.io/categories/leetcode/"/>
-    
-    
-    <category term="two pointer" scheme="https://aerfalwl.github.io/tags/two-pointer/"/>
-    
-    <category term="algorithm" scheme="https://aerfalwl.github.io/tags/algorithm/"/>
-    
-    <category term="dp" scheme="https://aerfalwl.github.io/tags/dp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 826. Most Profit Assigning Work</title>
-    <link href="https://aerfalwl.github.io/2020/10/28/Memory/Dynamic_memory_in_CPP/"/>
-    <id>https://aerfalwl.github.io/2020/10/28/Memory/Dynamic_memory_in_CPP/</id>
     <published>2020-10-28T13:11:12.000Z</published>
     <updated>2020-10-28T14:03:42.920Z</updated>
     

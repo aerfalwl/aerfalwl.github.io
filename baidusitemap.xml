@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://aerfalwl.github.io/2020/10/30/Memory/Dynamic_memory_in_CPP/</loc>
+    <lastmod>2020-10-30</lastmod>
+  </url>
+  <url>
     <loc>https://aerfalwl.github.io/2020/10/30/Leetcode/1616/</loc>
     <lastmod>2020-10-30</lastmod>
   </url>
@@ -14,10 +18,6 @@
   </url>
   <url>
     <loc>https://aerfalwl.github.io/2020/10/28/Leetcode/826/</loc>
-    <lastmod>2020-10-28</lastmod>
-  </url>
-  <url>
-    <loc>https://aerfalwl.github.io/2020/10/28/Memory/Dynamic_memory_in_CPP/</loc>
     <lastmod>2020-10-28</lastmod>
   </url>
   <url>
@@ -45,11 +45,11 @@
     <lastmod>2020-10-10</lastmod>
   </url>
   <url>
-    <loc>https://aerfalwl.github.io/2020/10/27/LinuxCmd/%E4%BD%BF%E7%94%A8GDB%E6%9F%A5%E7%9C%8Bcore%E6%96%87%E4%BB%B6/</loc>
+    <loc>https://aerfalwl.github.io/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/</loc>
     <lastmod>2020-10-10</lastmod>
   </url>
   <url>
-    <loc>https://aerfalwl.github.io/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/</loc>
+    <loc>https://aerfalwl.github.io/2020/10/27/LinuxCmd/%E4%BD%BF%E7%94%A8GDB%E6%9F%A5%E7%9C%8Bcore%E6%96%87%E4%BB%B6/</loc>
     <lastmod>2020-10-10</lastmod>
   </url>
   <url>
