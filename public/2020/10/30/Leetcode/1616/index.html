@@ -22,25 +22,23 @@
     var CONFIG = {"hostname":"aerfalwl.github.io","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="步骤 生成站点地图 1npm install hexo-generator-sitemap --save  修改配置文件_config.yml，添加如下内容： 123urlgoogle: https:&#x2F;&#x2F;xxx.github.io&#x2F; sitemap:  path: sitemap.xml  修改_config.xml，设置url为你的github.io 1url: https:&#x2F;&#x2F;xxx.gith">
+  <meta name="description" content="题目描述英文题目 中文题目 难度：中等 题意说明：题目来自leetcode中文官网 给你两个字符串 a 和 b ，它们长度相同。请你选择一个下标，将两个字符串都在 相同的下标 分割开。由 a 可以得到两个字符串： aprefix 和 asuffix ，满足 a &#x3D; aprefix + asuffix ，同理，由 b 可以得到两个字符串 bprefix 和 bsuffix ，满足 b &#x3D; bpref">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo 博客被google收录">
-<meta property="og:url" content="https://aerfalwl.github.io/2020/10/27/Config/hexo_google_site/index.html">
+<meta property="og:title" content="1616. Split Two Strings to Make Palindrome">
+<meta property="og:url" content="https://aerfalwl.github.io/2020/10/30/Leetcode/1616/index.html">
 <meta property="og:site_name" content="sunshine">
-<meta property="og:description" content="步骤 生成站点地图 1npm install hexo-generator-sitemap --save  修改配置文件_config.yml，添加如下内容： 123urlgoogle: https:&#x2F;&#x2F;xxx.github.io&#x2F; sitemap:  path: sitemap.xml  修改_config.xml，设置url为你的github.io 1url: https:&#x2F;&#x2F;xxx.gith">
+<meta property="og:description" content="题目描述英文题目 中文题目 难度：中等 题意说明：题目来自leetcode中文官网 给你两个字符串 a 和 b ，它们长度相同。请你选择一个下标，将两个字符串都在 相同的下标 分割开。由 a 可以得到两个字符串： aprefix 和 asuffix ，满足 a &#x3D; aprefix + asuffix ，同理，由 b 可以得到两个字符串 bprefix 和 bsuffix ，满足 b &#x3D; bpref">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://aerfalwl.github.io/2020/10/27/Config/hexo_google_site/first.png">
-<meta property="og:image" content="https://aerfalwl.github.io/2020/10/27/Config/hexo_google_site/add_sitemap.png">
-<meta property="article:published_time" content="2020-10-27T14:57:12.000Z">
-<meta property="article:modified_time" content="2020-10-29T01:41:57.685Z">
+<meta property="article:published_time" content="2020-10-30T14:43:24.000Z">
+<meta property="article:modified_time" content="2020-10-30T14:49:59.751Z">
 <meta property="article:author" content="codefreestyle">
-<meta property="article:tag" content="安装部署">
-<meta property="article:tag" content="配置">
+<meta property="article:tag" content="two pointer">
+<meta property="article:tag" content="algorithm">
+<meta property="article:tag" content="greedy">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://aerfalwl.github.io/2020/10/27/Config/hexo_google_site/first.png">
 
 
-<link rel="canonical" href="https://aerfalwl.github.io/2020/10/27/Config/hexo_google_site/">
+<link rel="canonical" href="https://aerfalwl.github.io/2020/10/30/Leetcode/1616/">
 
 
 <script class="page-configurations">
@@ -53,7 +51,7 @@
   };
 </script>
 
-  <title>hexo 博客被google收录 | sunshine</title>
+  <title>1616. Split Two Strings to Make Palindrome | sunshine</title>
   
 
 
@@ -220,7 +218,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.</span> <span class="nav-text">步骤</span></a></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F"><span class="nav-number">1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">1.2.</span> <span class="nav-text">解题思路</span></a></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -289,7 +287,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2020/10/27/Config/hexo_google_site/">
+    <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2020/10/30/Leetcode/1616/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
@@ -302,7 +300,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          hexo 博客被google收录
+          1616. Split Two Strings to Make Palindrome
         </h1>
 
         <div class="post-meta-container">
@@ -312,23 +310,17 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2020-10-27 22:57:12" itemprop="dateCreated datePublished" datetime="2020-10-27T22:57:12+08:00">2020-10-27</time>
+      <time title="创建时间：2020-10-30 22:43:24 / 修改时间：22:49:59" itemprop="dateCreated datePublished" datetime="2020-10-30T22:43:24+08:00">2020-10-30</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-10-29 09:41:57" itemprop="dateModified" datetime="2020-10-29T09:41:57+08:00">2020-10-29</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E9%85%8D%E7%BD%AE/" itemprop="url" rel="index"><span itemprop="name">配置</span></a>
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
         </span>
     </span>
 
@@ -349,52 +341,32 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
-<li><p>生成站点地图</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改配置文件_config.yml，添加如下内容：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">urlgoogle: https://xxx.github.io/ </span><br><span class="line">sitemap:</span><br><span class="line">  path: sitemap.xml</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改_config.xml，设置url为你的github.io</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url: https://xxx.github.io</span><br></pre></td></tr></table></figure>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/split-two-strings-to-make-palindrome/">英文题目</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/split-two-strings-to-make-palindrome/">中文题目</a></p>
+<p>难度：中等</p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>说明：题目来自leetcode中文官网</p>
+<p>给你两个字符串 a 和 b ，它们长度相同。请你选择一个下标，将两个字符串都在 相同的下标 分割开。由 a 可以得到两个字符串： aprefix 和 asuffix ，满足 a = aprefix + asuffix ，同理，由 b 可以得到两个字符串 bprefix 和 bsuffix ，满足 b = bprefix + bsuffix 。请你判断 aprefix + bsuffix 或者 bprefix + asuffix 能否构成回文串。</p>
+<p>当你将一个字符串 s 分割成 sprefix 和 ssuffix 时， ssuffix 或者 sprefix 可以为空。比方说， s = “abc” 那么 “” + “abc” ， “a” + “bc” ， “ab” + “c” 和 “abc” + “” 都是合法分割。</p>
+<p>如果 能构成回文字符串 ，那么请返回 true，否则返回 false 。</p>
+<p>请注意， x + y 表示连接字符串 x 和 y 。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">输入：a = &quot;x&quot;, b = &quot;y&quot;</span><br><span class="line">输出：true</span><br><span class="line">解释：如果 a 或者 b 是回文串，那么答案一定为 true ，因为你可以如下分割：</span><br><span class="line">aprefix = &quot;&quot;, asuffix = &quot;x&quot;</span><br><span class="line">bprefix = &quot;&quot;, bsuffix = &quot;y&quot;</span><br><span class="line">那么 aprefix + bsuffix = &quot;&quot; + &quot;y&quot; = &quot;y&quot; 是回文串。</span><br><span class="line"></span><br><span class="line">------------</span><br><span class="line">输入：a = &quot;ulacfd&quot;, b = &quot;jizalu&quot;</span><br><span class="line">输出：true</span><br><span class="line">解释：在下标为 3 处分割：</span><br><span class="line">aprefix = &quot;ula&quot;, asuffix = &quot;cfd&quot;</span><br><span class="line">bprefix = &quot;jiz&quot;, bsuffix = &quot;alu&quot;</span><br><span class="line">那么 aprefix + bsuffix = &quot;ula&quot; + &quot;alu&quot; = &quot;ulaalu&quot; 是回文串</span><br></pre></td></tr></table></figure>
 
 
 
-</li>
-</ol>
-<ol start="4">
-<li><p>添加站点，登录<a target="_blank" rel="noopener" href="https://www.google.com/webmasters/">Google 网站站长</a>，进入<code>Search Console</code>，进入如下页面</p>
-<p><img src="/2020/10/27/Config/hexo_google_site/first.png" alt="首页"></p>
-</li>
-<li><p>选择网址前缀，输入<a target="_blank" rel="noopener" href="https://xxx.github.io/">https://xxx.github.io</a></p>
-</li>
-<li><p>之后，下载Google验证文件，放在<code>theme/next/source</code>目录中。</p>
-</li>
-<li><p>生成robots.xt文件，在hexo的source目录下，放入如下内容：</p>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Allow: /</span><br><span class="line">Allow: /home/</span><br><span class="line">Allow: /archives/</span><br><span class="line">Allow: /categories/</span><br><span class="line">Allow: /tags/</span><br><span class="line"></span><br><span class="line">Disallow: /js/</span><br><span class="line">Disallow: /css/</span><br><span class="line">Disallow: /fonts/</span><br><span class="line"></span><br><span class="line">Sitemap: https://aerfalwl.github.io/sitemap.xml</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="8">
-<li><p>重新生成和部署</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>部署完成之后，进行验证即可，若操作无误，便会验证成功。</p>
-</li>
-<li><p>添加站点地图：</p>
-<p><img src="/2020/10/27/Config/hexo_google_site/add_sitemap.png" alt="添加站点地图"></p>
-</li>
-<li><p>为了加快Google扫描网站的速度，可以通过以下方式建立索引：</p>
-<ul>
-<li>在浏览器中输入<a target="_blank" rel="noopener" href="https://www.google.com/ping?sitemap=https://aerfalwl.github.io/sitemap.xml%E8%A6%81%E6%B1%82Google%E7%BB%99%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E7%B4%A2%E5%BC%95%EF%BC%9B">https://www.google.com/ping?sitemap=https://aerfalwl.github.io/sitemap.xml要求Google给网站建立索引；</a></li>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>该题目分类属于中等题，且用two pointer进行解决，核心思路见代码：</p>
+<ol>
+<li>如果a前缀加上b后缀为回文，则在遍历过程中，一定存在以下情况：<ul>
+<li>a的左指针，对称在b的右指针所指向的值是相等的，如果不相等，则它们之间的那一段必定是回文才能保证拼接之后是回文；</li>
 </ul>
 </li>
-<li><p>等待几分钟，在Google中搜索site:aerfalwl.github.io检验是否能看到网站内容。</p>
-</li>
+<li>反过来，对于b和a也是一样的。</li>
 </ol>
+<p><strong>代码如下：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkPalindromeFormation</span><span class="params">(String a, String b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> helper(a, b) || helper(b, a);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">helper</span><span class="params">(String a, String b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = a.length();</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = len - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (; i &lt; len; i++, j--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (a.charAt(i) != b.charAt(j)) &#123;</span><br><span class="line">                <span class="keyword">return</span> isP(a, i, j) || isP(b, i, j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isP</span><span class="params">(String s, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s.charAt(i) != s.charAt(j)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            i++;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 
     </div>
 
@@ -423,21 +395,22 @@
   </div>
 
           <div class="post-tags">
-              <a href="/tags/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/" rel="tag"># 安装部署</a>
-              <a href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag"># 配置</a>
+              <a href="/tags/two-pointer/" rel="tag"># two pointer</a>
+              <a href="/tags/algorithm/" rel="tag"># algorithm</a>
+              <a href="/tags/greedy/" rel="tag"># greedy</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2020/10/27/Leetcode/763/" rel="prev" title="763. Partition Labels">
-                  <i class="fa fa-chevron-left"></i> 763. Partition Labels
+                <a href="/2020/10/30/Memory/Dynamic_memory_in_CPP/" rel="prev" title="C++六种内存模型">
+                  <i class="fa fa-chevron-left"></i> C++六种内存模型
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2020/10/28/Config/hexo_with_image/" rel="next" title="hexo 插入图片">
-                  hexo 插入图片 <i class="fa fa-chevron-right"></i>
+                <a href="/2020/10/31/Leetcode/523/" rel="next" title="Leetcode 532. K-diff Pairs in an Array">
+                  Leetcode 532. K-diff Pairs in an Array <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
