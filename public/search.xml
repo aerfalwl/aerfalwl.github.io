@@ -668,4 +668,56 @@
         <tag>algorithm</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Leetcode 287. Find the Duplicate Number</title>
+    <url>/2020/11/02/Leetcode/287/</url>
+    <content><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://leetcode.com/problems/find-the-duplicate-number/">英文题目</a></p>
+<p><a href="https://leetcode-cn.com/problems/find-the-duplicate-number/">中文题目</a></p>
+<p>难度：中等</p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>给定一个包含<code>n+1</code>个数字的数组，该数组中所有数字都在范围<code>[1,n]</code>内，该数组中有且仅有一个数字出现了两次，求这个数字。</p>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>该数组可以等价为一个链表，数组中的每个元素等价为一个节点，每个节点的值得<code>nums[i]</code>，该节点的<code>next</code>值为<code>nums[nums[i]]</code>，即该节点的值为下一个节点在数组中的索引。这样，原本的数组就转换为了一个链表，对于链表中的每个节点，有</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Node n;</span><br><span class="line">n.val = nums[i];</span><br><span class="line">n.next = nums[n.val] <span class="comment">// 或者n.next = nums[num[i]]</span></span><br></pre></td></tr></table></figure>
+
+<p>以nums[0]为头节点，就能将这个数组转换为链表啦。当然，你也可以以任意一个节点为头节点，而不仅仅是Nums[0]。</p>
+<p>转换为链表之后，链表中必存在环，因为有数字出现了两次，出现了两次意味着它是两个节点的next节点，也就是该数字是环的起点。</p>
+<p><strong>例子一：</strong></p>
+<p>假设现在有数组</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">index: 0 1 2 3 4 </span><br><span class="line">value: 1 3 4 2 2</span><br></pre></td></tr></table></figure>
+
+<p>则以nums[0]为头节点，组成的链表为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1-&gt;3-&gt;2-&gt;4</span><br><span class="line">	  |__| </span><br></pre></td></tr></table></figure>
+
+<p>我们发现，2在数组中出现了两次，同时它也是环的起点。</p>
+<p><strong>例子二：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">index: 0 1 2 3 4</span><br><span class="line">value: 3 1 3 4 2</span><br></pre></td></tr></table></figure>
+
+<p>则以nums[0]为头节点，组成的链表为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">3-&gt;4-&gt;2</span><br><span class="line">|_____|   </span><br></pre></td></tr></table></figure>
+
+<p>同样，3出现了两次，它也是环的起点。</p>
+<h4 id="如何判断环状链表的起点"><a href="#如何判断环状链表的起点" class="headerlink" title="如何判断环状链表的起点"></a>如何判断环状链表的起点</h4><p><a href="https://aerfalwl.github.io/2020/11/01/Leetcode/142/">证明</a></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> slow = <span class="number">0</span>, fast = <span class="number">0</span>;</span><br><span class="line">        slow = nums[slow];</span><br><span class="line">        fast = nums[nums[fast]];</span><br><span class="line">        <span class="keyword">while</span> (slow != fast) &#123;</span><br><span class="line">            slow = nums[slow];</span><br><span class="line">            fast = nums[nums[fast]];</span><br><span class="line">        &#125;</span><br><span class="line">        slow = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (slow != fast) &#123;</span><br><span class="line">            slow = nums[slow];</span><br><span class="line">            fast = nums[fast];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> fast;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><strong>找环的起点：</strong></p>
+<ol>
+<li>两个指针：慢指针和快指针，慢指针一次走一步，快指针一次走两步。如果两个指针相遇，就是有环，如果两个指针不相遇，就是没环。</li>
+<li>将快指针放回链表起点，慢指针位置不变，两者都以慢速遍历指针，再次相遇的点即为环的起点。</li>
+</ol>
+<p><strong>数组</strong></p>
+<ol>
+<li>数组中的每个元素可以有两层含义<ul>
+<li>它可以作为一个值(value)</li>
+<li>该值也可以是数组的一个索引(index)</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>two pointer</tag>
+        <tag>algorithm</tag>
+      </tags>
+  </entry>
 </search>
