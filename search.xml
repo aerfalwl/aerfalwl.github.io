@@ -301,68 +301,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Summary of Two Pointer</title>
-    <url>/2020/11/03/LeetcodeSummary/TwoPointer/</url>
-    <content><![CDATA[<h3 id="Two-pointer解决套路"><a href="#Two-pointer解决套路" class="headerlink" title="Two pointer解决套路"></a>Two pointer解决套路</h3><p>Two pointer和滑动窗口差不多，其套路一般为：</p>
-<ol>
-<li>一个左指针，一个右指针。其中左指针用于缩小范围，右指针用于扩大搜索范围。一般求滑动窗口的最小值都是在缩小左指针的时候取得的。</li>
-<li>右指针扩展的条件时：只要当前还没有满足条件，就暴力增长，直到第一次满足条件为止。</li>
-<li>左指针收缩的条件：只要当前指针的缩小还没影响窗口的可满足性，就一直暴力向左增长。一但当前指针向前移动的时候影响了窗口的可满足性，就记录下当前的窗口大小，并更新目前为止满足条件的最小窗口记录。之后，再次扩展右指针，使得窗口满足题目的条件。</li>
-<li>以此类推即可。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>leetcode_summary</category>
-      </categories>
-      <tags>
-        <tag>leetcode_summary_two_pointer</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2020/10/27/LinuxCmd/20200814-%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE/</url>
-    <content><![CDATA[<h1 id="查看远程服务器的端口是否开放"><a href="#查看远程服务器的端口是否开放" class="headerlink" title="查看远程服务器的端口是否开放"></a>查看远程服务器的端口是否开放</h1><h2 id="1-nc（netcat）"><a href="#1-nc（netcat）" class="headerlink" title="1. nc（netcat）"></a>1. nc（netcat）</h2><p>nc是一个简单的Unix工具，使用TCP或者UDP协议读写网络连接上的数据。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc [OPTIONS...] [hostname] [port]</span><br></pre></td></tr></table></figure>
-
-<p>如果未开放，则会显示请求被拒绝。例如：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc node1 9100</span><br><span class="line"><span class="comment"># Ncat: Connection refused.</span></span><br></pre></td></tr></table></figure>
-
-<p>如果指定端口开放，则会显示连接成功。例如：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc node1 9100</span><br><span class="line"><span class="comment"># Ncat: Connection succeeded</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-telnet"><a href="#2-telnet" class="headerlink" title="2. telnet"></a>2. telnet</h2><p>命令格式</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">telnet [HostName or IP] [PortNumber]</span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2020/10/27/LinuxCmd/20200814netstat/</url>
-    <content><![CDATA[<h1 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h1><p>查看所有在监听的端口</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -ntlp</span><br></pre></td></tr></table></figure>
-
-<p>待整理</p>
-]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2020/10/27/LinuxCmd/%E4%BD%BF%E7%94%A8GDB%E6%9F%A5%E7%9C%8Bcore%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<h1 id="2-使用GDB查看core文件"><a href="#2-使用GDB查看core文件" class="headerlink" title="2 使用GDB查看core文件"></a>2 使用GDB查看core文件</h1><p>默认编译出来的程序在出现Segmentation fault 时并没有生成core崩溃文件，可以在gcc/g++编译时增加-g选项。</p>
-<p>如果仍然没有生成core文件，则可能是因为系统设置了core文件大小为0，可以通过：<code>ulimit -a</code> 查询得知。</p>
-<p>执行 <code>ulimit -c unlimited</code> 命令后可以使core文件大小不受限制。此时再次运行程序应该就能在同级目录看到<code>core.XXX</code>文件了</p>
-<p>使用 <code>gdb ./a.out core.XXX</code> 可以查看出错所在行信息，这样就进入了 gdb core 调试模式。</p>
-<p>追踪产生segmenttation fault的位置及代码函数调用情况：</p>
-<p><code>gdb&gt;bt</code></p>
-<p>这样，一般就可以看到出错的代码是哪一句了，还可以打印出相应变量的数值，进行进一步分析。</p>
-<p><a href="https://www.cnblogs.com/kuliuheng/p/11698378.html#_labelTop">返回目录</a></p>
-<h1 id="3-使用GDB调试程序"><a href="#3-使用GDB调试程序" class="headerlink" title="3 使用GDB调试程序"></a><strong>3 使用GDB调试程序</strong></h1><p>如上述流程不能解决问题，下面可使用gdb单步调试程序。重新编译程序，编译命令中加入-g。如：</p>
-<p>gcc -lm -O3 -g file.c -o file<br>之后使用gdb命令</p>
-<p><code>gdb file</code><br>开始调试。</p>
-<p>输入<code>start</code>使程序运行到<code>main</code>中第一行运行代码。<code>next</code>或者n为执行下一行程序，<code>until xx</code>执行到xx行，print或p可输出变量值，<code>b xx</code>用于在xx行设置断点，<code>run</code>或<code>r</code>用于执行程序至下一断点，<code>d xx</code>删除xx行断点。</p>
-<p>我们可以先run一遍程序，这时它会提示出错行信息。然后<code>until</code>到出错行前5行，交替执行<code>next</code>和<code>print</code>，输出与出错行变量相关变量或指针的值。最终定位出错的根本操作在哪一行。修改之即可。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>Leetcode 1234. Replace the Substring for Balanced String</title>
     <url>/2020/10/29/Leetcode/1234/</url>
     <content><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://leetcode.com/problems/replace-the-substring-for-balanced-string/">英文题目</a></p>
@@ -465,44 +403,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode 532. K-diff Pairs in an Array</title>
-    <url>/2020/10/31/Leetcode/523/</url>
-    <content><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://leetcode.com/problems/k-diff-pairs-in-an-array/">英文题目</a></p>
-<p><a href="https://leetcode-cn.com/problems/k-diff-pairs-in-an-array/">中文题目</a></p>
-<p>难度：中等</p>
-<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>说明：题目来自leetcode中文官网</p>
-<p>给定一个整数数组和一个整数 k，你需要在数组里找到不同的 k-diff 数对，并返回不同的 k-diff 数对 的数目。</p>
-<p>这里将 k-diff 数对定义为一个整数对 (nums[i], nums[j])，并满足下述全部条件：</p>
-<p>0 &lt;= i, j &lt; nums.length<br>i != j<br>|nums[i] - nums[j]| == k<br>注意，|val| 表示 val 的绝对值。</p>
-<p><strong>示例：</strong></p>
-<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：nums = [3, 1, 4, 1, 5], k = 2</span><br><span class="line">输出：2</span><br><span class="line">解释：数组中有两个 2-diff 数对, (1, 3) 和 (3, 5)。</span><br><span class="line">尽管数组中有两个1，但我们只应返回不同的数对的数量。</span><br><span class="line"></span><br><span class="line">------------</span><br><span class="line">输入：nums = [1, 2, 3, 4, 5], k = 1</span><br><span class="line">输出：4</span><br><span class="line">解释：数组中有四个 1-diff 数对, (1, 2), (2, 3), (3, 4) 和 (4, 5)。</span><br><span class="line"></span><br><span class="line">-------------</span><br><span class="line">输入：nums = [1, 3, 1, 5, 4], k = 0</span><br><span class="line">输出：1</span><br><span class="line">解释：数组中只有一个 0-diff 数对，(1, 1)。</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>该题目分类属于中等题，且用two pointer进行解决，核心思路见代码：</p>
-<ol>
-<li>数组排序</li>
-<li>前后两个指针遍历数组，如果当前指针所指的差值等于k，则是我们想要的答案，需要注意的地方是 ：<ul>
-<li>题目要求找到唯一的数组对，因此，排序之后相同的数字会排在一起，这里需要跳过重复的数字</li>
-<li>k为0的情况，注意别让两个指针重合了</li>
-</ul>
-</li>
-</ol>
-<p><strong>代码如下：</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findPairs</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span> || nums.length == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> r = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (r &lt; len) &#123;</span><br><span class="line">            <span class="keyword">int</span> lv = nums[l];</span><br><span class="line">            <span class="keyword">int</span> rv = nums[r];</span><br><span class="line">            <span class="keyword">if</span> (rv - lv == k) &#123;</span><br><span class="line">                ans++;</span><br><span class="line">                <span class="keyword">int</span> preL = lv;</span><br><span class="line">                <span class="keyword">int</span> preR = rv;</span><br><span class="line">                <span class="keyword">while</span>((r + <span class="number">1</span> &lt; len) &amp;&amp; nums[++r] == preR) &#123;&#125; <span class="comment">// 跳过重复数字</span></span><br><span class="line">                <span class="keyword">while</span>((l + <span class="number">1</span> &lt; len) &amp;&amp; nums[++l] == preL) &#123;&#125; <span class="comment">// 跳过重复数字</span></span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (rv - lv &lt; k) &#123;</span><br><span class="line">                r++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (rv - lv &gt; k) &#123;</span><br><span class="line">                l++;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (l == r) r = l + <span class="number">1</span>; <span class="comment">// 避免k=0时，左右指针重合的情况</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> ans;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>two pointer</tag>
-        <tag>algorithm</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode 287. Find the Duplicate Number</title>
     <url>/2020/11/02/Leetcode/287/</url>
     <content><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://leetcode.com/problems/find-the-duplicate-number/">英文题目</a></p>
@@ -545,6 +445,44 @@
 </ul>
 </li>
 </ol>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>two pointer</tag>
+        <tag>algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode 532. K-diff Pairs in an Array</title>
+    <url>/2020/10/31/Leetcode/523/</url>
+    <content><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://leetcode.com/problems/k-diff-pairs-in-an-array/">英文题目</a></p>
+<p><a href="https://leetcode-cn.com/problems/k-diff-pairs-in-an-array/">中文题目</a></p>
+<p>难度：中等</p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>说明：题目来自leetcode中文官网</p>
+<p>给定一个整数数组和一个整数 k，你需要在数组里找到不同的 k-diff 数对，并返回不同的 k-diff 数对 的数目。</p>
+<p>这里将 k-diff 数对定义为一个整数对 (nums[i], nums[j])，并满足下述全部条件：</p>
+<p>0 &lt;= i, j &lt; nums.length<br>i != j<br>|nums[i] - nums[j]| == k<br>注意，|val| 表示 val 的绝对值。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">输入：nums = [3, 1, 4, 1, 5], k = 2</span><br><span class="line">输出：2</span><br><span class="line">解释：数组中有两个 2-diff 数对, (1, 3) 和 (3, 5)。</span><br><span class="line">尽管数组中有两个1，但我们只应返回不同的数对的数量。</span><br><span class="line"></span><br><span class="line">------------</span><br><span class="line">输入：nums = [1, 2, 3, 4, 5], k = 1</span><br><span class="line">输出：4</span><br><span class="line">解释：数组中有四个 1-diff 数对, (1, 2), (2, 3), (3, 4) 和 (4, 5)。</span><br><span class="line"></span><br><span class="line">-------------</span><br><span class="line">输入：nums = [1, 3, 1, 5, 4], k = 0</span><br><span class="line">输出：1</span><br><span class="line">解释：数组中只有一个 0-diff 数对，(1, 1)。</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>该题目分类属于中等题，且用two pointer进行解决，核心思路见代码：</p>
+<ol>
+<li>数组排序</li>
+<li>前后两个指针遍历数组，如果当前指针所指的差值等于k，则是我们想要的答案，需要注意的地方是 ：<ul>
+<li>题目要求找到唯一的数组对，因此，排序之后相同的数字会排在一起，这里需要跳过重复的数字</li>
+<li>k为0的情况，注意别让两个指针重合了</li>
+</ul>
+</li>
+</ol>
+<p><strong>代码如下：</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findPairs</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span> || nums.length == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> r = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (r &lt; len) &#123;</span><br><span class="line">            <span class="keyword">int</span> lv = nums[l];</span><br><span class="line">            <span class="keyword">int</span> rv = nums[r];</span><br><span class="line">            <span class="keyword">if</span> (rv - lv == k) &#123;</span><br><span class="line">                ans++;</span><br><span class="line">                <span class="keyword">int</span> preL = lv;</span><br><span class="line">                <span class="keyword">int</span> preR = rv;</span><br><span class="line">                <span class="keyword">while</span>((r + <span class="number">1</span> &lt; len) &amp;&amp; nums[++r] == preR) &#123;&#125; <span class="comment">// 跳过重复数字</span></span><br><span class="line">                <span class="keyword">while</span>((l + <span class="number">1</span> &lt; len) &amp;&amp; nums[++l] == preL) &#123;&#125; <span class="comment">// 跳过重复数字</span></span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (rv - lv &lt; k) &#123;</span><br><span class="line">                r++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (rv - lv &gt; k) &#123;</span><br><span class="line">                l++;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (l == r) r = l + <span class="number">1</span>; <span class="comment">// 避免k=0时，左右指针重合的情况</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> ans;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 ]]></content>
       <categories>
         <category>leetcode</category>
@@ -714,30 +652,65 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Summary of Two Pointer</title>
+    <url>/2020/11/03/LeetcodeSummary/TwoPointer/</url>
+    <content><![CDATA[<h3 id="Two-pointer解决套路"><a href="#Two-pointer解决套路" class="headerlink" title="Two pointer解决套路"></a>Two pointer解决套路</h3><p>Two pointer和滑动窗口差不多，其套路一般为：</p>
+<ol>
+<li>一个左指针，一个右指针。其中左指针用于缩小范围，右指针用于扩大搜索范围。一般求滑动窗口的最小值都是在缩小左指针的时候取得的。</li>
+<li>右指针扩展的条件时：只要当前还没有满足条件，就暴力增长，直到第一次满足条件为止。</li>
+<li>左指针收缩的条件：只要当前指针的缩小还没影响窗口的可满足性，就一直暴力向左增长。一但当前指针向前移动的时候影响了窗口的可满足性，就记录下当前的窗口大小，并更新目前为止满足条件的最小窗口记录。之后，再次扩展右指针，使得窗口满足题目的条件。</li>
+<li>以此类推即可。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>leetcode_summary</category>
+      </categories>
+      <tags>
+        <tag>leetcode_summary_two_pointer</tag>
+      </tags>
+  </entry>
+  <entry>
     <title></title>
-    <url>/2020/10/27/Socket/2020-09-21-TCP%E6%9C%80%E5%A4%A7%E8%BF%9E%E6%8E%A5%E6%95%B0/</url>
-    <content><![CDATA[<h1 id="TCP-最大连接数为28232"><a href="#TCP-最大连接数为28232" class="headerlink" title="TCP 最大连接数为28232"></a>TCP 最大连接数为28232</h1><p>Linux对外的端口分配是有一定限制的，默认不超过28232个。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /proc/sys/net/ipv4/ip_local_range</span><br><span class="line"><span class="meta">#</span><span class="bash"> 输出为</span></span><br><span class="line">32768 60999</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p>两个数字相减刚好为28232。如果要对其范围进行修改，可将两个数字更改为10000 65535，注意用户可用端口方位为1024~65535.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo &quot;10000 65535&quot; &gt; /proc/sys/net/ipv4/ip_local_port_range</span><br><span class="line">sysctl -p	</span><br></pre></td></tr></table></figure>
-
-<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>快速回收端口</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/sysctl.conf</span><br><span class="line"><span class="meta">#</span><span class="bash"> 末尾添加上</span></span><br><span class="line">net.ipv4.tcp_tw_recycle=1</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
-
-<h2 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h2><p>系统在高并发短连接的情况下，会出现大量处于TIME_WAIT的SOCKET。</p>
-<p>这里短连接是指：<strong>业务处理+传输数据的时间 远远小于 TIMEWAIT超时的时间”的连接</strong></p>
+    <url>/2020/10/27/LinuxCmd/%E4%BD%BF%E7%94%A8GDB%E6%9F%A5%E7%9C%8Bcore%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="2-使用GDB查看core文件"><a href="#2-使用GDB查看core文件" class="headerlink" title="2 使用GDB查看core文件"></a>2 使用GDB查看core文件</h1><p>默认编译出来的程序在出现Segmentation fault 时并没有生成core崩溃文件，可以在gcc/g++编译时增加-g选项。</p>
+<p>如果仍然没有生成core文件，则可能是因为系统设置了core文件大小为0，可以通过：<code>ulimit -a</code> 查询得知。</p>
+<p>执行 <code>ulimit -c unlimited</code> 命令后可以使core文件大小不受限制。此时再次运行程序应该就能在同级目录看到<code>core.XXX</code>文件了</p>
+<p>使用 <code>gdb ./a.out core.XXX</code> 可以查看出错所在行信息，这样就进入了 gdb core 调试模式。</p>
+<p>追踪产生segmenttation fault的位置及代码函数调用情况：</p>
+<p><code>gdb&gt;bt</code></p>
+<p>这样，一般就可以看到出错的代码是哪一句了，还可以打印出相应变量的数值，进行进一步分析。</p>
+<p><a href="https://www.cnblogs.com/kuliuheng/p/11698378.html#_labelTop">返回目录</a></p>
+<h1 id="3-使用GDB调试程序"><a href="#3-使用GDB调试程序" class="headerlink" title="3 使用GDB调试程序"></a><strong>3 使用GDB调试程序</strong></h1><p>如上述流程不能解决问题，下面可使用gdb单步调试程序。重新编译程序，编译命令中加入-g。如：</p>
+<p>gcc -lm -O3 -g file.c -o file<br>之后使用gdb命令</p>
+<p><code>gdb file</code><br>开始调试。</p>
+<p>输入<code>start</code>使程序运行到<code>main</code>中第一行运行代码。<code>next</code>或者n为执行下一行程序，<code>until xx</code>执行到xx行，print或p可输出变量值，<code>b xx</code>用于在xx行设置断点，<code>run</code>或<code>r</code>用于执行程序至下一断点，<code>d xx</code>删除xx行断点。</p>
+<p>我们可以先run一遍程序，这时它会提示出错行信息。然后<code>until</code>到出错行前5行，交替执行<code>next</code>和<code>print</code>，输出与出错行变量相关变量或指针的值。最终定位出错的根本操作在哪一行。修改之即可。</p>
 ]]></content>
   </entry>
   <entry>
     <title></title>
-    <url>/2020/10/27/Socket/20200914-socket_close_shutdown/</url>
-    <content><![CDATA[<h1 id="Socket-之Close与Shutdown"><a href="#Socket-之Close与Shutdown" class="headerlink" title="Socket 之Close与Shutdown"></a>Socket 之Close与Shutdown</h1><h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ol>
-<li>close会释放文件句柄，而shutdown不会。</li>
-<li>close把描述符的引用计数减1，仅在该计数变为0时关闭套接字。shutdown可以不管引用计数就激发TCP的正常连接终止序列，因此在多进程环境中：close()是关闭本进程的socket id，但链接还是开着的，用这个socket id的其它进程还能用这个链接，能读或写这个socket id，而shutdown执行的操作对所有进程有效。</li>
-</ol>
-<h2 id="Strace"><a href="#Strace" class="headerlink" title="Strace"></a>Strace</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">strace ./exec</span><br></pre></td></tr></table></figure>
+    <url>/2020/10/27/LinuxCmd/20200814-%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE/</url>
+    <content><![CDATA[<h1 id="查看远程服务器的端口是否开放"><a href="#查看远程服务器的端口是否开放" class="headerlink" title="查看远程服务器的端口是否开放"></a>查看远程服务器的端口是否开放</h1><h2 id="1-nc（netcat）"><a href="#1-nc（netcat）" class="headerlink" title="1. nc（netcat）"></a>1. nc（netcat）</h2><p>nc是一个简单的Unix工具，使用TCP或者UDP协议读写网络连接上的数据。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc [OPTIONS...] [hostname] [port]</span><br></pre></td></tr></table></figure>
 
+<p>如果未开放，则会显示请求被拒绝。例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc node1 9100</span><br><span class="line"><span class="comment"># Ncat: Connection refused.</span></span><br></pre></td></tr></table></figure>
+
+<p>如果指定端口开放，则会显示连接成功。例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc node1 9100</span><br><span class="line"><span class="comment"># Ncat: Connection succeeded</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-telnet"><a href="#2-telnet" class="headerlink" title="2. telnet"></a>2. telnet</h2><p>命令格式</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">telnet [HostName or IP] [PortNumber]</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2020/10/27/LinuxCmd/20200814netstat/</url>
+    <content><![CDATA[<h1 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h1><p>查看所有在监听的端口</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -ntlp</span><br></pre></td></tr></table></figure>
+
+<p>待整理</p>
 ]]></content>
   </entry>
   <entry>
@@ -771,5 +744,32 @@
         <tag>C++</tag>
         <tag>Memory</tag>
       </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2020/10/27/Socket/2020-09-21-TCP%E6%9C%80%E5%A4%A7%E8%BF%9E%E6%8E%A5%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="TCP-最大连接数为28232"><a href="#TCP-最大连接数为28232" class="headerlink" title="TCP 最大连接数为28232"></a>TCP 最大连接数为28232</h1><p>Linux对外的端口分配是有一定限制的，默认不超过28232个。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /proc/sys/net/ipv4/ip_local_range</span><br><span class="line"><span class="meta">#</span><span class="bash"> 输出为</span></span><br><span class="line">32768 60999</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p>两个数字相减刚好为28232。如果要对其范围进行修改，可将两个数字更改为10000 65535，注意用户可用端口方位为1024~65535.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo &quot;10000 65535&quot; &gt; /proc/sys/net/ipv4/ip_local_port_range</span><br><span class="line">sysctl -p	</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>快速回收端口</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/sysctl.conf</span><br><span class="line"><span class="meta">#</span><span class="bash"> 末尾添加上</span></span><br><span class="line">net.ipv4.tcp_tw_recycle=1</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+
+<h2 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h2><p>系统在高并发短连接的情况下，会出现大量处于TIME_WAIT的SOCKET。</p>
+<p>这里短连接是指：<strong>业务处理+传输数据的时间 远远小于 TIMEWAIT超时的时间”的连接</strong></p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2020/10/27/Socket/20200914-socket_close_shutdown/</url>
+    <content><![CDATA[<h1 id="Socket-之Close与Shutdown"><a href="#Socket-之Close与Shutdown" class="headerlink" title="Socket 之Close与Shutdown"></a>Socket 之Close与Shutdown</h1><h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ol>
+<li>close会释放文件句柄，而shutdown不会。</li>
+<li>close把描述符的引用计数减1，仅在该计数变为0时关闭套接字。shutdown可以不管引用计数就激发TCP的正常连接终止序列，因此在多进程环境中：close()是关闭本进程的socket id，但链接还是开着的，用这个socket id的其它进程还能用这个链接，能读或写这个socket id，而shutdown执行的操作对所有进程有效。</li>
+</ol>
+<h2 id="Strace"><a href="#Strace" class="headerlink" title="Strace"></a>Strace</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">strace ./exec</span><br></pre></td></tr></table></figure>
+
+]]></content>
   </entry>
 </search>
