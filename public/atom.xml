@@ -6,7 +6,7 @@
   <link href="https://aerfalwl.github.io/atom.xml" rel="self"/>
   
   <link href="https://aerfalwl.github.io/"/>
-  <updated>2020-11-03T12:38:33.543Z</updated>
+  <updated>2020-11-03T12:44:28.436Z</updated>
   <id>https://aerfalwl.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Summary of Two Pointer</title>
+    <link href="https://aerfalwl.github.io/2020/11/03/LeetcodeSummary/TwoPointer/"/>
+    <id>https://aerfalwl.github.io/2020/11/03/LeetcodeSummary/TwoPointer/</id>
+    <published>2020-11-03T12:44:38.000Z</published>
+    <updated>2020-11-03T12:44:28.436Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;Two-pointer解决套路&quot;&gt;&lt;a href=&quot;#Two-pointer解决套路&quot; class=&quot;headerlink&quot; title=&quot;Two pointer解决套路&quot;&gt;&lt;/a&gt;Two pointer解决套路&lt;/h3&gt;&lt;p&gt;Two</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode_summary" scheme="https://aerfalwl.github.io/categories/leetcode-summary/"/>
+    
+    
+    <category term="leetcode_summary_two_pointer" scheme="https://aerfalwl.github.io/tags/leetcode-summary-two-pointer/"/>
+    
+  </entry>
   
   <entry>
     <title>Leetcode 567. Permutation in String</title>
@@ -492,27 +517,6 @@
         
         
     <summary type="html">&lt;h2 id=&quot;Kafka与Broker不同&quot;&gt;&lt;a href=&quot;#Kafka与Broker不同&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://aerfalwl.github.io/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/"/>
-    <id>https://aerfalwl.github.io/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/</id>
-    <published>2020-10-27T02:11:32.033Z</published>
-    <updated>2020-10-10T01:08:41.754Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;初识Kafka&quot;&gt;&lt;a href=&quot;#初识Kafka&quot; class=&quot;headerlink&quot; title=&quot;初识Kafka&quot;&gt;&lt;/a&gt;初识Kafka&lt;/h1&gt;&lt;h2 id=&quot;Feture&quot;&gt;&lt;a href=&quot;#Feture&quot; class=&quot;headerlink&quot;</summary>
         
       
     
