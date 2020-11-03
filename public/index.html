@@ -229,7 +229,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -281,6 +281,102 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2020/11/03/Leetcode/567/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="codefreestyle">
+      <meta itemprop="description" content="每天收获一点点">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/03/Leetcode/567/" class="post-title-link" itemprop="url">Leetcode 567. Permutation in String</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2020-11-03 20:27:49 / 修改时间：20:38:33" itemprop="dateCreated datePublished" datetime="2020-11-03T20:27:49+08:00">2020-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/permutation-in-string/">英文题目</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/permutation-in-string/">中文题目</a></p>
+<p>难度：中等</p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>题目给出两个字符串<code>s1</code>和<code>s2</code>，返回<code>s1</code>的全排列之一是否是<code>s2</code>的子集。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: s1 = &quot;ab&quot; s2 = &quot;eidbaooo&quot;</span><br><span class="line">Output: True</span><br><span class="line">Explanation: s2 contains one permutation of s1 (&quot;ba&quot;).</span><br><span class="line"></span><br><span class="line">------------</span><br><span class="line">Input:s1= &quot;ab&quot; s2 = &quot;eidboaoo&quot;</span><br><span class="line">Output: False</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>该题目分类属于中等题，且用two pointer进行解决，核心思路：</p>
+<ol>
+<li>如果字符串<code>a</code>是字符串<code>b</code>的subtring，则<code>b</code>字符串其中的一段，一定和a的长度相等；</li>
+<li>a的全排列，就是将a中字符全部打乱，任意排列；且全排列不会更改字符串中字符出现的次数；</li>
+</ol>
+<p>因此，在代码中：</p>
+<pre><code>1. 计算`s1`中每个字符出现的个数，保存在数组中；
+ 2. 两个指针遍历`s2`，假设两个指针之间形成的字符串为`tmpS`，若`tmpS`中每个字符的个数和`s1`中每个字符出现的个数相等，则返回`true`，遍历结束也没满足条件，返回false；</code></pre>
+<p><strong>代码如下：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkInclusion</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len1 = s1.length();</span><br><span class="line">        <span class="keyword">int</span> len2 = s2.length();</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> s : s1.toCharArray()) &#123;</span><br><span class="line">            dp[s - <span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> need = len1;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (right &lt; len2) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s2.charAt(right);</span><br><span class="line">            <span class="keyword">if</span> (dp[c - <span class="string">&#x27;a&#x27;</span>] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                dp[c - <span class="string">&#x27;a&#x27;</span>]--;</span><br><span class="line">                need--;</span><br><span class="line">                right++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (dp[c - <span class="string">&#x27;a&#x27;</span>] &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">                dp[s2.charAt(left) - <span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">                left++;</span><br><span class="line">                need++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (need == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2020/11/02/Leetcode/287/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -307,7 +403,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2020-11-02 00:17:25 / 修改时间：00:18:05" itemprop="dateCreated datePublished" datetime="2020-11-02T00:17:25+08:00">2020-11-02</time>
+      <time title="创建时间：2020-11-02 00:17:25 / 修改时间：00:18:53" itemprop="dateCreated datePublished" datetime="2020-11-02T00:17:25+08:00">2020-11-02</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -1192,114 +1288,10 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2020/10/27/Leetcode/763/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/header.jpg">
-      <meta itemprop="name" content="codefreestyle">
-      <meta itemprop="description" content="每天收获一点点">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sunshine">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/27/Leetcode/763/" class="post-title-link" itemprop="url">763. Partition Labels</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2020-10-27 21:36:28 / 修改时间：21:51:43" itemprop="dateCreated datePublished" datetime="2020-10-27T21:36:28+08:00">2020-10-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/partition-labels/">英文题目</a></p>
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/partition-labels/">中文题目</a></p>
-<p>难度：中等</p>
-<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>说明：题目来自leetcode中文官网</p>
-<p>字符串 <code>S</code> 由小写字母组成。我们要把这个字符串划分为尽可能多的片段，同一字母最多出现在一个片段中。返回一个表示每个字符串片段的长度的列表。</p>
-<p><strong>示例：</strong></p>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">输入：S = &quot;ababcbacadefegdehijhklij&quot;</span><br><span class="line">输出：[9,7,8]</span><br><span class="line">解释：</span><br><span class="line">划分结果为 &quot;ababcbaca&quot;, &quot;defegde&quot;, &quot;hijhklij&quot;。</span><br><span class="line">每个字母最多出现在一个片段中。</span><br><span class="line">像 &quot;ababcbacadefegde&quot;, &quot;hijhklij&quot; 的划分是错误的，因为划分的片段数较少。</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>该题目分类属于中等题，且用two pointer进行解决。</p>
-<p>即首先找到每个字母最后出现的位置，之后划分段的时候，确保该段内每个字母出现的最右值的位置在该段内。不太好描述，直接看代码。</p>
-<p><strong>代码如下：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">partitionLabels</span><span class="params">(String S)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(S.length() &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        List&lt;Integer&gt; ans = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">char</span>[] s = S.toCharArray();</span><br><span class="line">        <span class="keyword">int</span> len = s.length;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span>[] max = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> curr = s[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">            <span class="keyword">if</span> (max[curr] &lt; i) max[curr] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>, right = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (right &lt; len) &#123;</span><br><span class="line">            <span class="keyword">int</span> maxRight = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (right &lt; len) &#123;</span><br><span class="line">                <span class="keyword">int</span> curr = max[s[right] - <span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">                <span class="keyword">if</span> (maxRight &lt; curr) maxRight = curr;</span><br><span class="line">                <span class="keyword">if</span> (right == maxRight) &#123;</span><br><span class="line">                    ans.add(right - left + <span class="number">1</span>);</span><br><span class="line">                    left = right + <span class="number">1</span>;</span><br><span class="line">                    right++;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                right++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (left != right) &#123;</span><br><span class="line">            ans.add(right - left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-<h3 id="Two-pointer解决套路"><a href="#Two-pointer解决套路" class="headerlink" title="Two pointer解决套路"></a>Two pointer解决套路</h3><p>Two pointer和滑动窗口差不多，其套路一般为：</p>
-<ol>
-<li>一个左指针，一个右指针。其中左指针用于缩小范围，右指针用于扩大搜索范围。一般求滑动窗口的最小值都是在缩小左指针的时候取得的。</li>
-<li>右指针扩展的条件时：只要当前还没有满足条件，就暴力增长，直到第一次满足条件为止。</li>
-<li>左指针收缩的条件：只要当前指针的缩小还没影响窗口的可满足性，就一直暴力向左增长。一但当前指针向前移动的时候影响了窗口的可满足性，就记录下当前的窗口大小，并更新目前为止满足条件的最小窗口记录。之后，再次扩展右指针，使得窗口满足题目的条件。</li>
-<li>以此类推即可。</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
