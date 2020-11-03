@@ -200,6 +200,13 @@
   </url>
   
   <url>
+    <loc>https://aerfalwl.github.io/tags/leetcode-summary-two-pointer/</loc>
+    <lastmod>2020-11-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://aerfalwl.github.io/tags/two-pointer/</loc>
     <lastmod>2020-11-03</lastmod>
     <changefreq>daily</changefreq>
@@ -241,17 +248,17 @@
     <priority>0.6</priority>
   </url>
   
+
+  
   <url>
-    <loc>https://aerfalwl.github.io/tags/leetcode-summary-two-pointer/</loc>
+    <loc>https://aerfalwl.github.io/categories/%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2020-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
-
-  
   <url>
-    <loc>https://aerfalwl.github.io/categories/%E9%85%8D%E7%BD%AE/</loc>
+    <loc>https://aerfalwl.github.io/categories/leetcode-summary/</loc>
     <lastmod>2020-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -266,13 +273,6 @@
   
   <url>
     <loc>https://aerfalwl.github.io/categories/Memory/</loc>
-    <lastmod>2020-11-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://aerfalwl.github.io/categories/leetcode-summary/</loc>
     <lastmod>2020-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
