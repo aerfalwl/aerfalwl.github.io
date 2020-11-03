@@ -228,6 +228,13 @@
   </url>
   
   <url>
+    <loc>https://aerfalwl.github.io/tags/leetcode-summary/</loc>
+    <lastmod>2020-11-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://aerfalwl.github.io/tags/C/</loc>
     <lastmod>2020-11-03</lastmod>
     <changefreq>daily</changefreq>
@@ -236,13 +243,6 @@
   
   <url>
     <loc>https://aerfalwl.github.io/tags/Memory/</loc>
-    <lastmod>2020-11-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://aerfalwl.github.io/tags/leetcode-summary/</loc>
     <lastmod>2020-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

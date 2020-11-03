@@ -455,6 +455,40 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode 567. Permutation in String</title>
+    <url>/2020/11/03/Leetcode/567/</url>
+    <content><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://leetcode.com/problems/permutation-in-string/">英文题目</a></p>
+<p><a href="https://leetcode-cn.com/problems/permutation-in-string/">中文题目</a></p>
+<p>难度：中等</p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>题目给出两个字符串<code>s1</code>和<code>s2</code>，返回<code>s1</code>的全排列之一是否是<code>s2</code>的子集。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">Input: s1 = &quot;ab&quot; s2 = &quot;eidbaooo&quot;</span><br><span class="line">Output: True</span><br><span class="line">Explanation: s2 contains one permutation of s1 (&quot;ba&quot;).</span><br><span class="line"></span><br><span class="line">------------</span><br><span class="line">Input:s1= &quot;ab&quot; s2 = &quot;eidboaoo&quot;</span><br><span class="line">Output: False</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>该题目分类属于中等题，且用two pointer进行解决，核心思路：</p>
+<ol>
+<li>如果字符串<code>a</code>是字符串<code>b</code>的subtring，则<code>b</code>字符串其中的一段，一定和a的长度相等；</li>
+<li>a的全排列，就是将a中字符全部打乱，任意排列；且全排列不会更改字符串中字符出现的次数；</li>
+</ol>
+<p>因此，在代码中：</p>
+<pre><code>1. 计算`s1`中每个字符出现的个数，保存在数组中；
+ 2. 两个指针遍历`s2`，假设两个指针之间形成的字符串为`tmpS`，若`tmpS`中每个字符的个数和`s1`中每个字符出现的个数相等，则返回`true`，遍历结束也没满足条件，返回false；</code></pre>
+<p><strong>代码如下：</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkInclusion</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len1 = s1.length();</span><br><span class="line">        <span class="keyword">int</span> len2 = s2.length();</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> s : s1.toCharArray()) &#123;</span><br><span class="line">            dp[s - <span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> need = len1;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (right &lt; len2) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s2.charAt(right);</span><br><span class="line">            <span class="keyword">if</span> (dp[c - <span class="string">&#x27;a&#x27;</span>] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                dp[c - <span class="string">&#x27;a&#x27;</span>]--;</span><br><span class="line">                need--;</span><br><span class="line">                right++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (dp[c - <span class="string">&#x27;a&#x27;</span>] &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">                dp[s2.charAt(left) - <span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">                left++;</span><br><span class="line">                need++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (need == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>two pointer</tag>
+        <tag>algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode 532. K-diff Pairs in an Array</title>
     <url>/2020/10/31/Leetcode/523/</url>
     <content><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://leetcode.com/problems/k-diff-pairs-in-an-array/">英文题目</a></p>
@@ -480,40 +514,6 @@
 </ol>
 <p><strong>代码如下：</strong></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findPairs</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span> || nums.length == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> r = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (r &lt; len) &#123;</span><br><span class="line">            <span class="keyword">int</span> lv = nums[l];</span><br><span class="line">            <span class="keyword">int</span> rv = nums[r];</span><br><span class="line">            <span class="keyword">if</span> (rv - lv == k) &#123;</span><br><span class="line">                ans++;</span><br><span class="line">                <span class="keyword">int</span> preL = lv;</span><br><span class="line">                <span class="keyword">int</span> preR = rv;</span><br><span class="line">                <span class="keyword">while</span>((r + <span class="number">1</span> &lt; len) &amp;&amp; nums[++r] == preR) &#123;&#125; <span class="comment">// 跳过重复数字</span></span><br><span class="line">                <span class="keyword">while</span>((l + <span class="number">1</span> &lt; len) &amp;&amp; nums[++l] == preL) &#123;&#125; <span class="comment">// 跳过重复数字</span></span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (rv - lv &lt; k) &#123;</span><br><span class="line">                r++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (rv - lv &gt; k) &#123;</span><br><span class="line">                l++;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (l == r) r = l + <span class="number">1</span>; <span class="comment">// 避免k=0时，左右指针重合的情况</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> ans;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>leetcode</category>
-      </categories>
-      <tags>
-        <tag>two pointer</tag>
-        <tag>algorithm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode 567. Permutation in String</title>
-    <url>/2020/11/03/Leetcode/567/</url>
-    <content><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://leetcode.com/problems/permutation-in-string/">英文题目</a></p>
-<p><a href="https://leetcode-cn.com/problems/permutation-in-string/">中文题目</a></p>
-<p>难度：中等</p>
-<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>题目给出两个字符串<code>s1</code>和<code>s2</code>，返回<code>s1</code>的全排列之一是否是<code>s2</code>的子集。</p>
-<p><strong>示例：</strong></p>
-<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">Input: s1 = &quot;ab&quot; s2 = &quot;eidbaooo&quot;</span><br><span class="line">Output: True</span><br><span class="line">Explanation: s2 contains one permutation of s1 (&quot;ba&quot;).</span><br><span class="line"></span><br><span class="line">------------</span><br><span class="line">Input:s1= &quot;ab&quot; s2 = &quot;eidboaoo&quot;</span><br><span class="line">Output: False</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>该题目分类属于中等题，且用two pointer进行解决，核心思路：</p>
-<ol>
-<li>如果字符串<code>a</code>是字符串<code>b</code>的subtring，则<code>b</code>字符串其中的一段，一定和a的长度相等；</li>
-<li>a的全排列，就是将a中字符全部打乱，任意排列；且全排列不会更改字符串中字符出现的次数；</li>
-</ol>
-<p>因此，在代码中：</p>
-<pre><code>1. 计算`s1`中每个字符出现的个数，保存在数组中；
- 2. 两个指针遍历`s2`，假设两个指针之间形成的字符串为`tmpS`，若`tmpS`中每个字符的个数和`s1`中每个字符出现的个数相等，则返回`true`，遍历结束也没满足条件，返回false；</code></pre>
-<p><strong>代码如下：</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkInclusion</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len1 = s1.length();</span><br><span class="line">        <span class="keyword">int</span> len2 = s2.length();</span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> s : s1.toCharArray()) &#123;</span><br><span class="line">            dp[s - <span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> need = len1;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (right &lt; len2) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s2.charAt(right);</span><br><span class="line">            <span class="keyword">if</span> (dp[c - <span class="string">&#x27;a&#x27;</span>] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                dp[c - <span class="string">&#x27;a&#x27;</span>]--;</span><br><span class="line">                need--;</span><br><span class="line">                right++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (dp[c - <span class="string">&#x27;a&#x27;</span>] &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">                dp[s2.charAt(left) - <span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">                left++;</span><br><span class="line">                need++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (need == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -652,39 +652,12 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Summary of Two Pointer</title>
-    <url>/2020/11/03/LeetcodeSummary/TwoPointer/</url>
-    <content><![CDATA[<h3 id="Two-pointer解决套路"><a href="#Two-pointer解决套路" class="headerlink" title="Two pointer解决套路"></a>Two pointer解决套路</h3><p>Two pointer和滑动窗口差不多，其套路一般为：</p>
-<ol>
-<li>一个左指针，一个右指针。其中左指针用于缩小范围，右指针用于扩大搜索范围。一般求滑动窗口的最小值都是在缩小左指针的时候取得的。</li>
-<li>右指针扩展的条件时：只要当前还没有满足条件，就暴力增长，直到第一次满足条件为止。</li>
-<li>左指针收缩的条件：只要当前指针的缩小还没影响窗口的可满足性，就一直暴力向左增长。一但当前指针向前移动的时候影响了窗口的可满足性，就记录下当前的窗口大小，并更新目前为止满足条件的最小窗口记录。之后，再次扩展右指针，使得窗口满足题目的条件。</li>
-<li>以此类推即可。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>leetcode_summary</category>
-      </categories>
-      <tags>
-        <tag>leetcode_summary</tag>
-      </tags>
-  </entry>
-  <entry>
     <title></title>
-    <url>/2020/10/27/LinuxCmd/%E4%BD%BF%E7%94%A8GDB%E6%9F%A5%E7%9C%8Bcore%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<h1 id="2-使用GDB查看core文件"><a href="#2-使用GDB查看core文件" class="headerlink" title="2 使用GDB查看core文件"></a>2 使用GDB查看core文件</h1><p>默认编译出来的程序在出现Segmentation fault 时并没有生成core崩溃文件，可以在gcc/g++编译时增加-g选项。</p>
-<p>如果仍然没有生成core文件，则可能是因为系统设置了core文件大小为0，可以通过：<code>ulimit -a</code> 查询得知。</p>
-<p>执行 <code>ulimit -c unlimited</code> 命令后可以使core文件大小不受限制。此时再次运行程序应该就能在同级目录看到<code>core.XXX</code>文件了</p>
-<p>使用 <code>gdb ./a.out core.XXX</code> 可以查看出错所在行信息，这样就进入了 gdb core 调试模式。</p>
-<p>追踪产生segmenttation fault的位置及代码函数调用情况：</p>
-<p><code>gdb&gt;bt</code></p>
-<p>这样，一般就可以看到出错的代码是哪一句了，还可以打印出相应变量的数值，进行进一步分析。</p>
-<p><a href="https://www.cnblogs.com/kuliuheng/p/11698378.html#_labelTop">返回目录</a></p>
-<h1 id="3-使用GDB调试程序"><a href="#3-使用GDB调试程序" class="headerlink" title="3 使用GDB调试程序"></a><strong>3 使用GDB调试程序</strong></h1><p>如上述流程不能解决问题，下面可使用gdb单步调试程序。重新编译程序，编译命令中加入-g。如：</p>
-<p>gcc -lm -O3 -g file.c -o file<br>之后使用gdb命令</p>
-<p><code>gdb file</code><br>开始调试。</p>
-<p>输入<code>start</code>使程序运行到<code>main</code>中第一行运行代码。<code>next</code>或者n为执行下一行程序，<code>until xx</code>执行到xx行，print或p可输出变量值，<code>b xx</code>用于在xx行设置断点，<code>run</code>或<code>r</code>用于执行程序至下一断点，<code>d xx</code>删除xx行断点。</p>
-<p>我们可以先run一遍程序，这时它会提示出错行信息。然后<code>until</code>到出错行前5行，交替执行<code>next</code>和<code>print</code>，输出与出错行变量相关变量或指针的值。最终定位出错的根本操作在哪一行。修改之即可。</p>
+    <url>/2020/10/27/LinuxCmd/20200814netstat/</url>
+    <content><![CDATA[<h1 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h1><p>查看所有在监听的端口</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -ntlp</span><br></pre></td></tr></table></figure>
+
+<p>待整理</p>
 ]]></content>
   </entry>
   <entry>
@@ -706,12 +679,39 @@
   </entry>
   <entry>
     <title></title>
-    <url>/2020/10/27/LinuxCmd/20200814netstat/</url>
-    <content><![CDATA[<h1 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h1><p>查看所有在监听的端口</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -ntlp</span><br></pre></td></tr></table></figure>
-
-<p>待整理</p>
+    <url>/2020/10/27/LinuxCmd/%E4%BD%BF%E7%94%A8GDB%E6%9F%A5%E7%9C%8Bcore%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="2-使用GDB查看core文件"><a href="#2-使用GDB查看core文件" class="headerlink" title="2 使用GDB查看core文件"></a>2 使用GDB查看core文件</h1><p>默认编译出来的程序在出现Segmentation fault 时并没有生成core崩溃文件，可以在gcc/g++编译时增加-g选项。</p>
+<p>如果仍然没有生成core文件，则可能是因为系统设置了core文件大小为0，可以通过：<code>ulimit -a</code> 查询得知。</p>
+<p>执行 <code>ulimit -c unlimited</code> 命令后可以使core文件大小不受限制。此时再次运行程序应该就能在同级目录看到<code>core.XXX</code>文件了</p>
+<p>使用 <code>gdb ./a.out core.XXX</code> 可以查看出错所在行信息，这样就进入了 gdb core 调试模式。</p>
+<p>追踪产生segmenttation fault的位置及代码函数调用情况：</p>
+<p><code>gdb&gt;bt</code></p>
+<p>这样，一般就可以看到出错的代码是哪一句了，还可以打印出相应变量的数值，进行进一步分析。</p>
+<p><a href="https://www.cnblogs.com/kuliuheng/p/11698378.html#_labelTop">返回目录</a></p>
+<h1 id="3-使用GDB调试程序"><a href="#3-使用GDB调试程序" class="headerlink" title="3 使用GDB调试程序"></a><strong>3 使用GDB调试程序</strong></h1><p>如上述流程不能解决问题，下面可使用gdb单步调试程序。重新编译程序，编译命令中加入-g。如：</p>
+<p>gcc -lm -O3 -g file.c -o file<br>之后使用gdb命令</p>
+<p><code>gdb file</code><br>开始调试。</p>
+<p>输入<code>start</code>使程序运行到<code>main</code>中第一行运行代码。<code>next</code>或者n为执行下一行程序，<code>until xx</code>执行到xx行，print或p可输出变量值，<code>b xx</code>用于在xx行设置断点，<code>run</code>或<code>r</code>用于执行程序至下一断点，<code>d xx</code>删除xx行断点。</p>
+<p>我们可以先run一遍程序，这时它会提示出错行信息。然后<code>until</code>到出错行前5行，交替执行<code>next</code>和<code>print</code>，输出与出错行变量相关变量或指针的值。最终定位出错的根本操作在哪一行。修改之即可。</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Summary of Two Pointer</title>
+    <url>/2020/11/03/LeetcodeSummary/TwoPointer/</url>
+    <content><![CDATA[<h3 id="Two-pointer解决套路"><a href="#Two-pointer解决套路" class="headerlink" title="Two pointer解决套路"></a>Two pointer解决套路</h3><p>Two pointer和滑动窗口差不多，其套路一般为：</p>
+<ol>
+<li>一个左指针，一个右指针。其中左指针用于缩小范围，右指针用于扩大搜索范围。一般求滑动窗口的最小值都是在缩小左指针的时候取得的。</li>
+<li>右指针扩展的条件时：只要当前还没有满足条件，就暴力增长，直到第一次满足条件为止。</li>
+<li>左指针收缩的条件：只要当前指针的缩小还没影响窗口的可满足性，就一直暴力向左增长。一但当前指针向前移动的时候影响了窗口的可满足性，就记录下当前的窗口大小，并更新目前为止满足条件的最小窗口记录。之后，再次扩展右指针，使得窗口满足题目的条件。</li>
+<li>以此类推即可。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>leetcode_summary</category>
+      </categories>
+      <tags>
+        <tag>leetcode_summary</tag>
+      </tags>
   </entry>
   <entry>
     <title>C++六种内存模型</title>
