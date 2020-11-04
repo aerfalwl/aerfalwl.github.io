@@ -22,26 +22,22 @@
     var CONFIG = {"hostname":"aerfalwl.github.io","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="初识KafkaFeture 消息保留：是Kafka的一个重要特性，Broker默认的消息保留策略是，要不保留一段时间，要不保留到消息到达一定的字节数。当消息总量达到这些上限时，旧消息就被过期并被删除。紧凑型日志，只有最后一个带有特定键的消息会被保留，因为，人们只关心最后时刻发生的改变。 Kafka的消息复制机制只能在单个集群里进行，不能再多个集群之间进行。但是它提供一个叫做MirrorMaker的">
+  <meta name="description" content="题目描述英文题目 中文题目 难度：中等 题意求两组线段集合的交集。 示例： 12Input: A &#x3D; [[0,2],[5,10],[13,23],[24,25]], B &#x3D; [[1,5],[8,12],[15,24],[25,26]]Output: [[1,2],[5,5],[8,10],[15,23],[24,24],[25,25]]  解题思路该题目分类属于中等题，且用two pointer进">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sunshine">
-<meta property="og:url" content="https://aerfalwl.github.io/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/index.html">
+<meta property="og:title" content="Leetcode 986. Interval List Intersections">
+<meta property="og:url" content="https://aerfalwl.github.io/2020/11/04/Leetcode/986/index.html">
 <meta property="og:site_name" content="sunshine">
-<meta property="og:description" content="初识KafkaFeture 消息保留：是Kafka的一个重要特性，Broker默认的消息保留策略是，要不保留一段时间，要不保留到消息到达一定的字节数。当消息总量达到这些上限时，旧消息就被过期并被删除。紧凑型日志，只有最后一个带有特定键的消息会被保留，因为，人们只关心最后时刻发生的改变。 Kafka的消息复制机制只能在单个集群里进行，不能再多个集群之间进行。但是它提供一个叫做MirrorMaker的">
+<meta property="og:description" content="题目描述英文题目 中文题目 难度：中等 题意求两组线段集合的交集。 示例： 12Input: A &#x3D; [[0,2],[5,10],[13,23],[24,25]], B &#x3D; [[1,5],[8,12],[15,24],[25,26]]Output: [[1,2],[5,5],[8,10],[15,23],[24,24],[25,25]]  解题思路该题目分类属于中等题，且用two pointer进">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://aerfalwl.github.io/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/Users/lwl/AppData/Roaming/Typora/typora-user-images/image-20201004160030424.png">
-<meta property="og:image" content="https://aerfalwl.github.io/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/Users/lwl/AppData/Roaming/Typora/typora-user-images/image-20201005131625839.png">
-<meta property="og:image" content="https://aerfalwl.github.io/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/Users/lwl/AppData/Roaming/Typora/typora-user-images/image-20201005164403640.png">
-<meta property="og:image" content="https://aerfalwl.github.io/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/Users/lwl/AppData/Roaming/Typora/typora-user-images/image-20201005164434878.png">
-<meta property="article:published_time" content="2020-10-27T02:11:32.033Z">
-<meta property="article:modified_time" content="2020-10-10T01:08:41.754Z">
+<meta property="article:published_time" content="2020-11-04T14:17:22.000Z">
+<meta property="article:modified_time" content="2020-11-04T14:21:25.980Z">
 <meta property="article:author" content="codefreestyle">
-<meta property="article:tag" content="happy">
+<meta property="article:tag" content="two pointer">
+<meta property="article:tag" content="algorithm">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://aerfalwl.github.io/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/Users/lwl/AppData/Roaming/Typora/typora-user-images/image-20201004160030424.png">
 
 
-<link rel="canonical" href="https://aerfalwl.github.io/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/">
+<link rel="canonical" href="https://aerfalwl.github.io/2020/11/04/Leetcode/986/">
 
 
 <script class="page-configurations">
@@ -54,7 +50,7 @@
   };
 </script>
 
-  <title> | sunshine</title>
+  <title>Leetcode 986. Interval List Intersections | sunshine</title>
   
 
 
@@ -221,7 +217,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%9D%E8%AF%86Kafka"><span class="nav-number">1.</span> <span class="nav-text">初识Kafka</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Feture"><span class="nav-number">1.1.</span> <span class="nav-text">Feture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kafka%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.2.</span> <span class="nav-text">Kafka适用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kafka%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.3.</span> <span class="nav-text">Kafka的使用场景</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%9F%E4%BA%A7%E8%80%85"><span class="nav-number">2.</span> <span class="nav-text">生产者</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B6%88%E8%B4%B9%E8%80%85"><span class="nav-number">3.</span> <span class="nav-text">消费者</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B7%B1%E5%85%A5Kafka"><span class="nav-number">4.</span> <span class="nav-text">深入Kafka</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Controller"><span class="nav-number">4.1.</span> <span class="nav-text">Controller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6"><span class="nav-number">4.2.</span> <span class="nav-text">复制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Broker%E5%A4%84%E7%90%86%E8%AF%B7%E6%B1%82%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">5.</span> <span class="nav-text">Broker处理请求的方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E5%8C%BA%E5%88%86%E9%85%8D"><span class="nav-number">5.1.</span> <span class="nav-text">分区分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="nav-number">5.2.</span> <span class="nav-text">文件管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="nav-number">5.2.1.</span> <span class="nav-text">文件格式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%85%E7%90%86"><span class="nav-number">5.3.</span> <span class="nav-text">清理</span></a></li></ol></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E6%84%8F"><span class="nav-number">1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="nav-number">1.2.</span> <span class="nav-text">解题思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">1.2.1.</span> <span class="nav-text">思路</span></a></li></ol></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -290,7 +286,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/">
+    <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2020/11/04/Leetcode/986/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/header.jpg">
@@ -303,7 +299,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          
+          Leetcode 986. Interval List Intersections
         </h1>
 
         <div class="post-meta-container">
@@ -313,16 +309,19 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2020-10-27 10:11:32" itemprop="dateCreated datePublished" datetime="2020-10-27T10:11:32+08:00">2020-10-27</time>
+      <time title="创建时间：2020-11-04 22:17:22 / 修改时间：22:21:25" itemprop="dateCreated datePublished" datetime="2020-11-04T22:17:22+08:00">2020-11-04</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-10-10 09:08:41" itemprop="dateModified" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
       </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
 
   
     <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -341,56 +340,21 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="初识Kafka"><a href="#初识Kafka" class="headerlink" title="初识Kafka"></a>初识Kafka</h1><h2 id="Feture"><a href="#Feture" class="headerlink" title="Feture"></a>Feture</h2><ol>
-<li>消息保留：是Kafka的一个重要特性，Broker默认的消息保留策略是，要不保留一段时间，要不保留到消息到达一定的字节数。当消息总量达到这些上限时，旧消息就被过期并被删除。紧凑型日志，只有最后一个带有特定键的消息会被保留，因为，人们只关心最后时刻发生的改变。</li>
-<li>Kafka的消息复制机制只能在单个集群里进行，不能再多个集群之间进行。但是它提供一个叫做MirrorMaker的工具，可以用来实现集群之间的消息赋值。</li>
-<li>亚秒级的消息延迟。</li>
-</ol>
-<h2 id="Kafka适用场景"><a href="#Kafka适用场景" class="headerlink" title="Kafka适用场景"></a>Kafka适用场景</h2><ol>
-<li>多个生产者</li>
-<li>多个消费者</li>
-</ol>
-<h2 id="Kafka的使用场景"><a href="#Kafka的使用场景" class="headerlink" title="Kafka的使用场景"></a>Kafka的使用场景</h2><ol>
-<li>活动跟踪，比如：用户网页访问次数和点击量。</li>
-<li>传递消息，比如向用户发通知。使用公共组件的好处：在公共组件上做一些有趣的转换，比如把多个消息聚合成一个单独的通知，而这些工作是无法在其它地方完成的。</li>
-<li>度量指标和日志记录。</li>
-<li>提交日志。</li>
-<li>流处理。</li>
-</ol>
-<h1 id="生产者"><a href="#生产者" class="headerlink" title="生产者"></a>生产者</h1><p><img src="/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201004160030424.png" alt="Kafka生产者组件图"></p>
-<h1 id="消费者"><a href="#消费者" class="headerlink" title="消费者"></a>消费者</h1><p><img src="/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005131625839.png" alt="消费者组群"></p>
-<p>如果消费者组群中消费者的数量多于主题分区的个数，则会有部分消费者被闲置，不会接收到任何消息。</p>
-<h1 id="深入Kafka"><a href="#深入Kafka" class="headerlink" title="深入Kafka"></a>深入Kafka</h1><h2 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h2><ol>
-<li>Controller本质上也是一个broker，除了一般的broker的功能之外，它还负责首领的选举。集群中第一启动的Broker会在Zookeeper里创建一个临时节点/controller让自己成为控制器。</li>
-<li>Controller负责在节点加入或者离开集群时进行分区首领的选举，并且使用epoch来避免脑裂，脑裂是指两个节点同时任务自己是当前的控制器。</li>
-</ol>
-<h2 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h2><ol>
-<li>Kafka是一个可分区的，可复制的提交日志服务。</li>
-<li>副本<ol>
-<li>首领副本：每个分区有且仅有一个首领副本，为了保证一致性，所有生产者请求和消费者请求都会经过这个副本</li>
-<li>跟随者副本：首领以外的副本都是跟随者副本，跟随者副本不处理来自客户端的的请求，它们唯一要做的就是从首领那里复制消息，保持与首领一致的状态，如果首领发生崩溃，则跟随者会被提升为新首领。</li>
-</ol>
-</li>
-</ol>
-<h1 id="Broker处理请求的方式"><a href="#Broker处理请求的方式" class="headerlink" title="Broker处理请求的方式"></a>Broker处理请求的方式</h1><p><img src="/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005164403640.png" alt="image-20201005164403640"></p>
-<p><img src="/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005164434878.png" alt="image-20201005164434878"></p>
-<p>Kafka有用其它语言实现的客户端，如C, Python， Go语言等。Kafka网站上有它们的完整清单，这些客户端就是使用二进制协议与broker通信的。</p>
-<h2 id="分区分配"><a href="#分区分配" class="headerlink" title="分区分配"></a>分区分配</h2><h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><ol>
-<li>Kafka将分区分为若干个片段。默认情况下，每个片段包含1GB或者一周的数据，以较小的那个为准。</li>
-</ol>
-<h3 id="文件格式"><a href="#文件格式" class="headerlink" title="文件格式"></a>文件格式</h3><ol>
-<li><p>我们把Kafka的消息和偏移量保存在文件中。</p>
-</li>
-<li><p>键、值、偏移量、消息大小、校验和、消息格式版本号、压缩算法和时间戳。时间戳可以是生产者发送消息的时间，也可以是消息到达broker的时间，这个时间是可配置的。</p>
-</li>
-<li><p>可以使用工具DUmpLogSegment来查看片段的内容，它可以显示每个消息的偏移量、校验和、魔术数、消息大小和压缩算法。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/kafka-run-class.sh kafka.tools.DumpLogSegments</span><br></pre></td></tr></table></figure>
+        <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/interval-list-intersections/">英文题目</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/interval-list-intersections/">中文题目</a></p>
+<p>难度：中等</p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>求两组线段集合的交集。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: A = [[0,2],[5,10],[13,23],[24,25]], B = [[1,5],[8,12],[15,24],[25,26]]</span><br><span class="line">Output: [[1,2],[5,5],[8,10],[15,23],[24,24],[25,25]]</span><br></pre></td></tr></table></figure>
 
-<h2 id="清理"><a href="#清理" class="headerlink" title="清理"></a>清理</h2><ol>
-<li>P84页，103</li>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>该题目分类属于中等题，且用two pointer进行解决。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ol>
+<li>两个指针，一个指针指向线段集合A，一个指针指向线段集合B；</li>
+<li>依次移动两个指针，如果发现当前两个指针之间有交集，则求交集之后放入结果中，否则，视情况移动两个指针；</li>
 </ol>
-</li>
-</ol>
+<p><strong>代码如下：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[][] intervalIntersection(<span class="keyword">int</span>[][] A, <span class="keyword">int</span>[][] B) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> lenA = A.length;</span><br><span class="line">        <span class="keyword">int</span> lenB = B.length;</span><br><span class="line">        </span><br><span class="line">        List&lt;Node&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> currA = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> currB = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (currA &lt; lenA &amp;&amp; currB &lt; lenB) &#123;</span><br><span class="line">            <span class="keyword">if</span> (A[currA][<span class="number">1</span>] &lt; B[currB][<span class="number">0</span>]) &#123; <span class="comment">// 没交集的情况</span></span><br><span class="line">                currA++;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (B[currB][<span class="number">1</span>] &lt; A[currA][<span class="number">0</span>]) &#123; <span class="comment">// 没交集的情况</span></span><br><span class="line">                currB++;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> maxL = Math.max(A[currA][<span class="number">0</span>], B[currB][<span class="number">0</span>]);</span><br><span class="line">            <span class="keyword">int</span> minR = Math.min(A[currA][<span class="number">1</span>], B[currB][<span class="number">1</span>]);</span><br><span class="line">            list.add(<span class="keyword">new</span> Node(maxL, minR));</span><br><span class="line">            <span class="keyword">if</span> (A[currA][<span class="number">1</span>] == minR) currA++;</span><br><span class="line">            <span class="keyword">if</span> (B[currB][<span class="number">1</span>] == minR) currB++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span>[][] ans = <span class="keyword">new</span> <span class="keyword">int</span>[list.size()][<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">int</span> len = list.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            Node tmp = list.get(i);</span><br><span class="line">            ans[i][<span class="number">0</span>] = tmp.l;</span><br><span class="line">            ans[i][<span class="number">1</span>] = tmp.r;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l;</span><br><span class="line">        <span class="keyword">int</span> r;</span><br><span class="line">        Node(<span class="keyword">int</span> l_, <span class="keyword">int</span> r_) &#123;</span><br><span class="line">            <span class="keyword">this</span>.l = l_;</span><br><span class="line">            <span class="keyword">this</span>.r = r_;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -418,19 +382,20 @@
     </div>
   </div>
 
+          <div class="post-tags">
+              <a href="/tags/two-pointer/" rel="tag"># two pointer</a>
+              <a href="/tags/algorithm/" rel="tag"># algorithm</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2020/10/27/Filesystem/ZFS/" rel="prev" title="">
-                  <i class="fa fa-chevron-left"></i> 
+                <a href="/2020/11/03/LeetcodeSummary/TwoPointer/" rel="prev" title="Summary of Two Pointer">
+                  <i class="fa fa-chevron-left"></i> Summary of Two Pointer
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2020/10/27/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/" rel="next" title="">
-                   <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
