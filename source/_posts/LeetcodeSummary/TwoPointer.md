@@ -3,7 +3,7 @@ title: Summary of Two Pointer
 date: 2020-11-03 20:44:38
 categories: leetcode_summary
 tags:
-	- leetcode_summary_two_pointer
+	- leetcode_summary
 ---
 
 ### Two pointer解决套路
