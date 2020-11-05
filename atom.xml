@@ -6,7 +6,7 @@
   <link href="https://aerfalwl.github.io/atom.xml" rel="self"/>
   
   <link href="https://aerfalwl.github.io/"/>
-  <updated>2020-11-05T02:39:19.827Z</updated>
+  <updated>2020-11-05T15:35:45.183Z</updated>
   <id>https://aerfalwl.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Leetcode 925. Long Pressed Name</title>
+    <link href="https://aerfalwl.github.io/2020/11/05/Leetcode/925/"/>
+    <id>https://aerfalwl.github.io/2020/11/05/Leetcode/925/</id>
+    <published>2020-11-05T15:34:25.000Z</published>
+    <updated>2020-11-05T15:35:45.183Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="leetcode" scheme="https://aerfalwl.github.io/categories/leetcode/"/>
+    
+    
+    <category term="two pointer" scheme="https://aerfalwl.github.io/tags/two-pointer/"/>
+    
+    <category term="algorithm" scheme="https://aerfalwl.github.io/tags/algorithm/"/>
+    
+  </entry>
   
   <entry>
     <title>SkipList in LevelDB</title>
@@ -514,27 +541,6 @@
         
     <summary type="html">&lt;h1 id=&quot;netstat&quot;&gt;&lt;a href=&quot;#netstat&quot; class=&quot;headerlink&quot; title=&quot;netstat&quot;&gt;&lt;/a&gt;netstat&lt;/h1&gt;&lt;p&gt;查看所有在监听的端口&lt;/p&gt;
 &lt;figure class=&quot;highlight</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://aerfalwl.github.io/2020/10/27/LinuxCmd/20200814-%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE/"/>
-    <id>https://aerfalwl.github.io/2020/10/27/LinuxCmd/20200814-%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE/</id>
-    <published>2020-10-27T02:11:32.066Z</published>
-    <updated>2020-10-10T01:08:41.752Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;查看远程服务器的端口是否开放&quot;&gt;&lt;a href=&quot;#查看远程服务器的端口是否开放&quot; class=&quot;headerlink&quot; title=&quot;查看远程服务器的端口是否开放&quot;&gt;&lt;/a&gt;查看远程服务器的端口是否开放&lt;/h1&gt;&lt;h2 id=&quot;1-nc（netcat）&quot;&gt;&lt;a</summary>
         
       
     

@@ -826,4 +826,24 @@
         <tag>link list</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Leetcode 925. Long Pressed Name</title>
+    <url>/2020/11/05/Leetcode/925/</url>
+    <content><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a href="https://leetcode.com/problems/long-pressed-name/">英文题目</a></p>
+<p><a href="https://leetcode-cn.com/problems/long-pressed-name/">中文题目</a></p>
+<p>难度：简单</p>
+<p><strong>代码如下：</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isLongPressedName</span><span class="params">(String name, String typed)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">null</span> == name || <span class="keyword">null</span> == typed) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span> lenN = name.length();</span><br><span class="line">        <span class="keyword">int</span> lenT = typed.length();</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">0</span>, t = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (n &lt; lenN &amp;&amp; t &lt; lenT) &#123;</span><br><span class="line">            <span class="keyword">char</span> cn = name.charAt(n);</span><br><span class="line">            <span class="keyword">char</span> ct = typed.charAt(t);</span><br><span class="line">            <span class="keyword">if</span> (cn == ct) &#123;</span><br><span class="line">                n++;</span><br><span class="line">                t++;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (t == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">char</span> pre = typed.charAt(t - <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (pre == ct) &#123;</span><br><span class="line">                <span class="keyword">while</span> (pre == ct) &#123;</span><br><span class="line">                    t++;</span><br><span class="line">                    <span class="keyword">if</span> (t &gt;= lenT) <span class="keyword">break</span>;</span><br><span class="line">                    ct = typed.charAt(t);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (n != lenN) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">while</span> (t &lt; lenT) &#123;</span><br><span class="line">            <span class="keyword">char</span> ct = typed.charAt(t);</span><br><span class="line">            <span class="keyword">if</span> (ct != name.charAt(n - <span class="number">1</span>)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            t++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>two pointer</tag>
+        <tag>algorithm</tag>
+      </tags>
+  </entry>
 </search>
