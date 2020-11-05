@@ -22,23 +22,19 @@
     var CONFIG = {"hostname":"aerfalwl.github.io","root":"/","scheme":"Gemini","version":"8.0.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="Introduction to the Kernel 参考书籍The Design and Implementation of the FreeBSD Operating System, 2ndEdition  Introduction to the Zettabyte Filesystem 开始于Solaries。 Solaris是Sun Microsystem开发的一个Unix版本的操作系统；">
-<meta property="og:type" content="article">
+  <meta name="description" content="每天收获一点点">
+<meta property="og:type" content="website">
 <meta property="og:title" content="sunshine">
-<meta property="og:url" content="https://aerfalwl.github.io/2020/10/27/Filesystem/ZFS/index.html">
+<meta property="og:url" content="https://aerfalwl.github.io/tags/data-structure/index.html">
 <meta property="og:site_name" content="sunshine">
-<meta property="og:description" content="Introduction to the Kernel 参考书籍The Design and Implementation of the FreeBSD Operating System, 2ndEdition  Introduction to the Zettabyte Filesystem 开始于Solaries。 Solaris是Sun Microsystem开发的一个Unix版本的操作系统；">
+<meta property="og:description" content="每天收获一点点">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://aerfalwl.github.io/2020/10/27/Filesystem/ZFS/Users/CCDC/AppData/Roaming/Typora/typora-user-images/image-20201014101848952.png">
-<meta property="article:published_time" content="2020-10-27T02:11:32.020Z">
-<meta property="article:modified_time" content="2020-10-14T02:49:09.388Z">
 <meta property="article:author" content="codefreestyle">
 <meta property="article:tag" content="happy">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://aerfalwl.github.io/2020/10/27/Filesystem/ZFS/Users/CCDC/AppData/Roaming/Typora/typora-user-images/image-20201014101848952.png">
 
 
-<link rel="canonical" href="https://aerfalwl.github.io/2020/10/27/Filesystem/ZFS/">
+<link rel="canonical" href="https://aerfalwl.github.io/tags/data-structure/">
 
 
 <script class="page-configurations">
@@ -46,12 +42,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : true,
+    isPost : false,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title> | sunshine</title>
+  <title>标签: data structure | sunshine</title>
   
 
 
@@ -206,7 +202,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -218,7 +214,6 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction-to-the-Kernel"><span class="nav-number">1.</span> <span class="nav-text">Introduction to the Kernel</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction-to-the-Zettabyte-Filesystem"><span class="nav-number"></span> <span class="nav-text">Introduction to the Zettabyte Filesystem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ZFS%E7%9A%84%E6%BC%94%E5%8F%98%E8%BF%87%E7%A8%8B"><span class="nav-number"></span> <span class="nav-text">ZFS的演变过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Kernel-I-O-Structure"><span class="nav-number"></span> <span class="nav-text">Kernel I&#x2F;O Structure</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#FileSystem-Consistency"><span class="nav-number"></span> <span class="nav-text">FileSystem Consistency</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Keeping-Metadata-Consistent"><span class="nav-number"></span> <span class="nav-text">Keeping Metadata Consistent</span></a></div>
       </section>
       <!--/noindex-->
 
@@ -274,179 +269,54 @@
 </noscript>
 
 
-    <div class="main-inner post posts-expand">
+    <div class="main-inner tag posts-collapse">
       
 
       
 
   
-
-
-<div class="post-block">
   
   
+  <div class="post-block">
+    <div class="post-content">
+      <div class="collection-title">
+        <h2 class="collection-header">data structure
+          <small>标签</small>
+        </h2>
+      </div>
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2020/10/27/Filesystem/ZFS/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/header.jpg">
-      <meta itemprop="name" content="codefreestyle">
-      <meta itemprop="description" content="每天收获一点点">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sunshine">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-10-27 10:11:32" itemprop="dateCreated datePublished" datetime="2020-10-27T10:11:32+08:00">2020-10-27</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-10-14 10:49:09" itemprop="dateModified" datetime="2020-10-14T10:49:09+08:00">2020-10-14</time>
-      </span>
-
-  
-    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span id="busuanzi_value_page_pv"></span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-        <h2 id="Introduction-to-the-Kernel"><a href="#Introduction-to-the-Kernel" class="headerlink" title="Introduction to the Kernel"></a>Introduction to the Kernel</h2><ol>
-<li>参考书籍The Design and Implementation of the FreeBSD Operating System, 2nd<br>Edition</li>
-</ol>
-<h1 id="Introduction-to-the-Zettabyte-Filesystem"><a href="#Introduction-to-the-Zettabyte-Filesystem" class="headerlink" title="Introduction to the Zettabyte Filesystem"></a>Introduction to the Zettabyte Filesystem</h1><ol>
-<li>开始于Solaries。</li>
-<li>Solaris是Sun Microsystem开发的一个Unix版本的操作系统；<ul>
-<li>它是以下两种操作系统的合并版：SunOs和System V4</li>
-</ul>
-</li>
-<li>Sun需要解决的问题是：传统的操作系统在处理大数据的时候，显现出了很大的缺点，因为大数据使得系统需要大量的磁盘。</li>
-<li>为解决以上问题，Sun写了ZFS:<ul>
-<li>Log Structured Filesystem，由Berkeley开发，展现出了它处理大问题大数据的一些优势</li>
-<li>文件系统不可重复写的特性，给了它很多比较好的特性。</li>
-</ul>
-</li>
-</ol>
-<h1 id="ZFS的演变过程"><a href="#ZFS的演变过程" class="headerlink" title="ZFS的演变过程"></a>ZFS的演变过程</h1><ol>
-<li>首先出现于OpenSolaris,  该操作系统是一款Solaris开源的操作系统，包括核心科技：ZFS和DTrace</li>
-<li>随后，ZFS出现在了FreeBSD（一款Unix操作系统）中；</li>
-<li>之后，Sun被Oracle收购，但是Larry Ellison不是一个开源爱好者，他不同意ZFS继续开源，但是已经开源的早期版本还在流传；</li>
-<li>于是一些公司继续开发并维护OpenSolaris，并且将他作为一个开源项目；</li>
-<li>一些组件变得很流行，像ZFS；</li>
-<li>最后ZFS变为单独的OpenZFS项目；</li>
-<li>当前开发OpenZFS的主要有四个组，它们每个月都有一次会议来协同工作：<ul>
-<li>致力于OpenSolaris开发的组；</li>
-<li>FressBSD开发者；</li>
-<li>致力于将ZFS嵌入到Linux内核的Lawrence Livermore National Laboratory</li>
-<li>致力于将ZFS嵌入到MacOs和Windows的Jorgen Lundman</li>
-</ul>
-</li>
-<li>Sun Community Development License与GNU Public License不兼容：<ul>
-<li>ZFS代码不能嵌入到Linux内核中；</li>
-<li>所有将ZFS带入嵌入到Linux内核的人不能使用GPL interfaces（GPL Interface是Linux的一个特性，该特性说明只有GPL的代码之间才能相互使用和修改）</li>
-<li>ZFS只能通过FUSE(用户态空间文件系统， Filesystem in Userspace)访问Linux Kernel。</li>
-</ul>
-</li>
-<li>在2016年，Ubuntu开源了一版在Kernel态的ZFS，它没有使用GPL interfaces，因此，自己额外开发了一些函数。当前，Canonical（开发Ubuntu的公司）还没被起诉，更多详情访问<a target="_blank" rel="noopener" href="https://wiki.ubuntu.com/ZFS">https://wiki.ubuntu.com/ZFS</a></li>
-<li>当前，OpenZFS代码已经能在大多数Linux系统中配置使用。</li>
-</ol>
-<p>ZFS相关资料：<a target="_blank" rel="noopener" href="https://openzfs.org/wiki/Main_Page">https://openzfs.org/wiki/Main_Page</a></p>
-<p>Github网址：<a target="_blank" rel="noopener" href="https://github.com/openzfs/zfs">https://github.com/openzfs/zfs</a></p>
-<h1 id="Kernel-I-O-Structure"><a href="#Kernel-I-O-Structure" class="headerlink" title="Kernel I/O Structure"></a>Kernel I/O Structure</h1><ol>
-<li>关于kernel的系统调用：<ul>
-<li>一切在硬件和系统调用之间的都是操作系统(everything between this and the hardware is the operating system)。</li>
-<li>当我们和subsystem进行交互时，其实是在和file descriptor、socket、kqueue交互</li>
-</ul>
-</li>
-</ol>
-<p><img src="/2020/10/27/Filesystem/ZFS/Users\CCDC\AppData\Roaming\Typora\typora-user-images\image-20201014101848952.png" alt="image-20201014101848952"></p>
-<h1 id="FileSystem-Consistency"><a href="#FileSystem-Consistency" class="headerlink" title="FileSystem Consistency"></a>FileSystem Consistency</h1><ol>
-<li>必须维护一些元数据信息：directories, inodes, bitmaps</li>
-<li>维护元数据的一些规则：<ul>
-<li>在一个结构被初始化之前不要指向它</li>
-<li>在将一个对象的所有指针置为空之前，不要使新指针指向它</li>
-<li>在新指针被设置之前，不要讲老指针设置为一个可用的资源(例如，rename foo to bar，则在将foo的旧指针指向bar之后，再删除老的foo)</li>
-</ul>
-</li>
-</ol>
-<h1 id="Keeping-Metadata-Consistent"><a href="#Keeping-Metadata-Consistent" class="headerlink" title="Keeping Metadata Consistent"></a>Keeping Metadata Consistent</h1><p>实现一致性的三种方法：</p>
-<ol>
-<li>同步写</li>
-<li>使用非易失性RAM</li>
-<li>原子更新(journaling and logging)</li>
-</ol>
-
+      
+    <div class="collection-year">
+      <span class="collection-header">2020</span>
     </div>
 
-    
-    
-    
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2020-11-05T10:33:33+08:00"
+              content="2020-11-05">
+          11-05
+        </time>
+      </div>
 
-    <footer class="post-footer">
-          
-
-  <div class="followme">
-    <span>欢迎关注我的其它发布渠道</span>
-
-    <div class="social-list">
-
-        <div class="social-item">
-          <a target="_blank" class="social-link" href="/atom.xml">
-            <span class="icon">
-              <i class="fa fa-rss"></i>
-            </span>
-
-            <span class="label">RSS</span>
+      <div class="post-title">
+          <a class="post-title-link" href="/2020/11/05/NiceCode/142/" itemprop="url">
+            <span itemprop="name">SkipList in LevelDB</span>
           </a>
-        </div>
+      </div>
+
+      
+    </header>
+  </article>
+
     </div>
   </div>
+  
+  
+  
 
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-            </div>
-            <div class="post-nav-item">
-                <a href="/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/" rel="next" title="">
-                   <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
-  </article>
-</div>
-
-
-
+  
 
 
 

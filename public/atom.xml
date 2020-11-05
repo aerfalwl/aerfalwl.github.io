@@ -6,7 +6,7 @@
   <link href="https://aerfalwl.github.io/atom.xml" rel="self"/>
   
   <link href="https://aerfalwl.github.io/"/>
-  <updated>2020-11-04T14:21:25.980Z</updated>
+  <updated>2020-11-05T02:36:25.015Z</updated>
   <id>https://aerfalwl.github.io/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SkipList in LevelDB</title>
+    <link href="https://aerfalwl.github.io/2020/11/05/NiceCode/142/"/>
+    <id>https://aerfalwl.github.io/2020/11/05/NiceCode/142/</id>
+    <published>2020-11-05T02:33:33.000Z</published>
+    <updated>2020-11-05T02:36:25.015Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;LevelDB中有一份非常优雅的SkipList的实现方式，这里拿过来供学习。&lt;/p&gt;
+&lt;p&gt;SkipList的一些特性：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;最底层是0层，该层最长，最高层是大层，该层最短；&lt;/li&gt;
+&lt;li&gt;查找的过程总是从左上至右下；&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h</summary>
+        
+      
+    
+    
+    
+    <category term="nicecode" scheme="https://aerfalwl.github.io/categories/nicecode/"/>
+    
+    
+    <category term="data structure" scheme="https://aerfalwl.github.io/tags/data-structure/"/>
+    
+    <category term="link list" scheme="https://aerfalwl.github.io/tags/link-list/"/>
+    
+  </entry>
   
   <entry>
     <title>Leetcode 986. Interval List Intersections</title>
@@ -210,7 +243,7 @@
     <link href="https://aerfalwl.github.io/2020/10/30/Memory/Dynamic_memory_in_CPP/"/>
     <id>https://aerfalwl.github.io/2020/10/30/Memory/Dynamic_memory_in_CPP/</id>
     <published>2020-10-30T03:29:45.000Z</published>
-    <updated>2020-10-30T14:59:28.864Z</updated>
+    <updated>2020-11-05T01:39:11.126Z</updated>
     
     
       
@@ -502,27 +535,6 @@
         
         
     <summary type="html">&lt;h1 id=&quot;查看远程服务器的端口是否开放&quot;&gt;&lt;a href=&quot;#查看远程服务器的端口是否开放&quot; class=&quot;headerlink&quot; title=&quot;查看远程服务器的端口是否开放&quot;&gt;&lt;/a&gt;查看远程服务器的端口是否开放&lt;/h1&gt;&lt;h2 id=&quot;1-nc（netcat）&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://aerfalwl.github.io/2020/10/27/Leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/"/>
-    <id>https://aerfalwl.github.io/2020/10/27/Leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</id>
-    <published>2020-10-27T02:11:32.056Z</published>
-    <updated>2020-10-10T01:08:41.756Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;滑动窗口&quot;&gt;&lt;a href=&quot;#滑动窗口&quot; class=&quot;headerlink&quot; title=&quot;滑动窗口&quot;&gt;&lt;/a&gt;滑动窗口&lt;/h1&gt;&lt;p&gt;&lt;a</summary>
         
       
     

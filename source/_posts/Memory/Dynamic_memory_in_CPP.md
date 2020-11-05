@@ -43,17 +43,20 @@ enum memory_order {
 
 ### memory_order_acquire
 
-可以理解为mutex的lock操作。
+acquire于内存的load操作对应，也就是读操作。设置该标志，表示在这条语句之后设置了barrier。
 
-
-
-
+即所有后续操作的读操作必须在本条原子操作完成之后执行。
 
 ### memory_order_release
 
-可以理解为mutex的unlock操作。
+release 对应于内存的 store操作，也就是写内存。设置标志，表示在这条语句之前设置了barrier。即所有之前的写操作完成之后才能执行本条原子操作。
 
+该语句和memory_order_qcquire有点相似，但是如何`见字如面`呢，即如何第一眼看到便区分开来呢。我是这样区分的：
 
+1. acquire和release的对象都是barrier；
+2. acquire即请求，请求之后，便得到了barrier，因此是在这条语句之后设置了barrier，因此后续的读(load)操作必须在本条原子操作完成之后；
+3. release即释放，要想释放，必须先拥有，即该条语句之前已经拥有了barrier，因此之前的写(store)操作完成之后，才能执行本条原子操作；
+4. acquire操作常用来读取数据的同步，release操作常用来写数据的同步。
 
 ### memory_order_acq_rel
 
