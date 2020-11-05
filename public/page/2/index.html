@@ -229,7 +229,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -273,6 +273,101 @@
       
 
       
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2020/10/29/Leetcode/1234/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="codefreestyle">
+      <meta itemprop="description" content="每天收获一点点">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/29/Leetcode/1234/" class="post-title-link" itemprop="url">Leetcode 1234. Replace the Substring for Balanced String</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2020-10-29 20:46:24 / 修改时间：20:49:48" itemprop="dateCreated datePublished" datetime="2020-10-29T20:46:24+08:00">2020-10-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/replace-the-substring-for-balanced-string/">英文题目</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/replace-the-substring-for-balanced-string/">中文题目</a></p>
+<p>难度：中等</p>
+<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>说明：题目来自leetcode中文官网</p>
+<p>有一个只含有 ‘Q’, ‘W’, ‘E’, ‘R’ 四种字符，且长度为 n 的字符串。</p>
+<p>假如在该字符串中，这四个字符都恰好出现 n/4 次，那么它就是一个「平衡字符串」。</p>
+<p>给你一个这样的字符串 s，请通过「替换一个子串」的方式，使原字符串 s 变成一个「平衡字符串」。</p>
+<p>你可以用和「待替换子串」长度相同的 任何 其他字符串来完成替换。</p>
+<p>请返回待替换子串的最小可能长度。</p>
+<p>如果原字符串自身就是一个平衡字符串，则返回 0。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">输入：s = &quot;QWER&quot;</span><br><span class="line">输出：0</span><br><span class="line">解释：s 已经是平衡的了。</span><br><span class="line"></span><br><span class="line">------------</span><br><span class="line">输入：s = &quot;QQWE&quot;</span><br><span class="line">输出：1</span><br><span class="line">解释：我们需要把一个 &#x27;Q&#x27; 替换成 &#x27;R&#x27;，这样得到的 &quot;RQWE&quot; (或 &quot;QRWE&quot;) 是平衡的。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-------------</span><br><span class="line">输入：s = &quot;QQQW&quot;</span><br><span class="line">输出：2</span><br><span class="line">解释：我们可以把前面的 &quot;QQ&quot; 替换成 &quot;ER&quot;。</span><br><span class="line"></span><br><span class="line">-------------</span><br><span class="line">输入：s = &quot;QQQQ&quot;</span><br><span class="line">输出：3</span><br><span class="line">解释：我们可以替换后 3 个 &#x27;Q&#x27;，使 s = &quot;QWER&quot;。</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>该题目分类属于中等题，且用two pointer进行解决，核心思路见代码：</p>
+<p><strong>代码如下：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> e = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> w = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> q = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> r = <span class="number">3</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">balancedString</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = s.length();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (len == <span class="number">0</span> || (len % <span class="number">4</span> != <span class="number">0</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> e = <span class="number">0</span>, w = <span class="number">0</span>, q = <span class="number">0</span>, r = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">&#x27;E&#x27;</span>) &#123;</span><br><span class="line">                e++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;W&#x27;</span>) &#123;</span><br><span class="line">                w++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;Q&#x27;</span>) &#123;</span><br><span class="line">                q++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;R&#x27;</span>) &#123;</span><br><span class="line">                r++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// t为target的简写，t是每个字符的目标个数</span></span><br><span class="line">        <span class="keyword">int</span> t = len / <span class="number">4</span>;</span><br><span class="line">        <span class="keyword">if</span> (e == w &amp;&amp; w == r &amp;&amp; r == q) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 以下四行的n为need的简写，算出其离目标的距离即该字符需要变换的个数</span></span><br><span class="line">        <span class="comment">// 需要注意的是，我们只计算大于目标的字符距离目标的个数，因为变换是相互的</span></span><br><span class="line">        <span class="comment">// 你也可以只计算小于目标的字符距离目标的个数</span></span><br><span class="line">        <span class="keyword">int</span> ne = (e &lt;= t) ? <span class="number">0</span> : e - t;</span><br><span class="line">        <span class="keyword">int</span> nw = (w &lt;= t) ? <span class="number">0</span> : w - t;</span><br><span class="line">        <span class="keyword">int</span> nq = (q &lt;= t) ? <span class="number">0</span> : q - t;</span><br><span class="line">        <span class="keyword">int</span> nr = (r &lt;= t) ? <span class="number">0</span> : r - t;</span><br><span class="line">    </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> ans = len;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 以下声明中，c为current的简写</span></span><br><span class="line">        <span class="comment">// 下面四个变量代表在left和right指针区间内，各个字符的个数</span></span><br><span class="line">        <span class="keyword">int</span> cq = <span class="number">0</span>, cw = <span class="number">0</span>, ce = <span class="number">0</span>, cr = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (right &lt; len) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(right);</span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">&#x27;Q&#x27;</span>) &#123;</span><br><span class="line">                cq++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;W&#x27;</span>) &#123;</span><br><span class="line">                cw ++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;E&#x27;</span>) &#123;</span><br><span class="line">                ce++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;R&#x27;</span>) &#123;</span><br><span class="line">                cr++;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 如果当前的指针范围内各个字符需要变换的个数都满足需求，则我们开始</span></span><br><span class="line">            <span class="comment">// 保存结果并缩小指针区间</span></span><br><span class="line">            <span class="keyword">while</span> (cq &gt;= nq &amp;&amp; cw &gt;= nw &amp;&amp; ce &gt;= ne &amp;&amp; cr &gt;= nr) &#123;</span><br><span class="line">                ans = Math.min(ans, right - left + <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">char</span> leftC = s.charAt(left);</span><br><span class="line">                <span class="keyword">if</span> (leftC == <span class="string">&#x27;Q&#x27;</span>) &#123;</span><br><span class="line">                    cq--;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (leftC == <span class="string">&#x27;W&#x27;</span>) &#123;</span><br><span class="line">                    cw--;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (leftC == <span class="string">&#x27;E&#x27;</span>) &#123;</span><br><span class="line">                    ce--;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (leftC == <span class="string">&#x27;R&#x27;</span>) &#123;</span><br><span class="line">                    cr--;</span><br><span class="line">                &#125;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 否则继续增大指针范围</span></span><br><span class="line">            right++;</span><br><span class="line">        &#125; </span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
     
 
 
@@ -1107,89 +1202,6 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ntlp</span><br></pre></td></tr></table></figure>
 
 <p>待整理</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2020/10/27/LinuxCmd/20200814-%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/header.jpg">
-      <meta itemprop="name" content="codefreestyle">
-      <meta itemprop="description" content="每天收获一点点">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sunshine">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/27/LinuxCmd/20200814-%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-10-27 10:11:32" itemprop="dateCreated datePublished" datetime="2020-10-27T10:11:32+08:00">2020-10-27</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-10-10 09:08:41" itemprop="dateModified" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="查看远程服务器的端口是否开放"><a href="#查看远程服务器的端口是否开放" class="headerlink" title="查看远程服务器的端口是否开放"></a>查看远程服务器的端口是否开放</h1><h2 id="1-nc（netcat）"><a href="#1-nc（netcat）" class="headerlink" title="1. nc（netcat）"></a>1. nc（netcat）</h2><p>nc是一个简单的Unix工具，使用TCP或者UDP协议读写网络连接上的数据。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc [OPTIONS...] [hostname] [port]</span><br></pre></td></tr></table></figure>
-
-<p>如果未开放，则会显示请求被拒绝。例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc node1 9100</span><br><span class="line"><span class="comment"># Ncat: Connection refused.</span></span><br></pre></td></tr></table></figure>
-
-<p>如果指定端口开放，则会显示连接成功。例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nc node1 9100</span><br><span class="line"><span class="comment"># Ncat: Connection succeeded</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-telnet"><a href="#2-telnet" class="headerlink" title="2. telnet"></a>2. telnet</h2><p>命令格式</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet [HostName or IP] [PortNumber]</span><br></pre></td></tr></table></figure>
-
 
       
     </div>

@@ -406,8 +406,3 @@ bool SkipList<Key, Comparator>::Contains(const Key& key) const {
 #endif  // STORAGE_LEVELDB_DB_SKIPLIST_H_
 
 ```
-
-
-
-1. 两个指针：慢指针和快指针，慢指针一次走一步，快指针一次走两步。如果两个指针相遇，就是有环，如果两个指针不相遇，就是没环。
-2. 将快指针放回链表起点，慢指针位置不变，两者都以慢速遍历指针，再次相遇的点即为环的起点。
