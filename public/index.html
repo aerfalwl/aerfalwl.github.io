@@ -229,7 +229,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">27</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -273,6 +273,89 @@
       
 
       
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2020/11/08/Leetcode/845/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="codefreestyle">
+      <meta itemprop="description" content="每天收获一点点">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/08/Leetcode/845/" class="post-title-link" itemprop="url">Leetcode 845. Longest Mountain in Array</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2020-11-08 14:20:45 / 修改时间：14:25:53" itemprop="dateCreated datePublished" datetime="2020-11-08T14:20:45+08:00">2020-11-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/longest-mountain-in-array/">英文题目</a></p>
+<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/longest-mountain-in-array/">中文题目</a></p>
+<p>难度：Medium</p>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>直接模拟该山的形状即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">longestMountain</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = A.length;</span><br><span class="line">        <span class="keyword">if</span> (len &lt; <span class="number">3</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> pre = left;</span><br><span class="line">        <span class="keyword">int</span> right = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (right &lt; len) &#123;</span><br><span class="line">            <span class="keyword">boolean</span> up = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">boolean</span> down = <span class="keyword">false</span>;</span><br><span class="line">            <span class="comment">// walk through the flat road</span></span><br><span class="line">            <span class="keyword">while</span> (A[pre] == A[right]) &#123;</span><br><span class="line">                pre++;</span><br><span class="line">                right++;</span><br><span class="line">                <span class="keyword">if</span> (right &gt;= len) <span class="keyword">return</span> ans;</span><br><span class="line">            &#125;</span><br><span class="line">            left = pre;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// walk up the road</span></span><br><span class="line">            <span class="keyword">while</span> (A[pre] &lt; A[right]) &#123;</span><br><span class="line">                pre++;</span><br><span class="line">                right++;</span><br><span class="line">                up = <span class="keyword">true</span>;</span><br><span class="line">                <span class="keyword">if</span> (right &gt;= len) <span class="keyword">return</span> ans;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// walk through the flat road</span></span><br><span class="line">            <span class="keyword">while</span> (A[pre] == A[right]) &#123;</span><br><span class="line">                pre++;</span><br><span class="line">                right++;</span><br><span class="line">                up = <span class="keyword">false</span>;</span><br><span class="line">                <span class="keyword">if</span> (right &gt;= len) <span class="keyword">return</span> ans;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// walk down the road</span></span><br><span class="line">            <span class="keyword">while</span> (A[pre] &gt; A[right]) &#123;</span><br><span class="line">                pre++;</span><br><span class="line">                right++;</span><br><span class="line">                down = <span class="keyword">true</span>;</span><br><span class="line">                <span class="keyword">if</span> (right &gt;= len) &#123;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (up &amp;&amp; down) &#123;</span><br><span class="line">                ans = Math.max(ans, right - left);</span><br><span class="line">                left = pre;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
     
 
 
@@ -1075,106 +1158,6 @@
 </ol>
 <p><strong>代码如下：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findPairs</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span> || nums.length == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> len = nums.length;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> l = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> r = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (r &lt; len) &#123;</span><br><span class="line">            <span class="keyword">int</span> lv = nums[l];</span><br><span class="line">            <span class="keyword">int</span> rv = nums[r];</span><br><span class="line">            <span class="keyword">if</span> (rv - lv == k) &#123;</span><br><span class="line">                ans++;</span><br><span class="line">                <span class="keyword">int</span> preL = lv;</span><br><span class="line">                <span class="keyword">int</span> preR = rv;</span><br><span class="line">                <span class="keyword">while</span>((r + <span class="number">1</span> &lt; len) &amp;&amp; nums[++r] == preR) &#123;&#125; <span class="comment">// 跳过重复数字</span></span><br><span class="line">                <span class="keyword">while</span>((l + <span class="number">1</span> &lt; len) &amp;&amp; nums[++l] == preL) &#123;&#125; <span class="comment">// 跳过重复数字</span></span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (rv - lv &lt; k) &#123;</span><br><span class="line">                r++;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (rv - lv &gt; k) &#123;</span><br><span class="line">                l++;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (l == r) r = l + <span class="number">1</span>; <span class="comment">// 避免k=0时，左右指针重合的情况</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> ans;        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2020/10/30/Leetcode/1616/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/header.jpg">
-      <meta itemprop="name" content="codefreestyle">
-      <meta itemprop="description" content="每天收获一点点">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sunshine">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/30/Leetcode/1616/" class="post-title-link" itemprop="url">1616. Split Two Strings to Make Palindrome</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2020-10-30 22:43:24 / 修改时间：22:49:59" itemprop="dateCreated datePublished" datetime="2020-10-30T22:43:24+08:00">2020-10-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode/" itemprop="url" rel="index"><span itemprop="name">leetcode</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p><a target="_blank" rel="noopener" href="https://leetcode.com/problems/split-two-strings-to-make-palindrome/">英文题目</a></p>
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/split-two-strings-to-make-palindrome/">中文题目</a></p>
-<p>难度：中等</p>
-<h3 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h3><p>说明：题目来自leetcode中文官网</p>
-<p>给你两个字符串 a 和 b ，它们长度相同。请你选择一个下标，将两个字符串都在 相同的下标 分割开。由 a 可以得到两个字符串： aprefix 和 asuffix ，满足 a = aprefix + asuffix ，同理，由 b 可以得到两个字符串 bprefix 和 bsuffix ，满足 b = bprefix + bsuffix 。请你判断 aprefix + bsuffix 或者 bprefix + asuffix 能否构成回文串。</p>
-<p>当你将一个字符串 s 分割成 sprefix 和 ssuffix 时， ssuffix 或者 sprefix 可以为空。比方说， s = “abc” 那么 “” + “abc” ， “a” + “bc” ， “ab” + “c” 和 “abc” + “” 都是合法分割。</p>
-<p>如果 能构成回文字符串 ，那么请返回 true，否则返回 false 。</p>
-<p>请注意， x + y 表示连接字符串 x 和 y 。</p>
-<p><strong>示例：</strong></p>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">输入：a = &quot;x&quot;, b = &quot;y&quot;</span><br><span class="line">输出：true</span><br><span class="line">解释：如果 a 或者 b 是回文串，那么答案一定为 true ，因为你可以如下分割：</span><br><span class="line">aprefix = &quot;&quot;, asuffix = &quot;x&quot;</span><br><span class="line">bprefix = &quot;&quot;, bsuffix = &quot;y&quot;</span><br><span class="line">那么 aprefix + bsuffix = &quot;&quot; + &quot;y&quot; = &quot;y&quot; 是回文串。</span><br><span class="line"></span><br><span class="line">------------</span><br><span class="line">输入：a = &quot;ulacfd&quot;, b = &quot;jizalu&quot;</span><br><span class="line">输出：true</span><br><span class="line">解释：在下标为 3 处分割：</span><br><span class="line">aprefix = &quot;ula&quot;, asuffix = &quot;cfd&quot;</span><br><span class="line">bprefix = &quot;jiz&quot;, bsuffix = &quot;alu&quot;</span><br><span class="line">那么 aprefix + bsuffix = &quot;ula&quot; + &quot;alu&quot; = &quot;ulaalu&quot; 是回文串</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>该题目分类属于中等题，且用two pointer进行解决，核心思路见代码：</p>
-<ol>
-<li>如果a前缀加上b后缀为回文，则在遍历过程中，一定存在以下情况：<ul>
-<li>a的左指针，对称在b的右指针所指向的值是相等的，如果不相等，则它们之间的那一段必定是回文才能保证拼接之后是回文；</li>
-</ul>
-</li>
-<li>反过来，对于b和a也是一样的。</li>
-</ol>
-<p><strong>代码如下：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkPalindromeFormation</span><span class="params">(String a, String b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> helper(a, b) || helper(b, a);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">helper</span><span class="params">(String a, String b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = a.length();</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = len - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (; i &lt; len; i++, j--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (a.charAt(i) != b.charAt(j)) &#123;</span><br><span class="line">                <span class="keyword">return</span> isP(a, i, j) || isP(b, i, j);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isP</span><span class="params">(String s, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; j) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s.charAt(i) != s.charAt(j)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            i++;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
