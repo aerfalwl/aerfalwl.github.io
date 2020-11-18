@@ -6,7 +6,7 @@
   <link href="https://aerfalwl.github.io/atom.xml" rel="self"/>
   
   <link href="https://aerfalwl.github.io/"/>
-  <updated>2020-11-08T06:39:58.714Z</updated>
+  <updated>2020-11-18T00:52:58.184Z</updated>
   <id>https://aerfalwl.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Google C++ 编程规范</title>
+    <link href="https://aerfalwl.github.io/2020/11/18/CodeStyle/Google%20C%20PlusPlus%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/"/>
+    <id>https://aerfalwl.github.io/2020/11/18/CodeStyle/Google%20C%20PlusPlus%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/</id>
+    <published>2020-11-18T00:53:44.871Z</published>
+    <updated>2020-11-18T00:52:58.184Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;头文件&quot;&gt;&lt;a href=&quot;#头文件&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="codeing" scheme="https://aerfalwl.github.io/categories/codeing/"/>
+    
+    
+    <category term="C++" scheme="https://aerfalwl.github.io/tags/C/"/>
+    
+    <category term="code style" scheme="https://aerfalwl.github.io/tags/code-style/"/>
+    
+  </entry>
   
   <entry>
     <title>Leetcode 881. Boats to Save People</title>
@@ -542,27 +569,6 @@
     <category term="安装部署" scheme="https://aerfalwl.github.io/tags/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/"/>
     
     <category term="配置" scheme="https://aerfalwl.github.io/tags/%E9%85%8D%E7%BD%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="https://aerfalwl.github.io/2020/10/27/Socket/20200914-socket_close_shutdown/"/>
-    <id>https://aerfalwl.github.io/2020/10/27/Socket/20200914-socket_close_shutdown/</id>
-    <published>2020-10-27T02:11:32.107Z</published>
-    <updated>2020-10-10T01:08:41.753Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Socket-之Close与Shutdown&quot;&gt;&lt;a href=&quot;#Socket-之Close与Shutdown&quot; class=&quot;headerlink&quot; title=&quot;Socket 之Close与Shutdown&quot;&gt;&lt;/a&gt;Socket</summary>
-        
-      
-    
-    
-    
     
   </entry>
   
