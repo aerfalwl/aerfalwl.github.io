@@ -1321,4 +1321,111 @@
         <tag>code style</tag>
       </tags>
   </entry>
+  <entry>
+    <title>clickhouse 安装和使用</title>
+    <url>/2021/01/12/Config/clickhouse/</url>
+    <content><![CDATA[<h1 id="clickhouse-安装和使用"><a href="#clickhouse-安装和使用" class="headerlink" title="clickhouse 安装和使用"></a>clickhouse 安装和使用</h1><h2 id="离线安装"><a href="#离线安装" class="headerlink" title="离线安装"></a>离线安装</h2><p><a href="https://clickhouse.tech/docs/en/getting-started/install/">参考官网</a></p>
+<p>本人的服务器系统版本是centos类型，因此在官网上下载了rpm包在本地安装。<a href="https://repo.yandex.ru/clickhouse/rpm/stable/x86_64/">rpm地址</a></p>
+<p>下载内容包含三个部分：</p>
+<ol>
+<li>clickhouse-client-20.9.7.11-2.noarch.rpm</li>
+<li>clickhouse-server-20.9.7.11-2.noarch.rpm</li>
+<li>clickhouse-common-static-20.9.7.11-2.x86_64.rpm</li>
+</ol>
+<p>以上内容上传至服务器的clickhoust文件夹下，在该文件夹下执行如下命令即安装完毕。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -ivh * </span><br></pre></td></tr></table></figure>
+
+<h2 id="服务启动和停止"><a href="#服务启动和停止" class="headerlink" title="服务启动和停止"></a>服务启动和停止</h2><p>有两种方式，一种使用service启动，一种使用systemctl启动。</p>
+<h3 id="service"><a href="#service" class="headerlink" title="service"></a>service</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">service start clickhouse-server</span><br><span class="line">service stop clickhouse-server</span><br><span class="line">service status clickhouse-server</span><br><span class="line">clickhouse-client</span><br></pre></td></tr></table></figure>
+
+<p>若service启动过程报错为：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Init script is already running</span><br></pre></td></tr></table></figure>
+
+<p>则使用systemctl方式启动.</p>
+<h3 id="systemctl"><a href="#systemctl" class="headerlink" title="systemctl"></a>systemctl</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start clickhouse-server</span><br><span class="line">systemctl stop clickhouse-server</span><br><span class="line">systemctl status clickhouse-server</span><br><span class="line">clickhouse-client</span><br></pre></td></tr></table></figure>
+
+<p>两种方式启动的日志文件目录均为<code>/var/log/clickhouse-server/</code>。</p>
+<p>另外两种启动方式：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo /etc/init.d/clickhouse-server start</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo -u clickhouse clickhouse-server --config-file=/etc/clickhouse-server/config.xml</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>配置文件路径：<code>/etc/clickhouse-server/</code>，默认的配置文件为config.xml，但是建议将更新的配置放入config.d文件夹下，以防版本更新导致修改文件被覆盖。</p>
+<p>默认数据保存路径：<code>/var/lib/clickhouse/</code></p>
+<p>如果改路径下的存储空间比较小，建议将其该为大存储空间下的目录，例如：/app/clickhouse</p>
+<p>注意：请注意/app/clickhouse的访问权限，需要赋予clickhouse用户的访问权限，也可以直接使用<code>chmod 775 /app/clickhouse</code>为其设置写访问权限。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>配置完之后，便可使用如下命令访问该数据库。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> clickhouse-client --host 127.0.0.1 --port 9000</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> clickhouse-client</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> clickhouse-client --host hostname --port 9000	</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：以上命令中的某个可能会出现如下错误。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ClickHouse client version 20.4.1.1.</span><br><span class="line">Connecting to localhost:9000 as user default.</span><br><span class="line">Code: 210. DB::NetException: Connection refused (localhost:9000)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>如果检查节点端口未开放，则可能是clickhouse-server启动的错误。</li>
+<li>如果检查节点端口已经开放，则可能是–host后边加的参数的问题，试一下localhose、127.0.0.1等。</li>
+</ol>
+<h2 id="集群部署"><a href="#集群部署" class="headerlink" title="集群部署"></a>集群部署</h2><p>以上所述为单机版部署模式，集群版本的部署模式如下。</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li><p>参照单机版教程，在每个节点上安装clickhouse。</p>
+</li>
+<li><p>在每个节点上安装zookeeper，并确保集群模式下的zookeeper服务启动完毕<a href="https://blog.csdn.net/u014110320/article/details/112532876">zookeeper集群部署</a>。</p>
+</li>
+<li><p>更改配置文件，具体如下：</p>
+<ol>
+<li><p>增加如下内容至<strong>每个节点</strong>上的/etc/clickhouse-server/config.xml文件。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">yandex</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 以下为添加内容--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">include_from</span>&gt;</span>/etc/clickhouse-server/config.d/metrika.xml<span class="tag">&lt;/<span class="name">include_from</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">include_from</span>&gt;</span>/etc/clickhouse-server/config.d/macros.xml<span class="tag">&lt;/<span class="name">include_from</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">listen_host</span>&gt;</span>0.0.0.0<span class="tag">&lt;/<span class="name">listen_host</span>&gt;</span></span><br><span class="line">     <span class="comment">&lt;!-- 上面为添加内容--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">yandex</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在文件夹/etc/clickhouse-server/config.d/文件中新增文件metrika.xml（<strong>每个节点上的此配置都相同</strong>），内容如下：(注意节点的hostname和port，以及zookeeper的相关配置)。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">yandex</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">clickhouse_remote_servers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">cluster_1</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">internal_replication</span>&gt;</span>true<span class="tag">&lt;/<span class="name">internal_replication</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">weight</span>&gt;</span>1<span class="tag">&lt;/<span class="name">weight</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">host</span>&gt;</span>node2<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">port</span>&gt;</span>9000<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">internal_replication</span>&gt;</span>true<span class="tag">&lt;/<span class="name">internal_replication</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">weight</span>&gt;</span>1<span class="tag">&lt;/<span class="name">weight</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">host</span>&gt;</span>node3<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">port</span>&gt;</span>9000<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">shard</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">internal_replication</span>&gt;</span>true<span class="tag">&lt;/<span class="name">internal_replication</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">weight</span>&gt;</span>1<span class="tag">&lt;/<span class="name">weight</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">replica</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">host</span>&gt;</span>node4<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">port</span>&gt;</span>9000<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">shard</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">cluster_1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">clickhouse_remote_servers</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="tag">&lt;<span class="name">zookeeper-servers</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">node</span> <span class="attr">index</span>=<span class="string">&quot;2&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">host</span>&gt;</span>node2<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">port</span>&gt;</span>2181<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">node</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">node</span> <span class="attr">index</span>=<span class="string">&quot;3&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">host</span>&gt;</span>node3<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">port</span>&gt;</span>2181<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">node</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">node</span> <span class="attr">index</span>=<span class="string">&quot;4&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">host</span>&gt;</span>node4<span class="tag">&lt;/<span class="name">host</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">port</span>&gt;</span>2181<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">node</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">zookeeper-servers</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">    <span class="tag">&lt;<span class="name">clickhouse_compression</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">case</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">min_part_size</span>&gt;</span>10000000000<span class="tag">&lt;/<span class="name">min_part_size</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">min_part_size_ratio</span>&gt;</span>0.01<span class="tag">&lt;/<span class="name">min_part_size_ratio</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">method</span>&gt;</span>lz4<span class="tag">&lt;/<span class="name">method</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">case</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">clickhouse_compression</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">yandex</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+</li>
+</ol>
+<ol start="3">
+<li><p>在文件夹/etc/clickhouse-server/config.d/文件中新增文件macros.xml(<strong>每个节点上的replica配置不同，分别设置为自己的主机名即可</strong>。)</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">yandex</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">macros</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">cluster</span>&gt;</span>cluster_1<span class="tag">&lt;/<span class="name">cluster</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">shard1</span>&gt;</span>01<span class="tag">&lt;/<span class="name">shard1</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">shard2</span>&gt;</span>02<span class="tag">&lt;/<span class="name">shard2</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">replica</span>&gt;</span>node4<span class="tag">&lt;/<span class="name">replica</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">macros</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">yandex</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<ol start="4">
+<li>在每个节点上启动clickhouse-server，并查看/var/log/clickhouse-server/clickhouse-server.log文件确保其正常启动。</li>
+</ol>
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>clickhouse-client连接集群测试部署是否成功。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> clickhouse-client --host node2 --port 9000</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> clickhouse-client --host node3 --port 9000</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> clickhouse-client --host node4 --port 9000</span></span><br></pre></td></tr></table></figure>
+
+<p>查看所有集群信息</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> system.clusters;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>安装部署</tag>
+        <tag>配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Zookeeper集群模式部署</title>
+    <url>/2021/01/12/Config/zookeeper/</url>
+    <content><![CDATA[<h1 id="Zookeeper集群模式部署"><a href="#Zookeeper集群模式部署" class="headerlink" title="Zookeeper集群模式部署"></a>Zookeeper集群模式部署</h1><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 解压文件件，例如</span></span><br><span class="line">tar -xzvf apache-zookeeper-3.6.1-bin.tar.gz -C /home/app/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 更改配置文件</span></span><br><span class="line">cd /home/app/apache-zookeeper-3.6.1-bin</span><br><span class="line">cp conf/zoo_sample.cfg conf/zoo.cfg</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 编辑配置文件如下,</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 首先添加如下内容至文件末尾</span></span><br><span class="line">server.2 = node2:9010:9011</span><br><span class="line">server.3 = node3:9010:9011</span><br><span class="line">server.4 = node4:9010:9011</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 更改文件dataDir的位置。</span></span><br><span class="line">dataDir=/app/zookeeper</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 分别在node2、node3、node4的/app/zookeeper的目录下放置文件myid，内容分别为2/3/4</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 在三台节点上分别启动如下命令来启动zookeeper</span></span><br><span class="line">bin/zkServer.sh start</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看状态，可分别看到为leader, follower, follower</span></span><br><span class="line">bin/zkServer.sh status</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>配置</category>
+      </categories>
+      <tags>
+        <tag>安装部署</tag>
+        <tag>配置</tag>
+      </tags>
+  </entry>
 </search>
