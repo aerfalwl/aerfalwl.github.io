@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://aerfalwl.github.io/2021/01/12/Config/clickhouse/</loc>
+    <lastmod>2021-01-12</lastmod>
+  </url>
+  <url>
+    <loc>https://aerfalwl.github.io/2021/01/12/Config/zookeeper/</loc>
+    <lastmod>2021-01-12</lastmod>
+  </url>
+  <url>
     <loc>https://aerfalwl.github.io/2020/11/18/CodeStyle/Google%20C%20PlusPlus%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/</loc>
     <lastmod>2020-11-18</lastmod>
   </url>

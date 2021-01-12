@@ -6,7 +6,7 @@
   <link href="https://aerfalwl.github.io/atom.xml" rel="self"/>
   
   <link href="https://aerfalwl.github.io/"/>
-  <updated>2020-11-18T00:52:58.184Z</updated>
+  <updated>2021-01-12T08:18:39.288Z</updated>
   <id>https://aerfalwl.github.io/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>clickhouse 安装和使用</title>
+    <link href="https://aerfalwl.github.io/2021/01/12/Config/clickhouse/"/>
+    <id>https://aerfalwl.github.io/2021/01/12/Config/clickhouse/</id>
+    <published>2021-01-12T08:19:12.000Z</published>
+    <updated>2021-01-12T08:18:39.288Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;clickhouse-安装和使用&quot;&gt;&lt;a href=&quot;#clickhouse-安装和使用&quot; class=&quot;headerlink&quot; title=&quot;clickhouse 安装和使用&quot;&gt;&lt;/a&gt;clickhouse 安装和使用&lt;/h1&gt;&lt;h2 id=&quot;离线安装&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="配置" scheme="https://aerfalwl.github.io/categories/%E9%85%8D%E7%BD%AE/"/>
+    
+    
+    <category term="安装部署" scheme="https://aerfalwl.github.io/tags/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/"/>
+    
+    <category term="配置" scheme="https://aerfalwl.github.io/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Zookeeper集群模式部署</title>
+    <link href="https://aerfalwl.github.io/2021/01/12/Config/zookeeper/"/>
+    <id>https://aerfalwl.github.io/2021/01/12/Config/zookeeper/</id>
+    <published>2021-01-12T08:18:12.000Z</published>
+    <updated>2021-01-12T08:18:08.366Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Zookeeper集群模式部署&quot;&gt;&lt;a href=&quot;#Zookeeper集群模式部署&quot; class=&quot;headerlink&quot; title=&quot;Zookeeper集群模式部署&quot;&gt;&lt;/a&gt;Zookeeper集群模式部署&lt;/h1&gt;&lt;figure</summary>
+        
+      
+    
+    
+    
+    <category term="配置" scheme="https://aerfalwl.github.io/categories/%E9%85%8D%E7%BD%AE/"/>
+    
+    
+    <category term="安装部署" scheme="https://aerfalwl.github.io/tags/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/"/>
+    
+    <category term="配置" scheme="https://aerfalwl.github.io/tags/%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>Google C++ 编程规范</title>
@@ -502,62 +556,6 @@
     <summary type="html">&lt;h2 id=&quot;步骤&quot;&gt;&lt;a href=&quot;#步骤&quot; class=&quot;headerlink&quot; title=&quot;步骤&quot;&gt;&lt;/a&gt;步骤&lt;/h2&gt;&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;生成站点地图&lt;/p&gt;
 &lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
-        
-      
-    
-    
-    
-    <category term="配置" scheme="https://aerfalwl.github.io/categories/%E9%85%8D%E7%BD%AE/"/>
-    
-    
-    <category term="安装部署" scheme="https://aerfalwl.github.io/tags/%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/"/>
-    
-    <category term="配置" scheme="https://aerfalwl.github.io/tags/%E9%85%8D%E7%BD%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>763. Partition Labels</title>
-    <link href="https://aerfalwl.github.io/2020/10/27/Leetcode/763/"/>
-    <id>https://aerfalwl.github.io/2020/10/27/Leetcode/763/</id>
-    <published>2020-10-27T13:36:28.000Z</published>
-    <updated>2020-10-27T13:51:43.528Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://aerfalwl.github.io/categories/leetcode/"/>
-    
-    
-    <category term="two pointer" scheme="https://aerfalwl.github.io/tags/two-pointer/"/>
-    
-    <category term="algorithm" scheme="https://aerfalwl.github.io/tags/algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>hexo+github搭建个人博客</title>
-    <link href="https://aerfalwl.github.io/2020/10/27/Config/hexo_config/"/>
-    <id>https://aerfalwl.github.io/2020/10/27/Config/hexo_config/</id>
-    <published>2020-10-27T03:00:00.000Z</published>
-    <updated>2020-10-27T03:20:20.112Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;步骤&quot;&gt;&lt;a href=&quot;#步骤&quot; class=&quot;headerlink&quot; title=&quot;步骤&quot;&gt;&lt;/a&gt;步骤&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;在电脑上搭建博客&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
         
       
     
