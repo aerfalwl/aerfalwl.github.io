@@ -229,20 +229,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -273,6 +273,132 @@
       
 
       
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2020/10/27/Config/hexo_google_site/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="codefreestyle">
+      <meta itemprop="description" content="每天收获一点点">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/27/Config/hexo_google_site/" class="post-title-link" itemprop="url">hexo 博客被google收录</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-10-27 22:57:12" itemprop="dateCreated datePublished" datetime="2020-10-27T22:57:12+08:00">2020-10-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-10-29 09:41:57" itemprop="dateModified" datetime="2020-10-29T09:41:57+08:00">2020-10-29</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%85%8D%E7%BD%AE/" itemprop="url" rel="index"><span itemprop="name">配置</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li><p>生成站点地图</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改配置文件_config.yml，添加如下内容：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">urlgoogle: https://xxx.github.io/ </span><br><span class="line">sitemap:</span><br><span class="line">  path: sitemap.xml</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改_config.xml，设置url为你的github.io</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">url: https://xxx.github.io</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="4">
+<li><p>添加站点，登录<a target="_blank" rel="noopener" href="https://www.google.com/webmasters/">Google 网站站长</a>，进入<code>Search Console</code>，进入如下页面</p>
+<p><img src="/2020/10/27/Config/hexo_google_site/first.png" alt="首页"></p>
+</li>
+<li><p>选择网址前缀，输入<a target="_blank" rel="noopener" href="https://xxx.github.io/">https://xxx.github.io</a></p>
+</li>
+<li><p>之后，下载Google验证文件，放在<code>theme/next/source</code>目录中。</p>
+</li>
+<li><p>生成robots.xt文件，在hexo的source目录下，放入如下内容：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Allow: /</span><br><span class="line">Allow: /home/</span><br><span class="line">Allow: /archives/</span><br><span class="line">Allow: /categories/</span><br><span class="line">Allow: /tags/</span><br><span class="line"></span><br><span class="line">Disallow: /js/</span><br><span class="line">Disallow: /css/</span><br><span class="line">Disallow: /fonts/</span><br><span class="line"></span><br><span class="line">Sitemap: https://aerfalwl.github.io/sitemap.xml</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="8">
+<li><p>重新生成和部署</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部署完成之后，进行验证即可，若操作无误，便会验证成功。</p>
+</li>
+<li><p>添加站点地图：</p>
+<p><img src="/2020/10/27/Config/hexo_google_site/add_sitemap.png" alt="添加站点地图"></p>
+</li>
+<li><p>为了加快Google扫描网站的速度，可以通过以下方式建立索引：</p>
+<ul>
+<li>在浏览器中输入<a target="_blank" rel="noopener" href="https://www.google.com/ping?sitemap=https://aerfalwl.github.io/sitemap.xml%E8%A6%81%E6%B1%82Google%E7%BB%99%E7%BD%91%E7%AB%99%E5%BB%BA%E7%AB%8B%E7%B4%A2%E5%BC%95%EF%BC%9B">https://www.google.com/ping?sitemap=https://aerfalwl.github.io/sitemap.xml要求Google给网站建立索引；</a></li>
+</ul>
+</li>
+<li><p>等待几分钟，在Google中搜索site:aerfalwl.github.io检验是否能看到网站内容。</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
     
 
 
@@ -1073,127 +1199,6 @@
 <h1 id="日志维护"><a href="#日志维护" class="headerlink" title="日志维护"></a>日志维护</h1><h2 id="小收获"><a href="#小收获" class="headerlink" title="小收获"></a>小收获</h2><ol>
 <li>除了设置socket 外，还需要设置TCP soc ke t 的读写缓冲区，它们的参数分别是net.i.pv4.tcp_wmem和net . i.pv4 . tc p_ wmem 。这些参数的值由3 个整数组成，它们使用空格分隔，分别表示最小值、默认值和最大值。最大值不能大于net.core.wmem_max可以和net.core.rmem_max指定的大小。例如，“4096 65536 204800。”表示最小值是4KB、默认值是64KB、最大值是2MB 。根据Kafka 服务器接收流量的实际情况，可能需要设置更高的最大值，为网络连接提供更大的缓冲空间。还有其他一些有用的网络参数。例如， 把net.ipv4.tcp_window_scaling 设为l ，启用TCP时间窗扩展，可以提升客户端传输数据的效率，传输的数据可以在服务器端进行缓冲。把net.1.pv4.tcp_max_syn_backlog 设为比默认值1024 更大的值，可以接受更多的井发连接, 把net.core.netdev_max_backlog 设为比默认值1000 更大的值，有助于应对网络流量的爆发，特别是在使用千兆网络的情况下，允许更多的数据包排队等待内核处理。</li>
 <li></li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/header.jpg">
-      <meta itemprop="name" content="codefreestyle">
-      <meta itemprop="description" content="每天收获一点点">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sunshine">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/" class="post-title-link" itemprop="url">未命名</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-10-27 10:11:32" itemprop="dateCreated datePublished" datetime="2020-10-27T10:11:32+08:00">2020-10-27</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-10-10 09:08:41" itemprop="dateModified" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
-      </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="初识Kafka"><a href="#初识Kafka" class="headerlink" title="初识Kafka"></a>初识Kafka</h1><h2 id="Feture"><a href="#Feture" class="headerlink" title="Feture"></a>Feture</h2><ol>
-<li>消息保留：是Kafka的一个重要特性，Broker默认的消息保留策略是，要不保留一段时间，要不保留到消息到达一定的字节数。当消息总量达到这些上限时，旧消息就被过期并被删除。紧凑型日志，只有最后一个带有特定键的消息会被保留，因为，人们只关心最后时刻发生的改变。</li>
-<li>Kafka的消息复制机制只能在单个集群里进行，不能再多个集群之间进行。但是它提供一个叫做MirrorMaker的工具，可以用来实现集群之间的消息赋值。</li>
-<li>亚秒级的消息延迟。</li>
-</ol>
-<h2 id="Kafka适用场景"><a href="#Kafka适用场景" class="headerlink" title="Kafka适用场景"></a>Kafka适用场景</h2><ol>
-<li>多个生产者</li>
-<li>多个消费者</li>
-</ol>
-<h2 id="Kafka的使用场景"><a href="#Kafka的使用场景" class="headerlink" title="Kafka的使用场景"></a>Kafka的使用场景</h2><ol>
-<li>活动跟踪，比如：用户网页访问次数和点击量。</li>
-<li>传递消息，比如向用户发通知。使用公共组件的好处：在公共组件上做一些有趣的转换，比如把多个消息聚合成一个单独的通知，而这些工作是无法在其它地方完成的。</li>
-<li>度量指标和日志记录。</li>
-<li>提交日志。</li>
-<li>流处理。</li>
-</ol>
-<h1 id="生产者"><a href="#生产者" class="headerlink" title="生产者"></a>生产者</h1><p><img src="/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201004160030424.png" alt="Kafka生产者组件图"></p>
-<h1 id="消费者"><a href="#消费者" class="headerlink" title="消费者"></a>消费者</h1><p><img src="/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005131625839.png" alt="消费者组群"></p>
-<p>如果消费者组群中消费者的数量多于主题分区的个数，则会有部分消费者被闲置，不会接收到任何消息。</p>
-<h1 id="深入Kafka"><a href="#深入Kafka" class="headerlink" title="深入Kafka"></a>深入Kafka</h1><h2 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h2><ol>
-<li>Controller本质上也是一个broker，除了一般的broker的功能之外，它还负责首领的选举。集群中第一启动的Broker会在Zookeeper里创建一个临时节点/controller让自己成为控制器。</li>
-<li>Controller负责在节点加入或者离开集群时进行分区首领的选举，并且使用epoch来避免脑裂，脑裂是指两个节点同时任务自己是当前的控制器。</li>
-</ol>
-<h2 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h2><ol>
-<li>Kafka是一个可分区的，可复制的提交日志服务。</li>
-<li>副本<ol>
-<li>首领副本：每个分区有且仅有一个首领副本，为了保证一致性，所有生产者请求和消费者请求都会经过这个副本</li>
-<li>跟随者副本：首领以外的副本都是跟随者副本，跟随者副本不处理来自客户端的的请求，它们唯一要做的就是从首领那里复制消息，保持与首领一致的状态，如果首领发生崩溃，则跟随者会被提升为新首领。</li>
-</ol>
-</li>
-</ol>
-<h1 id="Broker处理请求的方式"><a href="#Broker处理请求的方式" class="headerlink" title="Broker处理请求的方式"></a>Broker处理请求的方式</h1><p><img src="/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005164403640.png" alt="image-20201005164403640"></p>
-<p><img src="/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005164434878.png" alt="image-20201005164434878"></p>
-<p>Kafka有用其它语言实现的客户端，如C, Python， Go语言等。Kafka网站上有它们的完整清单，这些客户端就是使用二进制协议与broker通信的。</p>
-<h2 id="分区分配"><a href="#分区分配" class="headerlink" title="分区分配"></a>分区分配</h2><h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><ol>
-<li>Kafka将分区分为若干个片段。默认情况下，每个片段包含1GB或者一周的数据，以较小的那个为准。</li>
-</ol>
-<h3 id="文件格式"><a href="#文件格式" class="headerlink" title="文件格式"></a>文件格式</h3><ol>
-<li><p>我们把Kafka的消息和偏移量保存在文件中。</p>
-</li>
-<li><p>键、值、偏移量、消息大小、校验和、消息格式版本号、压缩算法和时间戳。时间戳可以是生产者发送消息的时间，也可以是消息到达broker的时间，这个时间是可配置的。</p>
-</li>
-<li><p>可以使用工具DUmpLogSegment来查看片段的内容，它可以显示每个消息的偏移量、校验和、魔术数、消息大小和压缩算法。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/kafka-run-class.sh kafka.tools.DumpLogSegments</span><br></pre></td></tr></table></figure>
-
-<h2 id="清理"><a href="#清理" class="headerlink" title="清理"></a>清理</h2><ol>
-<li>P84页，103</li>
-</ol>
-</li>
 </ol>
 
       

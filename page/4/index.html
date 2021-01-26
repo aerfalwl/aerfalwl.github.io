@@ -229,20 +229,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -273,6 +273,127 @@
       
 
       
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="codefreestyle">
+      <meta itemprop="description" content="每天收获一点点">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-10-27 10:11:32" itemprop="dateCreated datePublished" datetime="2020-10-27T10:11:32+08:00">2020-10-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-10-10 09:08:41" itemprop="dateModified" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="初识Kafka"><a href="#初识Kafka" class="headerlink" title="初识Kafka"></a>初识Kafka</h1><h2 id="Feture"><a href="#Feture" class="headerlink" title="Feture"></a>Feture</h2><ol>
+<li>消息保留：是Kafka的一个重要特性，Broker默认的消息保留策略是，要不保留一段时间，要不保留到消息到达一定的字节数。当消息总量达到这些上限时，旧消息就被过期并被删除。紧凑型日志，只有最后一个带有特定键的消息会被保留，因为，人们只关心最后时刻发生的改变。</li>
+<li>Kafka的消息复制机制只能在单个集群里进行，不能再多个集群之间进行。但是它提供一个叫做MirrorMaker的工具，可以用来实现集群之间的消息赋值。</li>
+<li>亚秒级的消息延迟。</li>
+</ol>
+<h2 id="Kafka适用场景"><a href="#Kafka适用场景" class="headerlink" title="Kafka适用场景"></a>Kafka适用场景</h2><ol>
+<li>多个生产者</li>
+<li>多个消费者</li>
+</ol>
+<h2 id="Kafka的使用场景"><a href="#Kafka的使用场景" class="headerlink" title="Kafka的使用场景"></a>Kafka的使用场景</h2><ol>
+<li>活动跟踪，比如：用户网页访问次数和点击量。</li>
+<li>传递消息，比如向用户发通知。使用公共组件的好处：在公共组件上做一些有趣的转换，比如把多个消息聚合成一个单独的通知，而这些工作是无法在其它地方完成的。</li>
+<li>度量指标和日志记录。</li>
+<li>提交日志。</li>
+<li>流处理。</li>
+</ol>
+<h1 id="生产者"><a href="#生产者" class="headerlink" title="生产者"></a>生产者</h1><p><img src="/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201004160030424.png" alt="Kafka生产者组件图"></p>
+<h1 id="消费者"><a href="#消费者" class="headerlink" title="消费者"></a>消费者</h1><p><img src="/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005131625839.png" alt="消费者组群"></p>
+<p>如果消费者组群中消费者的数量多于主题分区的个数，则会有部分消费者被闲置，不会接收到任何消息。</p>
+<h1 id="深入Kafka"><a href="#深入Kafka" class="headerlink" title="深入Kafka"></a>深入Kafka</h1><h2 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h2><ol>
+<li>Controller本质上也是一个broker，除了一般的broker的功能之外，它还负责首领的选举。集群中第一启动的Broker会在Zookeeper里创建一个临时节点/controller让自己成为控制器。</li>
+<li>Controller负责在节点加入或者离开集群时进行分区首领的选举，并且使用epoch来避免脑裂，脑裂是指两个节点同时任务自己是当前的控制器。</li>
+</ol>
+<h2 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h2><ol>
+<li>Kafka是一个可分区的，可复制的提交日志服务。</li>
+<li>副本<ol>
+<li>首领副本：每个分区有且仅有一个首领副本，为了保证一致性，所有生产者请求和消费者请求都会经过这个副本</li>
+<li>跟随者副本：首领以外的副本都是跟随者副本，跟随者副本不处理来自客户端的的请求，它们唯一要做的就是从首领那里复制消息，保持与首领一致的状态，如果首领发生崩溃，则跟随者会被提升为新首领。</li>
+</ol>
+</li>
+</ol>
+<h1 id="Broker处理请求的方式"><a href="#Broker处理请求的方式" class="headerlink" title="Broker处理请求的方式"></a>Broker处理请求的方式</h1><p><img src="/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005164403640.png" alt="image-20201005164403640"></p>
+<p><img src="/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005164434878.png" alt="image-20201005164434878"></p>
+<p>Kafka有用其它语言实现的客户端，如C, Python， Go语言等。Kafka网站上有它们的完整清单，这些客户端就是使用二进制协议与broker通信的。</p>
+<h2 id="分区分配"><a href="#分区分配" class="headerlink" title="分区分配"></a>分区分配</h2><h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><ol>
+<li>Kafka将分区分为若干个片段。默认情况下，每个片段包含1GB或者一周的数据，以较小的那个为准。</li>
+</ol>
+<h3 id="文件格式"><a href="#文件格式" class="headerlink" title="文件格式"></a>文件格式</h3><ol>
+<li><p>我们把Kafka的消息和偏移量保存在文件中。</p>
+</li>
+<li><p>键、值、偏移量、消息大小、校验和、消息格式版本号、压缩算法和时间戳。时间戳可以是生产者发送消息的时间，也可以是消息到达broker的时间，这个时间是可配置的。</p>
+</li>
+<li><p>可以使用工具DUmpLogSegment来查看片段的内容，它可以显示每个消息的偏移量、校验和、魔术数、消息大小和压缩算法。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/kafka-run-class.sh kafka.tools.DumpLogSegments</span><br></pre></td></tr></table></figure>
+
+<h2 id="清理"><a href="#清理" class="headerlink" title="清理"></a>清理</h2><ol>
+<li>P84页，103</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
     
 
 

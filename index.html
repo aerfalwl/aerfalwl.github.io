@@ -229,20 +229,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -273,6 +273,164 @@
       
 
       
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2021/01/25/Concurrent/C%E8%AF%AD%E8%A8%80%E7%BC%96%E8%AF%91%E4%B8%8E%E6%B1%87%E7%BC%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="codefreestyle">
+      <meta itemprop="description" content="每天收获一点点">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/25/Concurrent/C%E8%AF%AD%E8%A8%80%E7%BC%96%E8%AF%91%E4%B8%8E%E6%B1%87%E7%BC%96/" class="post-title-link" itemprop="url">C语言编译与汇编</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-01-25 15:45:00" itemprop="dateCreated datePublished" datetime="2021-01-25T15:45:00+08:00">2021-01-25</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-01-26 11:18:35" itemprop="dateModified" datetime="2021-01-26T11:18:35+08:00">2021-01-26</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/concurrent/" itemprop="url" rel="index"><span itemprop="name">concurrent</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="C语言编译与汇编"><a href="#C语言编译与汇编" class="headerlink" title="C语言编译与汇编"></a>C语言编译与汇编</h1><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><h3 id="inline函数"><a href="#inline函数" class="headerlink" title="inline函数"></a>inline函数</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SPINLOCK_ATTR static __inline __attribute__((always_inline, no_instrument_function))</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>__attribute__((always_inline))</code>的意思是强制内联，即加了该声明的函数在编译时不会编译成函数，而是直接扩展到调用函数体内。</li>
+</ol>
+<h2 id="汇编语法"><a href="#汇编语法" class="headerlink" title="汇编语法"></a>汇编语法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">asm asm-qualifiers ( AssemblerTemplate </span><br><span class="line">                 : OutputOperands </span><br><span class="line">                 [ : InputOperands</span><br><span class="line">                 [ : Clobbers ] ])</span><br><span class="line"></span><br><span class="line">asm asm-qualifiers ( AssemblerTemplate </span><br><span class="line">                      : OutputOperands</span><br><span class="line">                      : InputOperands</span><br><span class="line">                      : Clobbers</span><br><span class="line">                      : GotoLabels)</span><br></pre></td></tr></table></figure>
+
+<p>关键词<code>asm</code>是GNU扩展的一个关键词，当代码能用<code>-ansi</code>和<code>-std</code>选项编译时，建议使用<code>__asm__</code>替代asm。</p>
+<p><strong>asm-qualifiers</strong>有三个可选项：</p>
+<ol>
+<li>volatile<ul>
+<li>典型场景是将input value转换为output value</li>
+<li>加上该关键字，严禁将此处的汇编语句与其它的语句重组合优化。例如，该段汇编代码的<code>output</code>为空时，若不加上volatile，则编译器可能会优化，但是加上就一定按照原来的语句进行执行。</li>
+</ul>
+</li>
+<li>inline<ul>
+<li>使用该标记，会使得该段汇编代码在使用时size最小</li>
+</ul>
+</li>
+<li>goto<ul>
+<li>代码跳转</li>
+</ul>
+</li>
+</ol>
+<h2 id="汇编指令"><a href="#汇编指令" class="headerlink" title="汇编指令"></a>汇编指令</h2><p>在实现SpinLock时，涉及到的一些汇编指令如下所示，下面依次介绍具体语句的意思。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Compile read-write barrier */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> barrier() asm volatile(<span class="meta-string">&quot;&quot;</span>: : :<span class="meta-string">&quot;memory&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Pause instruction to prevent excess processor bus usage */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> cpu_relax() asm volatile(<span class="meta-string">&quot;pause\n&quot;</span>: : :<span class="meta-string">&quot;memory&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __HLE_ACQUIRE <span class="meta-string">&quot;.byte 0xf2 ; &quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __HLE_RELEASE <span class="meta-string">&quot;.byte 0xf3 ; &quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> cpu_pause_v2()  __asm__ (<span class="meta-string">&quot;.byte 0xf3, 0x90&quot;</span>)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Pause"><a href="#Pause" class="headerlink" title="Pause"></a>Pause</h3><p>Pause指令，会减少CPU的消耗，节省电量。指令的本质功能是：让加锁失败的CPU睡眠大约30个clock，从而使得读操作的频率低很多，流水线重排的代价也会很小。</p>
+<p><strong>官方解释：</strong></p>
+<blockquote>
+<p>Description<br>Improves the performance of spin-wait loops. When executing a “spin-wait loop,” a Pentium 4 or Intel Xeon processor suffers a severe performance penalty when exiting the loop because it detects a possible memory order violation. The PAUSE instruction provides a hint to the processor that the code sequence is a spin-wait loop. The processor uses this hint to avoid the memory order violation in most situations, which greatly improves processor performance. For this reason, it is recommended that a PAUSE instruction be placed in all spin-wait loops.</p>
+<p>An additional function of the PAUSE instruction is to reduce the power consumed by a Pentium 4 processor while executing a spin loop. The Pentium 4 processor can execute a spin-wait loop extremely quickly, causing the processor to consume a lot of power while it waits for the resource it is spinning on to become available. Inserting a pause instruction in a spin-wait loop greatly reduces the processor’s power consumption.</p>
+<p>This instruction was introduced in the Pentium 4 processors, but is backward compatible with all IA-32 processors. In earlier IA-32 processors, the PAUSE instruction operates like a NOP instruction. The Pentium 4 and Intel Xeon processors implement the PAUSE instruction as a pre-defined delay. The delay is finite and can be zero for some processors. This instruction does not change the architectural state of the processor (that is, it performs essentially a delaying no-op operation).</p>
+<p>This instruction’s operation is the same in non-64-bit modes and 64-bit mode.</p>
+</blockquote>
+<p><strong>翻译过来就是：</strong></p>
+<p>PAUSE指令提升了自旋等待循环（spin-wait loop）的性能。当执行一个循环等待时，Intel P4或Intel Xeon处理器会因为检测到一个可能的内存顺序违规（memory order violation）而在退出循环时使性能大幅下降。PAUSE指令给处理器提了个醒：这段代码序列是个循环等待。处理器利用这个提示可以避免在大多数情况下的内存顺序违规，这将大幅提升性能。因为这个原因，所以推荐在循环等待中使用PAUSE指令。</p>
+<p>PAUSE的另一个功能就是<strong>降低Intel P4在执行循环等待时的耗电量</strong>。Intel P4处理器在循环等待时会执行得非常快，这将导致处理器消耗大量的电力，而在循环中插入一个PAUSE指令会大幅降低处理器的电力消耗。</p>
+<p><strong>nginx代码示例</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以下代码引用自ngix源码的ngx_gcc_atomic_amd64.h文件</span></span><br><span class="line"><span class="comment">/* old &quot;as&quot; does not support &quot;pause&quot; opcode */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ngx_cpu_pause()         __asm__ (<span class="meta-string">&quot;.byte 0xf3, 0x90&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 以下代码引用自ngix源码的ngx_gcc_atomic_x86.h文件</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ngx_cpu_pause()         __asm__ (<span class="meta-string">&quot;pause&quot;</span>)</span></span><br></pre></td></tr></table></figure>
+
+<p>在<code>x86</code>系列架构中，<code>pause</code>指令也会被翻译成<code>0xf3, 0x90</code>, 因此，但是没有<code>pause</code>指令的机器会将其视为NOP指令。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/vaynedu/nginx-1.16.0/issues/48">参考一</a></p>
+<h3 id="memory"><a href="#memory" class="headerlink" title="memory"></a>memory</h3><blockquote>
+<p>The <code>&quot;memory&quot;</code> clobber tells the compiler that the assembly code performs memory reads or writes to items other than those listed in the input and output operands (for example, accessing the memory pointed to by one of the input parameters). To ensure memory contains correct values, GCC may need to flush specific register values to memory before executing the <code>asm</code>. Further, the compiler does not assume that any values read from memory before an <code>asm</code> remain unchanged after that <code>asm</code>; it reloads them as needed. Using the <code>&quot;memory&quot;</code> clobber effectively forms a read/write memory barrier for the compiler.</p>
+<p>Note that this clobber does not prevent the <em>processor</em> from doing speculative reads past the <code>asm</code> statement. To prevent that, you need processor-specific fence instructions.</p>
+</blockquote>
+<p><strong>ngix代码示例</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以下代码引用自ngix源码的ngx_gcc_atomic_x86.h文件</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * on x86 the write operations go in a program order, so we need only</span></span><br><span class="line"><span class="comment"> * to disable the gcc reorder optimizations</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ngx_memory_barrier()    __asm__ volatile (<span class="meta-string">&quot;&quot;</span> ::: <span class="meta-string">&quot;memory&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 以下代码引用自ngix源码的ngx_gcc_atomic_amd64.h文件</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ngx_memory_barrier()    __asm__ volatile (<span class="meta-string">&quot;&quot;</span> ::: <span class="meta-string">&quot;memory&quot;</span>)</span></span><br></pre></td></tr></table></figure>
+
+<p>简单来说，就是告诉编译器内存的内容可能被更改了，需要无效所有Cache，并访问实际的内容，而不是Cache。</p>
+<p>即memory强制gcc编译器假设RAM所有内存单元均被汇编指令修改，这样cpu中的registers和cache中已缓存的内存单元中的数据将作 废。cpu将不得不在需要的时候重新读取内存中的数据。这就阻止了cpu又将registers，cache中的数据用于去优化指令，而避免去访问内存。</p>
+<h3 id="byte-0xf2"><a href="#byte-0xf2" class="headerlink" title=".byte 0xf2;"></a>.byte 0xf2;</h3><ul>
+<li>[<code>0xF2</code>] REPNE/REPNZ prefix <em>or</em> BND prefix</li>
+</ul>
+<h3 id="byte-0xf3"><a href="#byte-0xf3" class="headerlink" title=".byte 0xf3;"></a>.byte 0xf3;</h3><ul>
+<li>[<code>0xF3</code>] REP or REPE/REPZ prefix</li>
+</ul>
+<h2 id="SpinLock实现"><a href="#SpinLock实现" class="headerlink" title="SpinLock实现"></a>SpinLock实现</h2><p>代码引用自<a target="_blank" rel="noopener" href="https://github.com/cyfdecyf/spinlock">github spinlock</a></p>
+<h3 id="spinlock-cmpxchg-h"><a href="#spinlock-cmpxchg-h" class="headerlink" title="spinlock-cmpxchg.h"></a>spinlock-cmpxchg.h</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _SPINLOCK_CMPXCHG_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _SPINLOCK_CMPXCHG_H</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="keyword">volatile</span> <span class="keyword">char</span> lock;</span><br><span class="line">&#125; spinlock;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SPINLOCK_ATTR static __inline __attribute__((always_inline, no_instrument_function))</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Pause instruction to prevent excess processor bus usage */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> cpu_relax() asm volatile(<span class="meta-string">&quot;pause\n&quot;</span>: : :<span class="meta-string">&quot;memory&quot;</span>)</span></span><br><span class="line"></span><br><span class="line">SPINLOCK_ATTR <span class="keyword">char</span> __testandset(spinlock *p)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">char</span> readval = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">asm</span> <span class="title">volatile</span> <span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">            <span class="string">&quot;lock; cmpxchgb %b2, %0&quot;</span></span></span></span><br><span class="line"><span class="function"><span class="params">            : <span class="string">&quot;+m&quot;</span> (p-&gt;lock), <span class="string">&quot;+a&quot;</span> (readval)</span></span></span><br><span class="line"><span class="function"><span class="params">            : <span class="string">&quot;r&quot;</span> (<span class="number">1</span>)</span></span></span><br><span class="line"><span class="function"><span class="params">            : <span class="string">&quot;cc&quot;</span>)</span></span>;</span><br><span class="line">    <span class="keyword">return</span> readval;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">SPINLOCK_ATTR <span class="keyword">void</span> <span class="title">spin_lock</span><span class="params">(spinlock *lock)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (__testandset(lock)) &#123;</span><br><span class="line">        <span class="comment">/* Should wait until lock is free before another try.</span></span><br><span class="line"><span class="comment">         * cmpxchg is write to cache, competing write for a sinlge cache line</span></span><br><span class="line"><span class="comment">         * would generate large amount of cache traffic. That&#x27;s why this</span></span><br><span class="line"><span class="comment">         * implementation is not scalable compared to xchg based one. Otherwise,</span></span><br><span class="line"><span class="comment">         * they should have similar performance. */</span></span><br><span class="line">        cpu_relax();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">SPINLOCK_ATTR <span class="keyword">void</span> <span class="title">spin_unlock</span><span class="params">(spinlock *s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    s-&gt;lock = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SPINLOCK_INITIALIZER &#123; 0 &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* _SPINLOCK_CMPXCHG_H */</span></span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="spinlock-xchg"><a href="#spinlock-xchg" class="headerlink" title="spinlock-xchg"></a>spinlock-xchg</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _SPINLOCK_XCHG_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _SPINLOCK_XCHG_H</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Spin lock using xchg.</span></span><br><span class="line"><span class="comment"> * Copied from http://locklessinc.com/articles/locks/</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Compile read-write barrier */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> barrier() asm volatile(<span class="meta-string">&quot;&quot;</span>: : :<span class="meta-string">&quot;memory&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Pause instruction to prevent excess processor bus usage */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> cpu_relax() asm volatile(<span class="meta-string">&quot;pause\n&quot;</span>: : :<span class="meta-string">&quot;memory&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">unsigned</span> <span class="keyword">short</span> <span class="title">xchg_8</span><span class="params">(<span class="keyword">void</span> *ptr, <span class="keyword">unsigned</span> <span class="keyword">char</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    __asm__ __volatile__(<span class="string">&quot;xchgb %0,%1&quot;</span></span><br><span class="line">                :<span class="string">&quot;=r&quot;</span> (x)</span><br><span class="line">                :<span class="string">&quot;m&quot;</span> (*(<span class="keyword">volatile</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *)ptr), <span class="string">&quot;0&quot;</span> (x)</span><br><span class="line">                :<span class="string">&quot;memory&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BUSY 1</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> spinlock;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SPINLOCK_INITIALIZER 0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">spin_lock</span><span class="params">(spinlock *lock)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!xchg_8(lock, BUSY)) <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">while</span> (*lock) cpu_relax();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">spin_unlock</span><span class="params">(spinlock *lock)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    barrier();</span><br><span class="line">    *lock = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">spin_trylock</span><span class="params">(spinlock *lock)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> xchg_8(lock, BUSY);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* _SPINLOCK_XCHG_H */</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="spinlock-xchg-backoff"><a href="#spinlock-xchg-backoff" class="headerlink" title="spinlock-xchg-backoff"></a>spinlock-xchg-backoff</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _SPINLOCK_XCHG_BACKOFF_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _SPINLOCK_XCHG_BACKOFF_H</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Spin lock using xchg. Added backoff wait to avoid concurrent lock/unlock</span></span><br><span class="line"><span class="comment"> * operation.</span></span><br><span class="line"><span class="comment"> * Original code copied from http://locklessinc.com/articles/locks/</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Compile read-write barrier */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> barrier() asm volatile(<span class="meta-string">&quot;&quot;</span>: : :<span class="meta-string">&quot;memory&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Pause instruction to prevent excess processor bus usage */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> cpu_relax() asm volatile(<span class="meta-string">&quot;pause\n&quot;</span>: : :<span class="meta-string">&quot;memory&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">unsigned</span> <span class="keyword">short</span> <span class="title">xchg_8</span><span class="params">(<span class="keyword">void</span> *ptr, <span class="keyword">unsigned</span> <span class="keyword">char</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    __asm__ __volatile__(<span class="string">&quot;xchgb %0,%1&quot;</span></span><br><span class="line">                :<span class="string">&quot;=r&quot;</span> (x)</span><br><span class="line">                :<span class="string">&quot;m&quot;</span> (*(<span class="keyword">volatile</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *)ptr), <span class="string">&quot;0&quot;</span> (x)</span><br><span class="line">                :<span class="string">&quot;memory&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BUSY 1</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> spinlock;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SPINLOCK_INITIALIZER 0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">spin_lock</span><span class="params">(spinlock *lock)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> wait = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!xchg_8(lock, BUSY)) <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">        <span class="comment">// wait here is important to performance.</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; wait; i++) &#123;</span><br><span class="line">            cpu_relax();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (*lock) &#123;</span><br><span class="line">            wait *= <span class="number">2</span>; <span class="comment">// exponential backoff if can&#x27;t get lock</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; wait; i++) &#123;</span><br><span class="line">                cpu_relax();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">spin_unlock</span><span class="params">(spinlock *lock)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    barrier();</span><br><span class="line">    *lock = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">spin_trylock</span><span class="params">(spinlock *lock)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> xchg_8(lock, BUSY);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* _SPINLOCK_XCHG_BACKOFF_H */</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="spinlock-xchg-hle"><a href="#spinlock-xchg-hle" class="headerlink" title="spinlock-xchg-hle"></a>spinlock-xchg-hle</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _SPINLOCK_XCHG_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _SPINLOCK_XCHG_H</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Spin lock using xchg.</span></span><br><span class="line"><span class="comment"> * Copied from http://locklessinc.com/articles/locks/</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Compile read-write barrier */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> barrier() asm volatile(<span class="meta-string">&quot;&quot;</span>: : :<span class="meta-string">&quot;memory&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Pause instruction to prevent excess processor bus usage */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> cpu_relax() asm volatile(<span class="meta-string">&quot;pause\n&quot;</span>: : :<span class="meta-string">&quot;memory&quot;</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __HLE_ACQUIRE <span class="meta-string">&quot;.byte 0xf2 ; &quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __HLE_RELEASE <span class="meta-string">&quot;.byte 0xf3 ; &quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">unsigned</span> <span class="keyword">short</span> <span class="title">xchg_8</span><span class="params">(<span class="keyword">void</span> *ptr, <span class="keyword">unsigned</span> <span class="keyword">char</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    __asm__ __volatile__(__HLE_ACQUIRE <span class="string">&quot;xchgb %0,%1&quot;</span></span><br><span class="line">                :<span class="string">&quot;=r&quot;</span> (x)</span><br><span class="line">                :<span class="string">&quot;m&quot;</span> (*(<span class="keyword">volatile</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> *)ptr), <span class="string">&quot;0&quot;</span> (x)</span><br><span class="line">                :<span class="string">&quot;memory&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BUSY 1</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">char</span> spinlock;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SPINLOCK_INITIALIZER 0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">spin_lock</span><span class="params">(spinlock *lock)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!xchg_8(lock, BUSY)) <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">while</span> (*lock) cpu_relax();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">spin_unlock</span><span class="params">(spinlock *lock)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    __asm__ __volatile__(__HLE_RELEASE <span class="string">&quot;movb $0, %0&quot;</span></span><br><span class="line">            :<span class="string">&quot;=m&quot;</span> (*lock)</span><br><span class="line">            :</span><br><span class="line">            :<span class="string">&quot;memory&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">spin_trylock</span><span class="params">(spinlock *lock)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> xchg_8(lock, BUSY);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* _SPINLOCK_XCHG_H */</span></span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="性能对比"><a href="#性能对比" class="headerlink" title="性能对比"></a>性能对比</h3><p>cmpxchg &lt; xchg &lt; xchg-backoff &lt; xchg-hle</p>
+<p><strong>测试条件</strong></p>
+<p>总叠加数为1000万，并发量（线程数）分别为1， 5， 10，每种场景测试三遍。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function run_test() &#123;</span><br><span class="line">    for nthr in 1 5 10; do</span><br><span class="line">        ./$1 $nthr &gt; /dev/null</span><br><span class="line">        for i in `seq 1 3`; do</span><br><span class="line">            ./$1 $nthr</span><br><span class="line">        done</span><br><span class="line">        echo</span><br><span class="line">    done</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>性能测试结果</strong></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">test spin lock using cmpxchg</span><br><span class="line">0.104997	0.108640	0.110231	</span><br><span class="line">1.502738	1.780505	1.588555	</span><br><span class="line">3.188721	3.372979	3.288685	</span><br><span class="line">test spin lock using xchg</span><br><span class="line">0.102495	0.105192	0.101462	</span><br><span class="line">1.511772	1.467292	1.315992	</span><br><span class="line">1.966999	1.767013	1.607366	</span><br><span class="line">test spin lock using xchg-backoff</span><br><span class="line">0.102869	0.102168	0.107096	</span><br><span class="line">0.210090	0.148667	0.115931	</span><br><span class="line">0.691257	0.183631	0.194179	</span><br><span class="line">test spin lock using xchg-hle</span><br><span class="line">0.248885	0.248751	0.249399	</span><br><span class="line">0.061266	0.056018	0.054837	</span><br><span class="line">0.042291	0.052939	0.036410</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
     
 
 
@@ -1461,87 +1619,6 @@
 <p><strong>代码如下：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[][] intervalIntersection(<span class="keyword">int</span>[][] A, <span class="keyword">int</span>[][] B) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> lenA = A.length;</span><br><span class="line">        <span class="keyword">int</span> lenB = B.length;</span><br><span class="line">        </span><br><span class="line">        List&lt;Node&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">int</span> currA = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> currB = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (currA &lt; lenA &amp;&amp; currB &lt; lenB) &#123;</span><br><span class="line">            <span class="keyword">if</span> (A[currA][<span class="number">1</span>] &lt; B[currB][<span class="number">0</span>]) &#123; <span class="comment">// 没交集的情况</span></span><br><span class="line">                currA++;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (B[currB][<span class="number">1</span>] &lt; A[currA][<span class="number">0</span>]) &#123; <span class="comment">// 没交集的情况</span></span><br><span class="line">                currB++;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> maxL = Math.max(A[currA][<span class="number">0</span>], B[currB][<span class="number">0</span>]);</span><br><span class="line">            <span class="keyword">int</span> minR = Math.min(A[currA][<span class="number">1</span>], B[currB][<span class="number">1</span>]);</span><br><span class="line">            list.add(<span class="keyword">new</span> Node(maxL, minR));</span><br><span class="line">            <span class="keyword">if</span> (A[currA][<span class="number">1</span>] == minR) currA++;</span><br><span class="line">            <span class="keyword">if</span> (B[currB][<span class="number">1</span>] == minR) currB++;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span>[][] ans = <span class="keyword">new</span> <span class="keyword">int</span>[list.size()][<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">int</span> len = list.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            Node tmp = list.get(i);</span><br><span class="line">            ans[i][<span class="number">0</span>] = tmp.l;</span><br><span class="line">            ans[i][<span class="number">1</span>] = tmp.r;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Node</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l;</span><br><span class="line">        <span class="keyword">int</span> r;</span><br><span class="line">        Node(<span class="keyword">int</span> l_, <span class="keyword">int</span> r_) &#123;</span><br><span class="line">            <span class="keyword">this</span>.l = l_;</span><br><span class="line">            <span class="keyword">this</span>.r = r_;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2020/11/03/LeetcodeSummary/TwoPointer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/header.jpg">
-      <meta itemprop="name" content="codefreestyle">
-      <meta itemprop="description" content="每天收获一点点">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sunshine">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/03/LeetcodeSummary/TwoPointer/" class="post-title-link" itemprop="url">Summary of Two Pointer</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2020-11-03 20:44:38 / 修改时间：20:57:28" itemprop="dateCreated datePublished" datetime="2020-11-03T20:44:38+08:00">2020-11-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/leetcode-summary/" itemprop="url" rel="index"><span itemprop="name">leetcode_summary</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="Two-pointer解决套路"><a href="#Two-pointer解决套路" class="headerlink" title="Two pointer解决套路"></a>Two pointer解决套路</h3><p>Two pointer和滑动窗口差不多，其套路一般为：</p>
-<ol>
-<li>一个左指针，一个右指针。其中左指针用于缩小范围，右指针用于扩大搜索范围。一般求滑动窗口的最小值都是在缩小左指针的时候取得的。</li>
-<li>右指针扩展的条件时：只要当前还没有满足条件，就暴力增长，直到第一次满足条件为止。</li>
-<li>左指针收缩的条件：只要当前指针的缩小还没影响窗口的可满足性，就一直暴力向左增长。一但当前指针向前移动的时候影响了窗口的可满足性，就记录下当前的窗口大小，并更新目前为止满足条件的最小窗口记录。之后，再次扩展右指针，使得窗口满足题目的条件。</li>
-<li>以此类推即可。</li>
-</ol>
 
       
     </div>
