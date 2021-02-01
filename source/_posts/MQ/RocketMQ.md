@@ -1,5 +1,5 @@
 ---
-title:《RokcetMQ实战与原理解析》学习笔记
+title: rocketmq learning notes
 date: 2021-02-01 16:14:12
 categories: distribute file system
 tags:
