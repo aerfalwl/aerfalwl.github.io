@@ -262,6 +262,144 @@
   </entry>
   
   <entry>
+    <title>查看远程服务器的端口是否开放</title>
+    <link href="https://aerfalwl.github.io/2020/11/05/LinuxCmd/20200814-%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE/"/>
+    <id>https://aerfalwl.github.io/2020/11/05/LinuxCmd/20200814-%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE/</id>
+    <published>2020-11-05T02:33:33.000Z</published>
+    <updated>2022-06-29T06:30:55.885Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;1-nc（netcat）&quot;&gt;&lt;a href=&quot;#1-nc（netcat）&quot; class=&quot;headerlink&quot; title=&quot;1. nc（netcat）&quot;&gt;&lt;/a&gt;1.</summary>
+        
+      
+    
+    
+    
+    <category term="LiunxCmd" scheme="https://aerfalwl.github.io/categories/LiunxCmd/"/>
+    
+    
+    <category term="linux" scheme="https://aerfalwl.github.io/tags/linux/"/>
+    
+    <category term="command" scheme="https://aerfalwl.github.io/tags/command/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>netstat</title>
+    <link href="https://aerfalwl.github.io/2020/11/05/LinuxCmd/20200814netstat/"/>
+    <id>https://aerfalwl.github.io/2020/11/05/LinuxCmd/20200814netstat/</id>
+    <published>2020-11-05T02:33:33.000Z</published>
+    <updated>2022-06-29T06:31:18.423Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;查看所有在监听的端口&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td</summary>
+        
+      
+    
+    
+    
+    <category term="LiunxCmd" scheme="https://aerfalwl.github.io/categories/LiunxCmd/"/>
+    
+    
+    <category term="linux" scheme="https://aerfalwl.github.io/tags/linux/"/>
+    
+    <category term="command" scheme="https://aerfalwl.github.io/tags/command/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用GDB查看core文件</title>
+    <link href="https://aerfalwl.github.io/2020/11/05/LinuxCmd/%E4%BD%BF%E7%94%A8GDB%E6%9F%A5%E7%9C%8Bcore%E6%96%87%E4%BB%B6/"/>
+    <id>https://aerfalwl.github.io/2020/11/05/LinuxCmd/%E4%BD%BF%E7%94%A8GDB%E6%9F%A5%E7%9C%8Bcore%E6%96%87%E4%BB%B6/</id>
+    <published>2020-11-05T02:33:33.000Z</published>
+    <updated>2022-06-29T06:30:38.432Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;默认编译出来的程序在出现Segmentation fault 时并没有生成core崩溃文件，可以在gcc/g++编译时增加-g选项。&lt;/p&gt;
+&lt;p&gt;如果仍然没有生成core文件，则可能是因为系统设置了core文件大小为0，可以通过：&lt;code&gt;ulimit</summary>
+        
+      
+    
+    
+    
+    <category term="LiunxCmd" scheme="https://aerfalwl.github.io/categories/LiunxCmd/"/>
+    
+    
+    <category term="linux" scheme="https://aerfalwl.github.io/tags/linux/"/>
+    
+    <category term="command" scheme="https://aerfalwl.github.io/tags/command/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>TCP 最大连接数为28232</title>
+    <link href="https://aerfalwl.github.io/2020/11/05/Socket/2020-09-21-TCP%E6%9C%80%E5%A4%A7%E8%BF%9E%E6%8E%A5%E6%95%B0/"/>
+    <id>https://aerfalwl.github.io/2020/11/05/Socket/2020-09-21-TCP%E6%9C%80%E5%A4%A7%E8%BF%9E%E6%8E%A5%E6%95%B0/</id>
+    <published>2020-11-05T02:33:33.000Z</published>
+    <updated>2022-06-29T06:27:53.814Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Linux对外的端口分配是有一定限制的，默认不超过28232个。&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="socket" scheme="https://aerfalwl.github.io/categories/socket/"/>
+    
+    
+    <category term="linux" scheme="https://aerfalwl.github.io/tags/linux/"/>
+    
+    <category term="network" scheme="https://aerfalwl.github.io/tags/network/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Socket 之Close与Shutdown</title>
+    <link href="https://aerfalwl.github.io/2020/11/05/Socket/20200914-socket_close_shutdown/"/>
+    <id>https://aerfalwl.github.io/2020/11/05/Socket/20200914-socket_close_shutdown/</id>
+    <published>2020-11-05T02:33:33.000Z</published>
+    <updated>2022-06-29T06:28:26.566Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;区别&quot;&gt;&lt;a href=&quot;#区别&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="socket" scheme="https://aerfalwl.github.io/categories/socket/"/>
+    
+    
+    <category term="network" scheme="https://aerfalwl.github.io/tags/network/"/>
+    
+    <category term="socket" scheme="https://aerfalwl.github.io/tags/socket/"/>
+    
+  </entry>
+  
+  <entry>
     <title>SkipList in LevelDB</title>
     <link href="https://aerfalwl.github.io/2020/11/05/NiceCode/SkipList/"/>
     <id>https://aerfalwl.github.io/2020/11/05/NiceCode/SkipList/</id>
@@ -424,146 +562,6 @@
     <category term="two pointer" scheme="https://aerfalwl.github.io/tags/two-pointer/"/>
     
     <category term="algorithm" scheme="https://aerfalwl.github.io/tags/algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 532. K-diff Pairs in an Array</title>
-    <link href="https://aerfalwl.github.io/2020/10/31/Leetcode/523/"/>
-    <id>https://aerfalwl.github.io/2020/10/31/Leetcode/523/</id>
-    <published>2020-10-31T01:40:52.000Z</published>
-    <updated>2020-10-31T01:46:37.119Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://aerfalwl.github.io/categories/leetcode/"/>
-    
-    
-    <category term="two pointer" scheme="https://aerfalwl.github.io/tags/two-pointer/"/>
-    
-    <category term="algorithm" scheme="https://aerfalwl.github.io/tags/algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>1616. Split Two Strings to Make Palindrome</title>
-    <link href="https://aerfalwl.github.io/2020/10/30/Leetcode/1616/"/>
-    <id>https://aerfalwl.github.io/2020/10/30/Leetcode/1616/</id>
-    <published>2020-10-30T14:43:24.000Z</published>
-    <updated>2020-10-30T14:49:59.751Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://aerfalwl.github.io/categories/leetcode/"/>
-    
-    
-    <category term="two pointer" scheme="https://aerfalwl.github.io/tags/two-pointer/"/>
-    
-    <category term="algorithm" scheme="https://aerfalwl.github.io/tags/algorithm/"/>
-    
-    <category term="greedy" scheme="https://aerfalwl.github.io/tags/greedy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C++六种内存模型</title>
-    <link href="https://aerfalwl.github.io/2020/10/30/Memory/Dynamic_memory_in_CPP/"/>
-    <id>https://aerfalwl.github.io/2020/10/30/Memory/Dynamic_memory_in_CPP/</id>
-    <published>2020-10-30T03:29:45.000Z</published>
-    <updated>2020-11-05T01:39:11.126Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;C-内存模型&quot;&gt;&lt;a href=&quot;#C-内存模型&quot; class=&quot;headerlink&quot; title=&quot;C++内存模型&quot;&gt;&lt;/a&gt;C++内存模型&lt;/h2&gt;&lt;p&gt;C++规定了6种访存顺序&lt;/p&gt;
-&lt;figure class=&quot;highlight</summary>
-        
-      
-    
-    
-    
-    <category term="Memory" scheme="https://aerfalwl.github.io/categories/Memory/"/>
-    
-    
-    <category term="C++" scheme="https://aerfalwl.github.io/tags/C/"/>
-    
-    <category term="Memory" scheme="https://aerfalwl.github.io/tags/Memory/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 1234. Replace the Substring for Balanced String</title>
-    <link href="https://aerfalwl.github.io/2020/10/29/Leetcode/1234/"/>
-    <id>https://aerfalwl.github.io/2020/10/29/Leetcode/1234/</id>
-    <published>2020-10-29T12:46:24.000Z</published>
-    <updated>2020-10-29T12:49:48.357Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://aerfalwl.github.io/categories/leetcode/"/>
-    
-    
-    <category term="two pointer" scheme="https://aerfalwl.github.io/tags/two-pointer/"/>
-    
-    <category term="algorithm" scheme="https://aerfalwl.github.io/tags/algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 826. Most Profit Assigning Work</title>
-    <link href="https://aerfalwl.github.io/2020/10/28/Leetcode/826/"/>
-    <id>https://aerfalwl.github.io/2020/10/28/Leetcode/826/</id>
-    <published>2020-10-28T13:11:12.000Z</published>
-    <updated>2020-10-28T14:03:42.920Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://aerfalwl.github.io/categories/leetcode/"/>
-    
-    
-    <category term="two pointer" scheme="https://aerfalwl.github.io/tags/two-pointer/"/>
-    
-    <category term="algorithm" scheme="https://aerfalwl.github.io/tags/algorithm/"/>
-    
-    <category term="dp" scheme="https://aerfalwl.github.io/tags/dp/"/>
     
   </entry>
   
