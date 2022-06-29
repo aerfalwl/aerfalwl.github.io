@@ -287,6 +287,31 @@
   </entry>
   
   <entry>
+    <title>leetcode滑动窗口题目汇总</title>
+    <link href="https://aerfalwl.github.io/2020/11/05/Leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/"/>
+    <id>https://aerfalwl.github.io/2020/11/05/Leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</id>
+    <published>2020-11-05T02:33:33.000Z</published>
+    <updated>2022-06-29T06:55:00.589Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="https://aerfalwl.github.io/categories/Leetcode/"/>
+    
+    
+    <category term="leetcode - two pointer" scheme="https://aerfalwl.github.io/tags/leetcode-two-pointer/"/>
+    
+  </entry>
+  
+  <entry>
     <title>使用GDB查看core文件</title>
     <link href="https://aerfalwl.github.io/2020/11/05/LinuxCmd/%E4%BD%BF%E7%94%A8GDB%E6%9F%A5%E7%9C%8Bcore%E6%96%87%E4%BB%B6/"/>
     <id>https://aerfalwl.github.io/2020/11/05/LinuxCmd/%E4%BD%BF%E7%94%A8GDB%E6%9F%A5%E7%9C%8Bcore%E6%96%87%E4%BB%B6/</id>
@@ -515,33 +540,6 @@
     <id>https://aerfalwl.github.io/2020/11/03/Leetcode/567/</id>
     <published>2020-11-03T12:27:49.000Z</published>
     <updated>2020-11-03T12:38:33.543Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;题目描述&quot;&gt;&lt;a href=&quot;#题目描述&quot; class=&quot;headerlink&quot; title=&quot;题目描述&quot;&gt;&lt;/a&gt;题目描述&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="leetcode" scheme="https://aerfalwl.github.io/categories/leetcode/"/>
-    
-    
-    <category term="two pointer" scheme="https://aerfalwl.github.io/tags/two-pointer/"/>
-    
-    <category term="algorithm" scheme="https://aerfalwl.github.io/tags/algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Leetcode 287. Find the Duplicate Number</title>
-    <link href="https://aerfalwl.github.io/2020/11/02/Leetcode/287/"/>
-    <id>https://aerfalwl.github.io/2020/11/02/Leetcode/287/</id>
-    <published>2020-11-01T16:17:25.000Z</published>
-    <updated>2020-11-01T16:18:53.202Z</updated>
     
     
       

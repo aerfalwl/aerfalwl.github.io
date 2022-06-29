@@ -575,9 +575,9 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2020/10/27/Leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</url>
-    <content><![CDATA[<h1 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h1><p><a href="https://leetcode.com/problems/replace-the-substring-for-balanced-string/discuss/408978/javacpython-sliding-window/367697">https://leetcode.com/problems/replace-the-substring-for-balanced-string/discuss/408978/javacpython-sliding-window/367697</a></p>
+    <title>leetcode滑动窗口题目汇总</title>
+    <url>/2020/11/05/Leetcode/%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3/</url>
+    <content><![CDATA[<p><a href="https://leetcode.com/problems/replace-the-substring-for-balanced-string/discuss/408978/javacpython-sliding-window/367697">https://leetcode.com/problems/replace-the-substring-for-balanced-string/discuss/408978/javacpython-sliding-window/367697</a></p>
 <ul>
 <li><ol>
 <li><a href="https://leetcode.com/problems/count-number-of-nice-subarrays/discuss/419378/JavaC%2B%2BPython-Sliding-Window-atMost(K)-atMost(K-1)">Count Number of Nice Subarrays</a></li>
@@ -614,6 +614,12 @@
 </ul>
 <p><a href="https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/discuss/204290/Monotonic-Queue-Summary">https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/discuss/204290/Monotonic-Queue-Summary</a></p>
 ]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode - two pointer</tag>
+      </tags>
   </entry>
   <entry>
     <title>LeetCode 826. Most Profit Assigning Work</title>
