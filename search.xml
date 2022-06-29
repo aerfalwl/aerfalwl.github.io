@@ -235,7 +235,7 @@
     <title></title>
     <url>/2020/10/27/Filesystem/ZFS/</url>
     <content><![CDATA[<h2 id="Introduction-to-the-Kernel"><a href="#Introduction-to-the-Kernel" class="headerlink" title="Introduction to the Kernel"></a>Introduction to the Kernel</h2><hr>
-<p>title: ZFS<br>date: 2020-11-05 10:33:33<br>categories: filesystem<br>tags:<br>    - filesystem</p>
+<p>title: ZFS<br>date: 2020-11-05 10:33:33<br>categories: Filesystem<br>tags:<br>    - filesystem</p>
 <hr>
 <ol>
 <li>参考书籍The Design and Implementation of the FreeBSD Operating System, 2nd<br>Edition</li>
@@ -655,46 +655,6 @@
       </tags>
   </entry>
   <entry>
-    <title>查看远程服务器的端口是否开放</title>
-    <url>/2020/11/05/LinuxCmd/20200814-%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE/</url>
-    <content><![CDATA[<h2 id="1-nc（netcat）"><a href="#1-nc（netcat）" class="headerlink" title="1. nc（netcat）"></a>1. nc（netcat）</h2><p>nc是一个简单的Unix工具，使用TCP或者UDP协议读写网络连接上的数据。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc [OPTIONS...] [hostname] [port]</span><br></pre></td></tr></table></figure>
-
-<p>如果未开放，则会显示请求被拒绝。例如：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc node1 9100</span><br><span class="line"><span class="comment"># Ncat: Connection refused.</span></span><br></pre></td></tr></table></figure>
-
-<p>如果指定端口开放，则会显示连接成功。例如：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc node1 9100</span><br><span class="line"><span class="comment"># Ncat: Connection succeeded</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-telnet"><a href="#2-telnet" class="headerlink" title="2. telnet"></a>2. telnet</h2><p>命令格式</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">telnet [HostName or IP] [PortNumber]</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>LiunxCmd</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>command</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>netstat</title>
-    <url>/2020/11/05/LinuxCmd/20200814netstat/</url>
-    <content><![CDATA[<p>查看所有在监听的端口</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -ntlp</span><br></pre></td></tr></table></figure>
-
-<p>待整理</p>
-]]></content>
-      <categories>
-        <category>LiunxCmd</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>command</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用GDB查看core文件</title>
     <url>/2020/11/05/LinuxCmd/%E4%BD%BF%E7%94%A8GDB%E6%9F%A5%E7%9C%8Bcore%E6%96%87%E4%BB%B6/</url>
     <content><![CDATA[<p>默认编译出来的程序在出现Segmentation fault 时并没有生成core崩溃文件，可以在gcc/g++编译时增加-g选项。</p>
@@ -775,47 +735,6 @@
       <tags>
         <tag>C++</tag>
         <tag>Memory</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>TCP 最大连接数为28232</title>
-    <url>/2020/11/05/Socket/2020-09-21-TCP%E6%9C%80%E5%A4%A7%E8%BF%9E%E6%8E%A5%E6%95%B0/</url>
-    <content><![CDATA[<p>Linux对外的端口分配是有一定限制的，默认不超过28232个。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /proc/sys/net/ipv4/ip_local_range</span><br><span class="line"><span class="meta">#</span><span class="bash"> 输出为</span></span><br><span class="line">32768 60999</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p>两个数字相减刚好为28232。如果要对其范围进行修改，可将两个数字更改为10000 65535，注意用户可用端口方位为1024~65535.</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo &quot;10000 65535&quot; &gt; /proc/sys/net/ipv4/ip_local_port_range</span><br><span class="line">sysctl -p	</span><br></pre></td></tr></table></figure>
-
-<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>快速回收端口</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/sysctl.conf</span><br><span class="line"><span class="meta">#</span><span class="bash"> 末尾添加上</span></span><br><span class="line">net.ipv4.tcp_tw_recycle=1</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
-
-<h2 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h2><p>系统在高并发短连接的情况下，会出现大量处于TIME_WAIT的SOCKET。</p>
-<p>这里短连接是指：<strong>业务处理+传输数据的时间 远远小于 TIMEWAIT超时的时间”的连接</strong></p>
-]]></content>
-      <categories>
-        <category>socket</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>network</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Socket 之Close与Shutdown</title>
-    <url>/2020/11/05/Socket/20200914-socket_close_shutdown/</url>
-    <content><![CDATA[<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ol>
-<li>close会释放文件句柄，而shutdown不会。</li>
-<li>close把描述符的引用计数减1，仅在该计数变为0时关闭套接字。shutdown可以不管引用计数就激发TCP的正常连接终止序列，因此在多进程环境中：close()是关闭本进程的socket id，但链接还是开着的，用这个socket id的其它进程还能用这个链接，能读或写这个socket id，而shutdown执行的操作对所有进程有效。</li>
-</ol>
-<h2 id="Strace"><a href="#Strace" class="headerlink" title="Strace"></a>Strace</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">strace ./exec</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>socket</category>
-      </categories>
-      <tags>
-        <tag>network</tag>
-        <tag>socket</tag>
       </tags>
   </entry>
   <entry>
@@ -1670,6 +1589,87 @@
       <tags>
         <tag>message queue</tag>
         <tag>learning notes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>netstat</title>
+    <url>/2020/11/05/LinuxCmd/%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E5%9C%A8%E7%9B%91%E5%90%AC%E7%9A%84%E7%AB%AF%E5%8F%A3/</url>
+    <content><![CDATA[<p>查看所有在监听的端口</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -ntlp</span><br></pre></td></tr></table></figure>
+
+<p>待整理</p>
+]]></content>
+      <categories>
+        <category>LiunxCmd</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>command</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>查看远程服务器的端口是否开放</title>
+    <url>/2020/11/05/LinuxCmd/%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE/</url>
+    <content><![CDATA[<h2 id="1-nc（netcat）"><a href="#1-nc（netcat）" class="headerlink" title="1. nc（netcat）"></a>1. nc（netcat）</h2><p>nc是一个简单的Unix工具，使用TCP或者UDP协议读写网络连接上的数据。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc [OPTIONS...] [hostname] [port]</span><br></pre></td></tr></table></figure>
+
+<p>如果未开放，则会显示请求被拒绝。例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc node1 9100</span><br><span class="line"><span class="comment"># Ncat: Connection refused.</span></span><br></pre></td></tr></table></figure>
+
+<p>如果指定端口开放，则会显示连接成功。例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc node1 9100</span><br><span class="line"><span class="comment"># Ncat: Connection succeeded</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-telnet"><a href="#2-telnet" class="headerlink" title="2. telnet"></a>2. telnet</h2><p>命令格式</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">telnet [HostName or IP] [PortNumber]</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>LiunxCmd</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>command</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Socket之Close与Shutdown</title>
+    <url>/2020/11/05/Socket/Socket%E4%B9%8BClose%E4%B8%8EShutdown/</url>
+    <content><![CDATA[<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><ol>
+<li>close会释放文件句柄，而shutdown不会。</li>
+<li>close把描述符的引用计数减1，仅在该计数变为0时关闭套接字。shutdown可以不管引用计数就激发TCP的正常连接终止序列，因此在多进程环境中：close()是关闭本进程的socket id，但链接还是开着的，用这个socket id的其它进程还能用这个链接，能读或写这个socket id，而shutdown执行的操作对所有进程有效。</li>
+</ol>
+<h2 id="Strace"><a href="#Strace" class="headerlink" title="Strace"></a>Strace</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">strace ./exec</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Socket</category>
+      </categories>
+      <tags>
+        <tag>network</tag>
+        <tag>socket</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TCP最大连接数为28232</title>
+    <url>/2020/11/05/Socket/TCP%E6%9C%80%E5%A4%A7%E8%BF%9E%E6%8E%A5%E6%95%B0%E4%B8%BA28232/</url>
+    <content><![CDATA[<p>Linux对外的端口分配是有一定限制的，默认不超过28232个。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cat /proc/sys/net/ipv4/ip_local_range</span><br><span class="line"><span class="meta">#</span><span class="bash"> 输出为</span></span><br><span class="line">32768 60999</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h2><p>两个数字相减刚好为28232。如果要对其范围进行修改，可将两个数字更改为10000 65535，注意用户可用端口方位为1024~65535.</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">echo &quot;10000 65535&quot; &gt; /proc/sys/net/ipv4/ip_local_port_range</span><br><span class="line">sysctl -p	</span><br></pre></td></tr></table></figure>
+
+<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h2><p>快速回收端口</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/sysctl.conf</span><br><span class="line"><span class="meta">#</span><span class="bash"> 末尾添加上</span></span><br><span class="line">net.ipv4.tcp_tw_recycle=1</span><br><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+
+<h2 id="语言"><a href="#语言" class="headerlink" title="语言"></a>语言</h2><p>系统在高并发短连接的情况下，会出现大量处于TIME_WAIT的SOCKET。</p>
+<p>这里短连接是指：<strong>业务处理+传输数据的时间 远远小于 TIMEWAIT超时的时间”的连接</strong></p>
+]]></content>
+      <categories>
+        <category>Socket</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>network</tag>
       </tags>
   </entry>
 </search>

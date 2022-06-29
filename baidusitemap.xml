@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://aerfalwl.github.io/2020/11/05/Socket/TCP%E6%9C%80%E5%A4%A7%E8%BF%9E%E6%8E%A5%E6%95%B0%E4%B8%BA28232/</loc>
+    <lastmod>2022-06-29</lastmod>
+  </url>
+  <url>
+    <loc>https://aerfalwl.github.io/2020/11/05/Socket/Socket%E4%B9%8BClose%E4%B8%8EShutdown/</loc>
+    <lastmod>2022-06-29</lastmod>
+  </url>
+  <url>
     <loc>https://aerfalwl.github.io/2020/10/27/Filesystem/ZFS/</loc>
     <lastmod>2022-06-29</lastmod>
   </url>
   <url>
-    <loc>https://aerfalwl.github.io/2020/11/05/LinuxCmd/20200814netstat/</loc>
+    <loc>https://aerfalwl.github.io/2020/11/05/LinuxCmd/%E6%9F%A5%E7%9C%8B%E6%89%80%E6%9C%89%E5%9C%A8%E7%9B%91%E5%90%AC%E7%9A%84%E7%AB%AF%E5%8F%A3/</loc>
     <lastmod>2022-06-29</lastmod>
   </url>
   <url>
-    <loc>https://aerfalwl.github.io/2020/11/05/LinuxCmd/20200814-%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE/</loc>
+    <loc>https://aerfalwl.github.io/2020/11/05/LinuxCmd/%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E7%AB%AF%E5%8F%A3%E6%98%AF%E5%90%A6%E5%BC%80%E6%94%BE/</loc>
     <lastmod>2022-06-29</lastmod>
   </url>
   <url>
     <loc>https://aerfalwl.github.io/2020/11/05/LinuxCmd/%E4%BD%BF%E7%94%A8GDB%E6%9F%A5%E7%9C%8Bcore%E6%96%87%E4%BB%B6/</loc>
-    <lastmod>2022-06-29</lastmod>
-  </url>
-  <url>
-    <loc>https://aerfalwl.github.io/2020/11/05/Socket/20200914-socket_close_shutdown/</loc>
-    <lastmod>2022-06-29</lastmod>
-  </url>
-  <url>
-    <loc>https://aerfalwl.github.io/2020/11/05/Socket/2020-09-21-TCP%E6%9C%80%E5%A4%A7%E8%BF%9E%E6%8E%A5%E6%95%B0/</loc>
     <lastmod>2022-06-29</lastmod>
   </url>
   <url>
