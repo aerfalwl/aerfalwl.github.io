@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="/css/main.css">
 
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ma+Shan+Zheng:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Serif+SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.0/css/all.min.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
@@ -229,20 +229,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -273,6 +273,228 @@
       
 
       
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2020/10/27/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="codefreestyle">
+      <meta itemprop="description" content="每天收获一点点">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/27/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2020-10-27 10:11:32 / 修改时间：00:20:48" itemprop="dateCreated datePublished" datetime="2020-10-27T10:11:32+08:00">2020-10-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Kafka与Broker不同"><a href="#Kafka与Broker不同" class="headerlink" title="Kafka与Broker不同"></a>Kafka与Broker不同</h2><ol>
+<li>消息定期清理。各个主题设置单独的保留规则，以便满足不同消费者的需求，各个主题可以保留不同数量的消息。</li>
+<li>多个消费者可以重复消费同一条消息。</li>
+<li>Kafka可以在如下情况下自动创建主题：当一个生产者开始往主题写入消息时，当一个消费者开始从主题读取消息时，当任意一个客户端向主题发送元数据请求时。</li>
+<li>客户端为了优化网络和磁盘空间，会对消息进行压缩，服务器需要对消息进行批量解压，设置偏移量，然后重新进行批量压缩，再保存在磁盘上。</li>
+<li>kafka允许主题的名字为null, Refactor不允许。</li>
+<li>Kafka的Consumer属于消费者组群。</li>
+<li>消费者组群之间允许重复消费消息。<img src="/2020/10/27/Kafka/2020-10-04-%E6%AF%94%E8%BE%83/Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005132432782.png" alt="image-20201005132432782"></li>
+<li>Kafka中所有broker都缓存了元数据，因此，客户端可以向任何一个broker发送<strong>元数据请求</strong>，并得到客户端所感兴趣的主题所在分区，每个分区都包含哪些副本，以及哪个副本是首领。因此，consumer需要时不时的向broker发送元数据请求来刷新本地缓存的信息。</li>
+<li></li>
+</ol>
+<h1 id="Kafka的一些Feture"><a href="#Kafka的一些Feture" class="headerlink" title="Kafka的一些Feture"></a>Kafka的一些Feture</h1><ol>
+<li><p>Kafka的所有消息保存在磁盘上，存放这些日志片段的目录是通过log.dirs指定的，它是一组用逗号分割的本地文件系统路径。如果指定了多个路径，那么Broker会根据最少使用原则，把统一分区的日志片段保存在同一路径下。要注意：Broker会往拥有最少数据分区的路径新增分区，而不是往拥有最少磁盘空间的路径新增分区。</p>
+</li>
+<li><p>提供二进制连接协议，即用户直接向Kafka网络端口发送适当的字节序列，就可以实现从Kafka读取消息或往Kafka写消息</p>
+</li>
+<li><p>用户可以从指定偏移量开始读数据，例如seekToBeginning和seekToEnd</p>
+</li>
+<li><p>消费者既可以依赖于组群存在，也可以独立存在。</p>
+</li>
+<li><p>消费者请求数据的时候，可以设置broker返回数据的上限，也可以设置下限。这样可以在主题消息流量不是很大的情况下，减少CPU和网络开销。</p>
+</li>
+<li><p>日志压缩是Kafka的一个高级特性，因为有了这个特性，Kafka可以用来长时间保存数据。</p>
+</li>
+</ol>
+<h2 id="问题处理"><a href="#问题处理" class="headerlink" title="问题处理"></a>问题处理</h2><ol>
+<li>Kafka也需人为设置BrokerID,需要使用者自己保证该ID是唯一的，如果两个broker使用相同的BrokerID，则第二个broker就无法启动。在Broker启动时，它通过创建临时节点把自己的ID注册到Zookeeper。Kafka组件订阅Zookeeper的/brokers/ids路径（broker在Zookeeper上的注册路径），当有broker加入集群或者退出集群时，这些组件就能获得通知。</li>
+</ol>
+<h1 id="Refactor一些可以改进的地方"><a href="#Refactor一些可以改进的地方" class="headerlink" title="Refactor一些可以改进的地方"></a>Refactor一些可以改进的地方</h1><ol>
+<li>发送消息长度超过MESSAGE_LENGTH时，返回错误码；</li>
+<li>Consumer请求的topic不在此broker上，返回相关错误码；</li>
+</ol>
+<h1 id="日志维护"><a href="#日志维护" class="headerlink" title="日志维护"></a>日志维护</h1><h2 id="小收获"><a href="#小收获" class="headerlink" title="小收获"></a>小收获</h2><ol>
+<li>除了设置socket 外，还需要设置TCP soc ke t 的读写缓冲区，它们的参数分别是net.i.pv4.tcp_wmem和net . i.pv4 . tc p_ wmem 。这些参数的值由3 个整数组成，它们使用空格分隔，分别表示最小值、默认值和最大值。最大值不能大于net.core.wmem_max可以和net.core.rmem_max指定的大小。例如，“4096 65536 204800。”表示最小值是4KB、默认值是64KB、最大值是2MB 。根据Kafka 服务器接收流量的实际情况，可能需要设置更高的最大值，为网络连接提供更大的缓冲空间。还有其他一些有用的网络参数。例如， 把net.ipv4.tcp_window_scaling 设为l ，启用TCP时间窗扩展，可以提升客户端传输数据的效率，传输的数据可以在服务器端进行缓冲。把net.1.pv4.tcp_max_syn_backlog 设为比默认值1024 更大的值，可以接受更多的井发连接, 把net.core.netdev_max_backlog 设为比默认值1000 更大的值，有助于应对网络流量的爆发，特别是在使用千兆网络的情况下，允许更多的数据包排队等待内核处理。</li>
+<li></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://aerfalwl.github.io/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/header.jpg">
+      <meta itemprop="name" content="codefreestyle">
+      <meta itemprop="description" content="每天收获一点点">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sunshine">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-10-27 10:11:32" itemprop="dateCreated datePublished" datetime="2020-10-27T10:11:32+08:00">2020-10-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-10-10 09:08:41" itemprop="dateModified" datetime="2020-10-10T09:08:41+08:00">2020-10-10</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="初识Kafka"><a href="#初识Kafka" class="headerlink" title="初识Kafka"></a>初识Kafka</h1><h2 id="Feture"><a href="#Feture" class="headerlink" title="Feture"></a>Feture</h2><ol>
+<li>消息保留：是Kafka的一个重要特性，Broker默认的消息保留策略是，要不保留一段时间，要不保留到消息到达一定的字节数。当消息总量达到这些上限时，旧消息就被过期并被删除。紧凑型日志，只有最后一个带有特定键的消息会被保留，因为，人们只关心最后时刻发生的改变。</li>
+<li>Kafka的消息复制机制只能在单个集群里进行，不能再多个集群之间进行。但是它提供一个叫做MirrorMaker的工具，可以用来实现集群之间的消息赋值。</li>
+<li>亚秒级的消息延迟。</li>
+</ol>
+<h2 id="Kafka适用场景"><a href="#Kafka适用场景" class="headerlink" title="Kafka适用场景"></a>Kafka适用场景</h2><ol>
+<li>多个生产者</li>
+<li>多个消费者</li>
+</ol>
+<h2 id="Kafka的使用场景"><a href="#Kafka的使用场景" class="headerlink" title="Kafka的使用场景"></a>Kafka的使用场景</h2><ol>
+<li>活动跟踪，比如：用户网页访问次数和点击量。</li>
+<li>传递消息，比如向用户发通知。使用公共组件的好处：在公共组件上做一些有趣的转换，比如把多个消息聚合成一个单独的通知，而这些工作是无法在其它地方完成的。</li>
+<li>度量指标和日志记录。</li>
+<li>提交日志。</li>
+<li>流处理。</li>
+</ol>
+<h1 id="生产者"><a href="#生产者" class="headerlink" title="生产者"></a>生产者</h1><p><img src="/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201004160030424.png" alt="Kafka生产者组件图"></p>
+<h1 id="消费者"><a href="#消费者" class="headerlink" title="消费者"></a>消费者</h1><p><img src="/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005131625839.png" alt="消费者组群"></p>
+<p>如果消费者组群中消费者的数量多于主题分区的个数，则会有部分消费者被闲置，不会接收到任何消息。</p>
+<h1 id="深入Kafka"><a href="#深入Kafka" class="headerlink" title="深入Kafka"></a>深入Kafka</h1><h2 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h2><ol>
+<li>Controller本质上也是一个broker，除了一般的broker的功能之外，它还负责首领的选举。集群中第一启动的Broker会在Zookeeper里创建一个临时节点/controller让自己成为控制器。</li>
+<li>Controller负责在节点加入或者离开集群时进行分区首领的选举，并且使用epoch来避免脑裂，脑裂是指两个节点同时任务自己是当前的控制器。</li>
+</ol>
+<h2 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h2><ol>
+<li>Kafka是一个可分区的，可复制的提交日志服务。</li>
+<li>副本<ol>
+<li>首领副本：每个分区有且仅有一个首领副本，为了保证一致性，所有生产者请求和消费者请求都会经过这个副本</li>
+<li>跟随者副本：首领以外的副本都是跟随者副本，跟随者副本不处理来自客户端的的请求，它们唯一要做的就是从首领那里复制消息，保持与首领一致的状态，如果首领发生崩溃，则跟随者会被提升为新首领。</li>
+</ol>
+</li>
+</ol>
+<h1 id="Broker处理请求的方式"><a href="#Broker处理请求的方式" class="headerlink" title="Broker处理请求的方式"></a>Broker处理请求的方式</h1><p><img src="/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005164403640.png" alt="image-20201005164403640"></p>
+<p><img src="/2020/10/27/Kafka/2020-10-04-Kafka%E7%AE%80%E4%BB%8B/Users\lwl\AppData\Roaming\Typora\typora-user-images\image-20201005164434878.png" alt="image-20201005164434878"></p>
+<p>Kafka有用其它语言实现的客户端，如C, Python， Go语言等。Kafka网站上有它们的完整清单，这些客户端就是使用二进制协议与broker通信的。</p>
+<h2 id="分区分配"><a href="#分区分配" class="headerlink" title="分区分配"></a>分区分配</h2><h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><ol>
+<li>Kafka将分区分为若干个片段。默认情况下，每个片段包含1GB或者一周的数据，以较小的那个为准。</li>
+</ol>
+<h3 id="文件格式"><a href="#文件格式" class="headerlink" title="文件格式"></a>文件格式</h3><ol>
+<li><p>我们把Kafka的消息和偏移量保存在文件中。</p>
+</li>
+<li><p>键、值、偏移量、消息大小、校验和、消息格式版本号、压缩算法和时间戳。时间戳可以是生产者发送消息的时间，也可以是消息到达broker的时间，这个时间是可配置的。</p>
+</li>
+<li><p>可以使用工具DUmpLogSegment来查看片段的内容，它可以显示每个消息的偏移量、校验和、魔术数、消息大小和压缩算法。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bin/kafka-run-class.sh kafka.tools.DumpLogSegments</span><br></pre></td></tr></table></figure>
+
+<h2 id="清理"><a href="#清理" class="headerlink" title="清理"></a>清理</h2><ol>
+<li>P84页，103</li>
+</ol>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
     
 
 
@@ -452,7 +674,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
